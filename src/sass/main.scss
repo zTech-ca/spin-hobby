@@ -4,3 +4,10 @@
 
 @import "../view/components/NavBar/navbar.scss";
 @import "../view/components/Footer/footer.scss";
+
+.table-cell-center {
+  display: table-cell;
+  height: 100%;
+  vertical-align: middle;
+  text-align: center;
+}
