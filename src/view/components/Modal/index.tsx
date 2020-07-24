@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useModalSelector } from "../../../selectors";
 import { ModalMode } from "../../../actions/types";
 import { hideModal } from "../../../actions";
+import Login from "./Login";
 
 export default function Modal() {
   const mode = useModalSelector();
@@ -36,7 +37,7 @@ function TrueModal({ mode }: { mode: ModalMode }) {
         <button className="modal-close" onClick={exitModal}>
           &times;
         </button>
-        <div>TEST CONTENT</div>
+        <Login />
       </div>
     </div>
   );

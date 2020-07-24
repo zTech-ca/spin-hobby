@@ -38,5 +38,37 @@
         outline: none;
       }
     }
+
+    .modal-login {
+      width: 300px;
+      padding: 30px 30px;
+
+      h2 {
+        margin: 0 0;
+      }
+
+      form {
+        .modal-login-input-section {
+          display: flex;
+          flex-direction: column;
+
+          label {
+            margin: 10px 0;
+          }
+
+          input {
+            width: 100%;
+            background-color: $theme-color-bright;
+            outline-width: 0;
+          }
+        }
+
+        .modal-login-submit {
+          margin-top: 25px;
+          margin-bottom: 15px;
+          width: 100%;
+        }
+      }
+    }
   }
 }

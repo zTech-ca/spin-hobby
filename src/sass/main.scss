@@ -2,6 +2,7 @@
 
 @import "../app.scss";
 
+@import "../view/components/Buttons/buttons.scss";
 @import "../view/components//Modal/modal.scss";
 @import "../view/components/NavBar/navbar.scss";
 @import "../view/components/Footer/footer.scss";
@@ -11,4 +12,18 @@
   height: 100%;
   vertical-align: middle;
   text-align: center;
+}
+
+.fade-in {
+  animation: fadein 0.3s;
+  opacity: 1;
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }
