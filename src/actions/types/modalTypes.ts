@@ -13,4 +13,5 @@ interface ILoginModalAction {
 
 export type ModalActionTypes = IHideModalAction | ILoginModalAction;
 
-export type ModalState = typeof LOGIN | null;
+export type ModalMode = typeof LOGIN;
+export type ModalState = ModalMode | null;

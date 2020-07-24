@@ -3,3 +3,17 @@ $theme-color-darker: #021a31;
 $theme-color-bright: #f6f9fc;
 
 $footer-height: 60px;
+
+.fade-in {
+  animation: fadein 0.3s;
+  opacity: 1;
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
