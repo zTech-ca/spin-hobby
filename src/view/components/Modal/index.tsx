@@ -36,6 +36,7 @@ function TrueModal({ mode }: { mode: ModalMode }) {
         <button className="modal-close" onClick={exitModal}>
           &times;
         </button>
+        <div>TEST CONTENT</div>
       </div>
     </div>
   );
