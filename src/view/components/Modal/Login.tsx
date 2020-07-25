@@ -55,8 +55,12 @@ export default function Login() {
             onChange={onInputChange}
           />
         </div>
-        <Submit className="modal-login-submit" />
+        <Submit className="modal-login-submit" text="Login" />
       </form>
+      <button className="modal-login-forgot-your-password">
+        Forgot your password?
+      </button>
+      <button className="modal-login-sign-up">Sign Up</button>
     </div>
   );
 }

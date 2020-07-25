@@ -58,8 +58,9 @@
 
           input {
             width: 100%;
-            background-color: $theme-color-bright;
-            outline-width: 0;
+            background-color: 100%;
+            outline-width: 0px;
+            box-sizing: border-box;
           }
         }
 
@@ -67,6 +68,37 @@
           margin-top: 25px;
           margin-bottom: 15px;
           width: 100%;
+        }
+      }
+
+      .modal-login-forgot-your-password {
+        background-color: transparent;
+        color: inherit;
+        outline-width: 0;
+        border: none;
+
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
+          color: #cee6fd;
+        }
+      }
+
+      .modal-login-sign-up {
+        width: 100%;
+        background-color: transparent;
+        color: $theme-color-bright;
+        outline-width: 0;
+        border: $theme-color-bright solid 1px;
+        border-radius: 5px;
+        padding: 5px 0;
+        margin-top: 15px;
+        transition: 0.2s;
+
+        &:hover {
+          cursor: pointer;
+          box-shadow: 0 0 5px;
+          transition: 0.2s;
         }
       }
     }
