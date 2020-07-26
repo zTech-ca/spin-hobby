@@ -4,16 +4,16 @@
   border-radius: 3px;
   margin: 0 auto;
   padding: 5px 0;
-  transition: transform 0.2s;
+  transition: 0.2s;
   user-select: none;
   outline-width: 0;
   color: $theme-color-bright;
-  box-shadow: 3px 3px black;
 
   &:hover {
     cursor: pointer;
     transform: scale(1.01);
     transition: 0.2s;
+    box-shadow: 3px 3px black;
   }
 
   &:active {

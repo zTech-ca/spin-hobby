@@ -4,6 +4,8 @@ import { useModalSelector } from "../../../selectors";
 import { ModalMode } from "../../../actions/types";
 import { hideModal } from "../../../actions";
 import Login from "./Login";
+import SignUp from "./SignUp";
+import { LOGIN, SIGNUP } from "../../../actions/types";
 
 export default function Modal() {
   const mode = useModalSelector();
@@ -16,14 +18,14 @@ function TrueModal({ mode }: { mode: ModalMode }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    document.addEventListener("click", handleClick);
+    document.addEventListener("mousedown", handleClick);
     return () => {
-      document.removeEventListener("click", handleClick);
+      document.removeEventListener("mousedown", handleClick);
     };
   });
 
   function handleClick(e: MouseEvent) {
-    if (ref?.current && ref.current.contains(e.target as Node)) return;
+    if (!ref?.current || ref.current.contains(e.target as Node)) return;
     exitModal();
   }
 
@@ -37,7 +39,8 @@ function TrueModal({ mode }: { mode: ModalMode }) {
         <button className="modal-close" onClick={exitModal}>
           &times;
         </button>
-        <Login />
+        {mode === LOGIN && <Login />}
+        {mode === SIGNUP && <SignUp />}
       </div>
     </div>
   );
