@@ -1,29 +1,29 @@
 import React from "react";
-import Header from "./Header";
+import Header, { ISlide } from "./Header";
 
-const slides = [
+const slides: ISlide[] = [
   {
-    city: "Paris",
-    country: "France",
+    headline: "Paris",
+    subheading: "France",
     img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/paris.jpg",
   },
   {
-    city: "Singapore",
+    headline: "Singapore",
     img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/singapore.jpg",
   },
   {
-    city: "Prague",
-    country: "Czech Republic",
+    headline: "Prague",
+    subheading: "Czech Republic",
     img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/prague.jpg",
   },
   {
-    city: "Amsterdam",
-    country: "Netherlands",
+    headline: "Amsterdam",
+    subheading: "Netherlands",
     img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/amsterdam.jpg",
   },
   {
-    city: "Moscow",
-    country: "Russia",
+    headline: "Moscow",
+    subheading: "Russia",
     img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/moscow.jpg",
   },
 ];

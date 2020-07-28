@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from "react";
 import classNames from "classnames";
 
-const AUTOCHANGE_TIME = 4000;
+const AUTOCHANGE_TIME = 5000;
 const IMAGE_PARTS = 4;
 
-export default function Header({ slides }: any) {
+export interface ISlide {
+  headline: string;
+  subheading?: string;
+  img: string;
+}
+
+interface Props {
+  slides: ISlide[];
+}
+
+export default function Header({ slides }: Props) {
   const [sliderReady, setSliderReady] = useState<boolean>(false);
   const [activeSlide, setActiveSlide] = useState<number>(0);
   const [prevSlide, setPrevSlide] = useState<number>(-1);
@@ -54,20 +64,20 @@ export default function Header({ slides }: any) {
     <div className={classNames("slider", { "s--ready": sliderReady })}>
       <p className="slider__top-heading">Travelers</p>
       <div className="slider__slides">
-        {slides.map((slide: any, index: number) => (
+        {slides.map((slide: ISlide, index: number) => (
           <div
             className={classNames("slider__slide", {
               "s--active": activeSlide === index,
               "s--prev": prevSlide === index,
             })}
-            key={slide.city}
+            key={slide.headline}
           >
             <div className="slider__slide-content">
               <h3 className="slider__slide-subheading">
-                {slide.country || slide.city}
+                {slide.subheading || slide.headline}
               </h3>
               <h2 className="slider__slide-heading">
-                {slide.city.split("").map((l: any, i: number) => (
+                {slide.headline.split("").map((l: string, i: number) => (
                   <span key={i}>{l}</span>
                 ))}
               </h2>
