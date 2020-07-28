@@ -2,6 +2,8 @@ import React, { FormEvent, useState, ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
 import { showLoginModal } from "../../../actions";
 import { Submit } from "../Buttons";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
 const USERNAME = "username";
 const EMAIL = "email";
@@ -11,6 +13,7 @@ const PASSWORD_RETYPE = "retypePassword";
 interface ILoginInputs {
   username: string;
   email: string;
+  phone: string;
   password: string;
   retypePassword: string;
 }
@@ -20,6 +23,7 @@ export default function SignUp() {
   const [inputs, setInputs] = useState<ILoginInputs>({
     username: "",
     email: "",
+    phone: "",
     password: "",
     retypePassword: "",
   });
@@ -43,9 +47,17 @@ export default function SignUp() {
     }
   }
 
+  function onPhoneChange(phone: string) {
+    setInputs({ ...inputs, phone });
+  }
+
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     // Add the submit handlers here
+
+    if (!isValidPhoneNumber(inputs.phone)) {
+      // Handler for submitting invalid phone number here
+    }
   }
 
   function handleSignUp() {
@@ -72,6 +84,15 @@ export default function SignUp() {
             type="text"
             value={inputs.email}
             onChange={onInputChange}
+          />
+        </div>
+        <div className="modal-login-input-section">
+          <label>Phone</label>
+          <PhoneInput
+            placeholder="Enter phone number"
+            value={inputs.phone}
+            onChange={onPhoneChange}
+            defaultCountry="CA"
           />
         </div>
         <div className="modal-login-input-section">
