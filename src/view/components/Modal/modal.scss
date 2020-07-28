@@ -101,6 +101,33 @@
           transition: 0.2s;
         }
       }
+
+      .modal-login-email-phone-option-tab {
+        overflow: hidden;
+        margin: 10px auto;
+        border-radius: 5px;
+        background-color: transparent;
+        border: solid 1px $theme-color-bright;
+        box-shadow: 0 0 10px black;
+
+        button {
+          background-color: transparent;
+          color: $theme-color-bright;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          padding: 8px 10px;
+          font-size: 17px;
+          border: "solid 5px red";
+          width: 50%;
+          transition: 0.2s;
+        }
+
+        .modal-login-email-phone-option-active {
+          background-color: $theme-color-dark-brighter;
+          transition: 0.2s;
+        }
+      }
     }
   }
 }

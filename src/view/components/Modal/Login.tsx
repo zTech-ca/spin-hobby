@@ -1,6 +1,6 @@
 import React, { FormEvent, useState, ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
-import { showSignUpModal } from "../../../actions";
+import { showSignUpModal, showForgotPasswordModal } from "../../../actions";
 import { Submit } from "../Buttons";
 
 const USERNAME = "username";
@@ -40,6 +40,10 @@ export default function Login() {
     dispatch(showSignUpModal());
   }
 
+  function handleForgotPassword() {
+    dispatch(showForgotPasswordModal());
+  }
+
   return (
     <div className="modal-login">
       <h2>Login</h2>
@@ -64,7 +68,10 @@ export default function Login() {
         </div>
         <Submit className="modal-login-submit" text="Login" />
       </form>
-      <button className="modal-login-forgot-your-password">
+      <button
+        className="modal-login-forgot-your-password"
+        onClick={handleForgotPassword}
+      >
         Forgot your password?
       </button>
       <button className="modal-login-sign-up" onClick={handleSignUp}>

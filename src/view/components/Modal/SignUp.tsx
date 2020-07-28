@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { showLoginModal } from "../../../actions";
 import { Submit } from "../Buttons";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
-import "react-phone-number-input/style.css";
 
 const USERNAME = "username";
 const EMAIL = "email";

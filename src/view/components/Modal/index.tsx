@@ -5,7 +5,8 @@ import { ModalMode } from "../../../actions/types";
 import { hideModal } from "../../../actions";
 import Login from "./Login";
 import SignUp from "./SignUp";
-import { LOGIN, SIGNUP } from "../../../actions/types";
+import ForgotPassword from "./ForgotPassword";
+import { LOGIN, SIGNUP, FORGOT_PASSWORD } from "../../../actions/types";
 
 export default function Modal() {
   const mode = useModalSelector();
@@ -33,14 +34,26 @@ function TrueModal({ mode }: { mode: ModalMode }) {
     dispatch(hideModal());
   }
 
+  function getModalContent() {
+    switch (mode) {
+      case LOGIN:
+        return <Login />;
+      case SIGNUP:
+        return <SignUp />;
+      case FORGOT_PASSWORD:
+        return <ForgotPassword />;
+      default:
+        return null;
+    }
+  }
+
   return (
     <div className="modal-background fade-in">
       <div className="modal" ref={ref}>
         <button className="modal-close" onClick={exitModal}>
           &times;
         </button>
-        {mode === LOGIN && <Login />}
-        {mode === SIGNUP && <SignUp />}
+        {getModalContent()}
       </div>
     </div>
   );
