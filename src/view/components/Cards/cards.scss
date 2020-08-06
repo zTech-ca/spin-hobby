@@ -37,6 +37,7 @@
     .cards-featured-merch-description {
       @include dotted-overflow-text(15px, 5, 1.8);
       text-align: center;
+      font-style: italic;
     }
 
     .cards-featured-merch-price {

@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import Header, { ISlide } from "./Header";
 import Merchandise from "./Merchandise";
 import { getHomeData } from "../../../api";
+import { IMerchPreview } from "../../../types/interfaces";
 
 export interface IHomeData {
   header: ISlide[];
+  merchs: IMerchPreview[];
 }
 
 export default function Home() {
@@ -21,7 +23,7 @@ export default function Home() {
     <>
       <Header slides={homeData.header} />
       <div className="home-main">
-        <Merchandise />
+        <Merchandise merchs={homeData.merchs} />
       </div>
     </>
   );
