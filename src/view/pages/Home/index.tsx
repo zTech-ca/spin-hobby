@@ -1,38 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header, { ISlide } from "./Header";
+import Merchandise from "./Merchandise";
+import { getHomeData } from "../../../api";
 
-const slides: ISlide[] = [
-  {
-    headline: "Paris",
-    subheading: "France",
-    img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/paris.jpg",
-  },
-  {
-    headline: "Singapore",
-    img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/singapore.jpg",
-  },
-  {
-    headline: "Prague",
-    subheading: "Czech Republic",
-    img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/prague.jpg",
-  },
-  {
-    headline: "Amsterdam",
-    subheading: "Netherlands",
-    img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/amsterdam.jpg",
-  },
-  {
-    headline: "Moscow",
-    subheading: "Russia",
-    img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/moscow.jpg",
-  },
-];
+export interface IHomeData {
+  header: ISlide[];
+}
 
 export default function Home() {
-  // Request api for homepage
+  const [homeData, setHomeData] = useState<IHomeData | null>(null);
+
+  useEffect(() => {
+    getHomeData()
+      .then((data) => setHomeData(data))
+      .catch((err) => console.log("Error loading home route: ", err));
+  }, []);
+
+  if (!homeData) return null; // Replace with loading UI
   return (
     <>
-      <Header slides={slides} />
+      <Header slides={homeData.header} />
+      <div className="home-main">
+        <Merchandise />
+      </div>
     </>
   );
 }

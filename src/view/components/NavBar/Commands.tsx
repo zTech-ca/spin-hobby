@@ -4,6 +4,7 @@ import { IconType } from "react-icons";
 import { FaUserAlt } from "react-icons/fa";
 import { RiShoppingCart2Line } from "react-icons/ri";
 import { TiChevronRightOutline } from "react-icons/ti";
+import { FiSettings } from "react-icons/fi";
 import { showLoginModal } from "../../../actions";
 
 interface INavBarCommand {
@@ -18,6 +19,7 @@ export default function Commands() {
     { label: "Login", icon: FaUserAlt, onClick: handleLoginCommand },
     { label: "Cart", icon: RiShoppingCart2Line, onClick: () => {} },
     { label: "Request", icon: TiChevronRightOutline, onClick: () => {} },
+    { label: "Settings", icon: FiSettings, onClick: () => {} },
   ];
 
   function handleLoginCommand() {

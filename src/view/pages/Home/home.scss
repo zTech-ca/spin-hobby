@@ -1,1 +1,6 @@
 @import "./Header/header.scss";
+
+.home-main {
+  max-width: $standard-max-width;
+  margin: auto;
+}

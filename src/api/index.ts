@@ -1,5 +1,7 @@
 import axios from "axios";
 import { ECurrencies } from "../types/enum";
+import { homeData } from "../dummy";
+import { IHomeData } from "../view/pages/Home";
 
 export function loadInitialData() {}
 
@@ -13,4 +15,8 @@ export function getCurrencyConversion(
       `https://api.exchangeratesapi.io/latest?base=${base}&symbols=${conversion}`
     )
     .then((data) => data.data.rates[conversion]);
+}
+
+export function getHomeData(): Promise<IHomeData> {
+  return new Promise((resolve) => resolve(homeData));
 }
