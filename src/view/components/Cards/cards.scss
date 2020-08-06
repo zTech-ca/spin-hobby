@@ -1,0 +1,40 @@
+.cards-featured-merch {
+  height: 500px;
+  width: 320px;
+  user-select: none;
+  background-color: gray;
+  border-radius: 5px;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    height: 52%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .cards-featured-merch-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 48%;
+    padding: 5px 12px;
+    box-sizing: border-box;
+
+    h2 {
+      @include dotted-overflow-text(24px, 1, 1.8);
+      margin: 10px auto 0px auto;
+      text-align: center;
+    }
+
+    .cards-featured-merch-description {
+      @include dotted-overflow-text(15px, 5, 1.8);
+      text-align: center;
+    }
+
+    .cards-featured-merch-price {
+      text-align: center;
+      font-size: 24px;
+    }
+  }
+}

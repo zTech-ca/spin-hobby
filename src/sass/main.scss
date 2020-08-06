@@ -1,4 +1,5 @@
 @import "./variables.scss";
+@import "./mixins.scss";
 
 @import "../app.scss";
 
@@ -6,6 +7,7 @@
 @import "../view/components//Modal/modal.scss";
 @import "../view/components/NavBar/navbar.scss";
 @import "../view/components/Footer/footer.scss";
+@import "../view/components/Cards/cards.scss";
 
 @import "../view/pages/Home/home.scss";
 
