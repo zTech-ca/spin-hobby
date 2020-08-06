@@ -12,3 +12,23 @@ export enum ECurrencies {
   HKD = "HKD", // Hong Kong
   KRW = "KRW", // South Korea
 }
+
+export enum ECurrencySymbols {
+  CAD = "$",
+  EUR = "€",
+  USD = "$",
+  JPY = "¥",
+  CNY = "¥",
+  HKD = "$",
+  KRW = "₩",
+}
+
+export enum ECurrencyCodes {
+  CAD = "CAD",
+  EUR = "EUR",
+  USD = "USD",
+  JPY = "JPY",
+  CNY = "CNY",
+  HKD = "HKD",
+  KRW = "KRW",
+}

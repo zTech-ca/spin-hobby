@@ -4,3 +4,7 @@ import { IRootState } from "../reducers";
 export function useModalSelector() {
   return useSelector((state: IRootState) => state.modal);
 }
+
+export function useCurrencySelector() {
+  return useSelector((state: IRootState) => state.setting.currency);
+}

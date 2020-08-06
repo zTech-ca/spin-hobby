@@ -1,4 +1,6 @@
 import React from "react";
+import { ECurrencySymbols, ECurrencyCodes } from "../../../types/enum";
+import { useCurrencySelector } from "../../../selectors";
 
 const img = "https://static.zerochan.net/Toujou.Nozomi.full.2710162.png";
 const title = "nontan nontan nontan nontan";
@@ -9,13 +11,27 @@ A 13-episode anime television series produced by Sunrise, directed by Takahiko K
 const price = 50;
 
 export function FeaturedMerch() {
+  const currency = useCurrencySelector();
+
   return (
     <div className="cards-featured-merch">
       <img src={img} alt={img} />
       <div className="cards-featured-merch-details">
         <h2>{title}</h2>
         <p className="cards-featured-merch-description">{description}</p>
-        <div className="cards-featured-merch-price">${price} CAD</div>
+        <div className="cards-featured-merch-price">
+          <span>
+            {ECurrencySymbols[currency.base]}
+            {price} {ECurrencyCodes[currency.base]}
+          </span>
+          {currency.base !== currency.conversion && (
+            <span className="cards-featured-merch-price-converted-currency ">
+              {" "}
+              (Approx. {ECurrencySymbols[currency.conversion]}
+              {price * currency.rate} {ECurrencyCodes[currency.conversion]})
+            </span>
+          )}
+        </div>
       </div>
     </div>
   );

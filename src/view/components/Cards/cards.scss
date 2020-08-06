@@ -5,6 +5,12 @@
   background-color: gray;
   border-radius: 5px;
   cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    box-shadow: 1px 1px 5px;
+    transition: 0.2s;
+  }
 
   img {
     width: 100%;
@@ -35,6 +41,10 @@
     .cards-featured-merch-price {
       text-align: center;
       font-size: 24px;
+
+      .cards-featured-merch-price-converted-currency {
+        font-size: 15px;
+      }
     }
   }
 }
