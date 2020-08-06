@@ -9,9 +9,11 @@ interface Props {
 export default function Merchandise({ merchs }: Props) {
   return (
     <>
-      {merchs.map((merch, index) => (
-        <FeaturedMerch key={index} {...merch} />
-      ))}
+      <div className="home-featured-merchs">
+        {merchs.map((merch, index) => (
+          <FeaturedMerch key={index} {...merch} />
+        ))}
+      </div>
     </>
   );
 }

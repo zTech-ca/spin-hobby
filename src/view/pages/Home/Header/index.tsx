@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import classNames from "classnames";
 
-const AUTOCHANGE_TIME = 5000;
+const AUTOCHANGE_TIME = 10000;
 const IMAGE_PARTS = 4;
 
 export interface ISlide {
@@ -62,6 +62,7 @@ export default function Header({ slides }: Props) {
 
   return (
     <div className={classNames("slider", { "s--ready": sliderReady })}>
+      <div className="home-header-gradient" />
       <p className="slider__top-heading">Travelers</p>
       <div className="slider__slides">
         {slides.map((slide: ISlide, index: number) => (

@@ -6,6 +6,12 @@ $maxLettersStagger: 6;
 $letterStagger: 0.1s;
 
 .slider {
+  // Variables for easy customization
+  $home-header-top-heading: 60px;
+  $home-header-gradient-top: 50%;
+  $home-header-control-top: 30%;
+  $home-header-content-height: 70%;
+
   *,
   *:before,
   *:after {
@@ -18,8 +24,23 @@ $letterStagger: 0.1s;
   background: #000;
   overflow: hidden;
   position: relative;
-  height: 380px;
+  height: 600px;
   color: #fff;
+  background: transparent;
+  user-select: none;
+
+  .home-header-gradient {
+    position: absolute;
+    top: $home-header-gradient-top;
+    height: calc(100% - #{$home-header-gradient-top});
+    width: 100%;
+    z-index: 10;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      $theme-color-bright 100%
+    );
+  }
 
   @mixin sliderReady {
     .slider.s--ready & {
@@ -31,7 +52,7 @@ $letterStagger: 0.1s;
     z-index: $numOfParts * 3;
     position: absolute;
     left: 0;
-    top: 100px;
+    top: $home-header-top-heading;
     width: 100%;
     text-align: center;
     font-size: 16px;
@@ -83,7 +104,7 @@ $letterStagger: 0.1s;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      height: 100%;
+      height: $home-header-content-height;
       text-transform: uppercase;
       line-height: 1;
     }
@@ -276,7 +297,7 @@ $letterStagger: 0.1s;
     z-index: 100;
     position: absolute;
     left: 50px;
-    top: 50%;
+    top: $home-header-control-top;
     width: $size;
     height: $size;
     margin-top: $size/-2;

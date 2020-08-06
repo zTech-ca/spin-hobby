@@ -3,4 +3,11 @@
 .home-main {
   max-width: $standard-max-width;
   margin: auto;
+
+  .home-featured-merchs {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -240px;
+    justify-content: space-evenly;
+  }
 }

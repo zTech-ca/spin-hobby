@@ -44,6 +44,27 @@ const merchs: IMerchPreview[] = [
     price: 50,
     description: `This is Eli chi`,
   },
+  {
+    title: "eli chi",
+    img:
+      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+    price: 50,
+    description: `This is Eli chi`,
+  },
+  {
+    title: "eli chi",
+    img:
+      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+    price: 50,
+    description: `This is Eli chi`,
+  },
+  {
+    title: "eli chi",
+    img:
+      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+    price: 50,
+    description: `This is Eli chi`,
+  },
 ];
 
 export const homeData: IHomeData = {
