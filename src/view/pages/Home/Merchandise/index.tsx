@@ -10,7 +10,7 @@ export default function Merchandise({ merchs }: Props) {
   return (
     <>
       {merchs.map((merch, index) => (
-        <FeaturedMerch {...merch} />
+        <FeaturedMerch key={index} {...merch} />
       ))}
     </>
   );
