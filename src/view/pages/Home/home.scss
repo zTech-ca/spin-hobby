@@ -11,3 +11,16 @@
     justify-content: space-evenly;
   }
 }
+
+.home-ripple-featured-card {
+  z-index: $z-index-highest;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 10px 10px;
+
+  &:hover {
+    box-shadow: 0px 0px 5px;
+    transform: scale(1.05);
+    transition: 0.3s;
+  }
+}

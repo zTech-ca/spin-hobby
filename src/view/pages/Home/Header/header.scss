@@ -34,7 +34,7 @@ $letterStagger: 0.1s;
     top: $home-header-gradient-top;
     height: calc(100% - #{$home-header-gradient-top});
     width: 100%;
-    z-index: 10;
+    z-index: $z-index-second-highest;
     background: linear-gradient(
       to bottom,
       transparent 0%,
