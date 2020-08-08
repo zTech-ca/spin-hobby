@@ -10,54 +10,57 @@ export interface ISlide {
   img: string;
 }
 
+interface ISlideDisplay {
+  activeSlide: number;
+  prevSlide: number;
+}
+
 interface Props {
   slides: ISlide[];
 }
 
 export default function Header({ slides }: Props) {
   const [sliderReady, setSliderReady] = useState<boolean>(false);
-  const [activeSlide, setActiveSlide] = useState<number>(0);
-  const [prevSlide, setPrevSlide] = useState<number>(-1);
-  const [changeTO, setChangeTO] = useState<ReturnType<
-    typeof setInterval
-  > | null>(null);
+  const [slideDisplay, setSlideDisplay] = useState<ISlideDisplay>({
+    activeSlide: 0,
+    prevSlide: -1,
+  });
 
   useEffect(() => {
-    if (!changeTO) {
-      setChangeTO(
-        setInterval(() => {
-          changeSlides(1, slides.length);
-        }, AUTOCHANGE_TIME)
-      );
-      setSliderReady(true);
-    }
+    setSliderReady(true);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSlideDisplay(getNextSlideDisplay(1, slideDisplay, slides.length));
+    }, AUTOCHANGE_TIME);
     return () => {
-      if (changeTO) clearInterval(changeTO);
+      clearTimeout(timer);
     };
-  }, [slides, changeTO]);
+  }, [slideDisplay, slides]);
 
   function flipSlide(change: number) {
-    resetTimer();
-    changeSlides(change, slides.length);
+    setSlideDisplay(getNextSlideDisplay(change, slideDisplay, slides.length));
   }
 
-  function resetTimer() {
-    if (changeTO) clearInterval(changeTO);
-    setChangeTO(
-      setInterval(() => {
-        changeSlides(1, slides.length);
-      }, AUTOCHANGE_TIME)
-    );
-  }
-
-  function changeSlides(change: number, nSlides: number) {
-    setActiveSlide((prevSlide) => {
-      setPrevSlide(prevSlide);
-      const nextSlide = prevSlide + change;
-      if (nextSlide >= 0) return nextSlide % nSlides;
+  function getNextSlideDisplay(
+    change: number,
+    slideDisplay: ISlideDisplay,
+    nSlides: number
+  ) {
+    const nextSlide = slideDisplay.activeSlide + change;
+    if (nextSlide >= 0) {
+      return {
+        activeSlide: nextSlide % nSlides,
+        prevSlide: slideDisplay.activeSlide,
+      };
+    } else {
       const subtraction = Math.abs(nextSlide) % nSlides;
-      return subtraction ? nSlides - subtraction : 0;
-    });
+      return {
+        activeSlide: subtraction ? nSlides - subtraction : 0,
+        prevSlide: slideDisplay.activeSlide,
+      };
+    }
   }
 
   return (
@@ -68,8 +71,8 @@ export default function Header({ slides }: Props) {
         {slides.map((slide: ISlide, index: number) => (
           <div
             className={classNames("slider__slide", {
-              "s--active": activeSlide === index,
-              "s--prev": prevSlide === index,
+              "s--active": slideDisplay.activeSlide === index,
+              "s--prev": slideDisplay.prevSlide === index,
             })}
             key={slide.headline}
           >

@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import { FcSearch } from "react-icons/fc";
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 
@@ -14,6 +14,11 @@ export default function Search() {
     setOpenCategoryList(!openCategoryList);
   }
 
+  function onSubmitHandler(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    // Add search handlings here
+  }
+
   return (
     <div className="navbar-search">
       <div
@@ -23,7 +28,7 @@ export default function Search() {
         <div className="navbar-search-selected-category">All</div>
         {openCategoryList ? <TiArrowSortedUp /> : <TiArrowSortedDown />}
       </div>
-      <form>
+      <form onSubmit={onSubmitHandler}>
         <input
           type="text"
           placeholder="Search..."
