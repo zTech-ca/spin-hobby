@@ -1,8 +1,9 @@
 import React, { FormEvent, useState, ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
-import { showLoginModal } from "../../../actions";
 import { Submit } from "../Buttons";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import { EModal } from "../../../types/enum";
+import { openModal } from "../../../reducers";
 
 const USERNAME = "username";
 const EMAIL = "email";
@@ -60,7 +61,7 @@ export default function SignUp() {
   }
 
   function handleSignUp() {
-    dispatch(showLoginModal());
+    dispatch(openModal(EModal.LOGIN));
   }
 
   return (

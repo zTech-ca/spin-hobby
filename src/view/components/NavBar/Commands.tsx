@@ -1,11 +1,12 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import { IconType } from "react-icons";
 import { FaUserAlt } from "react-icons/fa";
 import { RiShoppingCart2Line } from "react-icons/ri";
 import { TiChevronRightOutline } from "react-icons/ti";
 import { FiSettings } from "react-icons/fi";
-import { showLoginModal } from "../../../actions";
+import { openModal } from "../../../reducers";
+import { EModal } from "../../../types/enum";
+import { useDispatch } from "react-redux";
 
 interface INavBarCommand {
   label: string;
@@ -23,7 +24,7 @@ export default function Commands() {
   ];
 
   function handleLoginCommand() {
-    dispatch(showLoginModal());
+    dispatch(openModal(EModal.LOGIN));
   }
 
   function getCommandButtons(commands: INavBarCommand[]) {

@@ -1,30 +1,19 @@
-import {
-  ModalActionTypes,
-  MODAL_OFF,
-  MODAL_LOGIN,
-  MODAL_SIGNUP,
-  MODAL_FORGOT_PASSWORD,
-  LOGIN,
-  SIGNUP,
-  FORGOT_PASSWORD,
-} from "../actions/types";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { EModal } from "../types/enum";
+
+export type ModalState = EModal | null;
 
 const initialState = null;
 
-export default function modalReducer(
-  state = initialState,
-  action: ModalActionTypes
-) {
-  switch (action.type) {
-    case MODAL_OFF:
-      return null;
-    case MODAL_LOGIN:
-      return LOGIN;
-    case MODAL_SIGNUP:
-      return SIGNUP;
-    case MODAL_FORGOT_PASSWORD:
-      return FORGOT_PASSWORD;
-    default:
-      return state;
-  }
-}
+const modalSlice = createSlice({
+  name: "modal",
+  initialState: initialState as ModalState,
+  reducers: {
+    hideModal: () => null,
+    openModal: (state, action: PayloadAction<EModal>) => action.payload,
+  },
+});
+
+export const { hideModal, openModal } = modalSlice.actions;
+
+export default modalSlice.reducer;

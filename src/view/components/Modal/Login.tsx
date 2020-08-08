@@ -1,7 +1,8 @@
 import React, { FormEvent, useState, ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
-import { showSignUpModal, showForgotPasswordModal } from "../../../actions";
 import { Submit } from "../Buttons";
+import { EModal } from "../../../types/enum";
+import { openModal } from "../../../reducers";
 
 const USERNAME = "username";
 const PASSWORD = "password";
@@ -37,11 +38,11 @@ export default function Login() {
   }
 
   function handleSignUp() {
-    dispatch(showSignUpModal());
+    dispatch(openModal(EModal.SIGNUP));
   }
 
   function handleForgotPassword() {
-    dispatch(showForgotPasswordModal());
+    dispatch(openModal(EModal.FORGOT_PASSWORD));
   }
 
   return (

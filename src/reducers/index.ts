@@ -1,14 +1,15 @@
 import { combineReducers } from "redux";
-import modalReducer from "./modalReducer";
+import modalReducer, { ModalState, hideModal, openModal } from "./modalReducer";
 import settingReducer, { ISettingState } from "./settingReducer";
-import { ModalState } from "../actions/types";
 
 export default combineReducers({
-  modal: modalReducer,
   setting: settingReducer,
+  modal: modalReducer,
 });
 
 export interface IRootState {
-  modal: ModalState;
   setting: ISettingState;
+  modal: ModalState;
 }
+
+export { hideModal, openModal };
