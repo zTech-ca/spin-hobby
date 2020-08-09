@@ -66,7 +66,7 @@ export default function Header({ slides }: Props) {
   return (
     <div className={classNames("slider", { "s--ready": sliderReady })}>
       <div className="home-header-gradient" />
-      <p className="slider__top-heading">Welcome, Spin Hobbyist!</p>
+      <p className="slider__top-heading">Welcome, Spin Hobbyist!!</p>
       <div className="slider__slides">
         {slides.map((slide: ISlide, index: number) => (
           <div
