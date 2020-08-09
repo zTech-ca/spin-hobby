@@ -2,6 +2,7 @@ import React from "react";
 import { ECurrencySymbols, ECurrencyCodes } from "../../../types/enum";
 import { useCurrencySelector } from "../../../selectors";
 import { IMerchPreview } from "../../../types/interfaces";
+import { roundToDecimal } from "../../../utils/math";
 
 export function FeaturedMerch(props: IMerchPreview) {
   const currency = useCurrencySelector();
@@ -21,7 +22,7 @@ export function FeaturedMerch(props: IMerchPreview) {
             <span className="cards-featured-merch-price-converted-currency ">
               {" "}
               (Approx. {ECurrencySymbols[currency.conversion]}
-              {props.price * currency.rate}{" "}
+              {roundToDecimal(props.price * currency.rate, 2)}{" "}
               {ECurrencyCodes[currency.conversion]})
             </span>
           )}

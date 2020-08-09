@@ -8,7 +8,7 @@ export function loadInitialData() {}
 export function getCurrencyConversion(
   base: ECurrencies,
   conversion: ECurrencies
-) {
+): Promise<number> {
   if (base === conversion) return new Promise((resolve) => resolve(1));
   return axios
     .get(

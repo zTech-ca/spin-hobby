@@ -8,9 +8,9 @@ export enum ECurrencies {
   EUR = "EUR",
   USD = "USD",
   JPY = "JPY",
-  CNY = "CNY", // Chinese
-  HKD = "HKD", // Hong Kong
-  KRW = "KRW", // South Korea
+  CNY = "CNY",
+  HKD = "HKD",
+  KRW = "KRW",
 }
 
 export enum ECurrencySymbols {
@@ -31,4 +31,14 @@ export enum ECurrencyCodes {
   CNY = "CNY",
   HKD = "HKD",
   KRW = "KRW",
+}
+
+export enum ECurrencyTexts {
+  CAD = "Canadian dollar",
+  EUR = "Euro",
+  USD = "United States dollar",
+  JPY = "Japanese Yen",
+  CNY = "Chinese Yuan",
+  HKD = "Hong Kong dollar",
+  KRW = "South Korean won",
 }

@@ -20,11 +20,15 @@ export default function Commands() {
     { label: "Login", icon: FaUserAlt, onClick: handleLoginCommand },
     { label: "Cart", icon: RiShoppingCart2Line, onClick: () => {} },
     { label: "Request", icon: TiChevronRightOutline, onClick: () => {} },
-    { label: "Settings", icon: FiSettings, onClick: () => {} },
+    { label: "Settings", icon: FiSettings, onClick: handleSettingsCommand },
   ];
 
   function handleLoginCommand() {
     dispatch(openModal(EModal.LOGIN));
+  }
+
+  function handleSettingsCommand() {
+    dispatch(openModal(EModal.SETTINGS));
   }
 
   function getCommandButtons(commands: INavBarCommand[]) {

@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ECurrencies } from "../types/enum";
 import { baseCurrency } from "../types/constants";
 
@@ -10,6 +10,11 @@ interface ICurrencyState {
 
 export interface ISettingState {
   currency: ICurrencyState;
+}
+
+interface ICurrencyConversion {
+  currency: ECurrencies;
+  rate: number;
 }
 
 const initialState: ISettingState = {
@@ -24,8 +29,9 @@ const settingSlice = createSlice({
   name: "setting",
   initialState,
   reducers: {
-    convertCurrency: (state, action) => {
-      // Add the currency conversion handlers here
+    convertCurrency: (state, action: PayloadAction<ICurrencyConversion>) => {
+      state.currency.conversion = action.payload.currency;
+      state.currency.rate = action.payload.rate;
     },
   },
 });

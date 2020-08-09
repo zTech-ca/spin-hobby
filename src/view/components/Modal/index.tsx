@@ -1,11 +1,12 @@
 import React, { useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useModalSelector } from "../../../selectors";
+import { EModal } from "../../../types/enum";
+import { hideModal } from "../../../reducers";
 import Login from "./Login";
 import SignUp from "./SignUp";
 import ForgotPassword from "./ForgotPassword";
-import { EModal } from "../../../types/enum";
-import { hideModal } from "../../../reducers";
+import Settings from "./Settings";
 
 export default function Modal() {
   const mode = useModalSelector();
@@ -41,6 +42,8 @@ function TrueModal({ mode }: { mode: EModal }) {
         return <SignUp />;
       case EModal.FORGOT_PASSWORD:
         return <ForgotPassword />;
+      case EModal.SETTINGS:
+        return <Settings />;
       default:
         return null;
     }
