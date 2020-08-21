@@ -7,9 +7,8 @@ import {
   ECurrencyCodes,
   ECurrencyTexts,
 } from "../../../types/enum";
-import { getCurrencyConversion } from "../../../api";
 import { useCurrencySelector } from "../../../selectors";
-import { convertCurrency } from "../../../reducers";
+import { setConversionCurrency } from "../../../reducers";
 import { useDispatch } from "react-redux";
 
 const currencySelections = availableCurrencyConversions.map((currency) => {
@@ -24,10 +23,7 @@ export default function Settings() {
   const currency = useCurrencySelector();
 
   function onSelectCurrency(key: ECurrencies) {
-    console.log("selected currency is this: ", key);
-    getCurrencyConversion(currency.base, key).then((rate) =>
-      dispatch(convertCurrency({ currency: key, rate }))
-    );
+    dispatch(setConversionCurrency(key));
   }
 
   return (

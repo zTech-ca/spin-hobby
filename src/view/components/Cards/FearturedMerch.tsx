@@ -13,20 +13,30 @@ export function FeaturedMerch(props: IMerchPreview) {
       <div className="cards-featured-merch-details">
         <h2>{props.title}</h2>
         <p className="cards-featured-merch-description">{props.description}</p>
-        <div className="cards-featured-merch-price">
-          <span>
-            {ECurrencySymbols[currency.base]}
-            {props.price} {ECurrencyCodes[currency.base]}
-          </span>
-          {currency.base !== currency.conversion && (
+        {currency.base === currency.conversion ? (
+          <div className="cards-featured-merch-price">
+            <span>
+              {ECurrencySymbols[currency.base]}
+              {props.price} {ECurrencyCodes[currency.base]}
+            </span>
+          </div>
+        ) : (
+          <div className="cards-featured-merch-price">
+            <span>
+              <span className="cards-featured-merch-price-converted-currency ">
+                {"Approx "}
+              </span>
+              {ECurrencySymbols[currency.conversion]}
+              {roundToDecimal(props.price * currency.rate, 2)}{" "}
+              {ECurrencyCodes[currency.conversion]}
+            </span>
             <span className="cards-featured-merch-price-converted-currency ">
               {" "}
-              (Approx. {ECurrencySymbols[currency.conversion]}
-              {roundToDecimal(props.price * currency.rate, 2)}{" "}
-              {ECurrencyCodes[currency.conversion]})
+              ({ECurrencySymbols[currency.base]}
+              {props.price} {ECurrencyCodes[currency.base]})
             </span>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
