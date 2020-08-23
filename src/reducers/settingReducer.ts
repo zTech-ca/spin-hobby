@@ -12,11 +12,6 @@ export interface ISettingState {
   currency: ICurrencyState;
 }
 
-interface ICurrencyConversion {
-  currency: ECurrencies;
-  rate: number;
-}
-
 const initialState: ISettingState = {
   currency: {
     base: baseCurrency,
@@ -29,13 +24,22 @@ const settingSlice = createSlice({
   name: "setting",
   initialState,
   reducers: {
-    convertCurrency: (state, action: PayloadAction<ICurrencyConversion>) => {
-      state.currency.conversion = action.payload.currency;
-      state.currency.rate = action.payload.rate;
+    setConversionCurrency: (state, action: PayloadAction<ECurrencies>) => {
+      state.currency.conversion = action.payload;
+    },
+    setCurrencyRate: (state, action: PayloadAction<number>) => {
+      state.currency.rate = action.payload;
+    },
+    resetCurrency: (state) => {
+      state.currency = initialState.currency;
     },
   },
 });
 
-export const { convertCurrency } = settingSlice.actions;
+export const {
+  setConversionCurrency,
+  setCurrencyRate,
+  resetCurrency,
+} = settingSlice.actions;
 
 export default settingSlice.reducer;

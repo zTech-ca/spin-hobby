@@ -2,7 +2,9 @@ import { combineReducers } from "redux";
 import modalReducer, { ModalState, hideModal, openModal } from "./modalReducer";
 import settingReducer, {
   ISettingState,
-  convertCurrency,
+  setConversionCurrency,
+  setCurrencyRate,
+  resetCurrency,
 } from "./settingReducer";
 
 export default combineReducers({
@@ -15,4 +17,10 @@ export interface IRootState {
   modal: ModalState;
 }
 
-export { hideModal, openModal, convertCurrency };
+export {
+  hideModal,
+  openModal,
+  setConversionCurrency,
+  setCurrencyRate,
+  resetCurrency,
+};

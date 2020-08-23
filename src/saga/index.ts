@@ -1,5 +1,7 @@
-import { SagaMiddleware } from "redux-saga";
+import { takeLatest } from "redux-saga/effects";
+import { fetchCurrencyConversion } from "./currencySaga";
+import { setConversionCurrency } from "../reducers";
 
-export default function runSagaMiddleware(sagaMiddleware: SagaMiddleware) {
-  // Run saga functions here
+export default function* saga() {
+  yield takeLatest(setConversionCurrency, fetchCurrencyConversion);
 }
