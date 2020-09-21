@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Header, { ISlide } from "./Header";
+import FeaturedMerchandise from "./FeaturedMerchandise";
 import Merchandise from "./Merchandise";
 import { getHomeData } from "../../../api";
-import { IMerchPreview } from "../../../types/interfaces";
+import { IMerchPreview, IGroupedMerchPreview } from "../../../types/interfaces";
 
 export interface IHomeData {
   header: ISlide[];
-  merchs: IMerchPreview[];
+  featured: IMerchPreview[];
+  merchs: IGroupedMerchPreview[];
 }
 
 export default function Home() {
@@ -23,7 +25,10 @@ export default function Home() {
     <>
       <Header slides={homeData.header} />
       <div className="home-main">
-        <Merchandise merchs={homeData.merchs} />
+        <FeaturedMerchandise merchs={homeData.featured} />
+        <div className="home-main-padded">
+          <Merchandise merchs={homeData.merchs} />
+        </div>
       </div>
     </>
   );

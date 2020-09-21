@@ -4,3 +4,9 @@ export interface IMerchPreview {
   price: number;
   description: string;
 }
+
+export interface IGroupedMerchPreview {
+  name: string;
+  merchs: IMerchPreview[];
+  subGroups?: IGroupedMerchPreview[];
+}

@@ -1,5 +1,5 @@
 import { ISlide } from "../view/pages/Home/Header";
-import { IMerchPreview } from "../types/interfaces";
+import { IMerchPreview, IGroupedMerchPreview } from "../types/interfaces";
 import { IHomeData } from "../view/pages/Home";
 
 const slides: ISlide[] = [
@@ -29,7 +29,7 @@ const slides: ISlide[] = [
   },
 ];
 
-const merchs: IMerchPreview[] = [
+const featured: IMerchPreview[] = [
   {
     title: "nontan nontan nontan nontan",
     img: "https://static.zerochan.net/Toujou.Nozomi.full.2710162.png",
@@ -67,7 +67,19 @@ const merchs: IMerchPreview[] = [
   },
 ];
 
+const groupedSample: IGroupedMerchPreview = {
+  name: "Group 1",
+  merchs: [...featured, ...featured],
+};
+
+const merchs: IGroupedMerchPreview[] = [
+  groupedSample,
+  groupedSample,
+  groupedSample,
+];
+
 export const homeData: IHomeData = {
   header: slides,
+  featured,
   merchs,
 };
