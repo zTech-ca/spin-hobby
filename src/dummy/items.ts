@@ -1,5 +1,9 @@
 import { ISlide } from "../view/pages/Home/Header";
-import { IMerchPreview, IGroupedMerchPreview } from "../types/interfaces";
+import {
+  IMerchPreview,
+  IGroupedMerchPreview,
+  ICategory,
+} from "../types/interfaces";
 import { IHomeData } from "../view/pages/Home";
 
 const slides: ISlide[] = [
@@ -78,8 +82,47 @@ const merchs: IGroupedMerchPreview[] = [
   groupedSample,
 ];
 
+const categories: ICategory[] = [
+  {
+    name: "a category 1",
+    img:
+      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+  },
+  {
+    name: "a category 1",
+    img:
+      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+  },
+  {
+    name: "a category 1",
+    img:
+      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+  },
+  {
+    name: "a category 1",
+    img:
+      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+  },
+  {
+    name: "a category 1",
+    img:
+      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+  },
+  {
+    name: "a category 1",
+    img:
+      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+  },
+  {
+    name: "a category 1",
+    img:
+      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+  },
+];
+
 export const homeData: IHomeData = {
   header: slides,
   featured,
   merchs,
+  categories,
 };

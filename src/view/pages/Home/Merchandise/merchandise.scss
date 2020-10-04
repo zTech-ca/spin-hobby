@@ -29,12 +29,52 @@
 
     .home-merch-cards-container {
       @extend .scrollbar-themed-rounded;
-      $home-merch-card-thunbnail-height-proportion: 52%;
+
       overflow: auto;
       white-space: nowrap;
       background-color: white;
 
-      .home-merch-card {
+      .home-merch-card-rounded {
+        $home-merch-card-rounded-size: 250px;
+        $home-merch-card-rounded-label-height: 55px;
+
+        height: $home-merch-card-rounded-size;
+        width: $home-merch-card-rounded-size;
+        display: inline-block;
+        margin: 10px 10px;
+        cursor: pointer;
+        position: relative;
+
+        .home-merch-card-rounded-img-wrapper {
+          height: 100%;
+          width: 100%;
+          border-radius: $home-merch-card-rounded-size;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: calc(
+              #{$home-merch-card-rounded-size} - #{$home-merch-card-rounded-label-height}
+            );
+            object-fit: cover;
+          }
+        }
+
+        h2 {
+          @include dotted-overflow-text(24px, 1, 0.5);
+          position: absolute;
+          margin-bottom: 0;
+          height: $home-merch-card-rounded-label-height;
+          line-height: $home-merch-card-rounded-label-height;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          text-align: center;
+        }
+      }
+
+      .home-merch-card-standard {
+        $home-merch-card-thumbnail-height-proportion: 52%;
         height: 380px;
         width: 250px;
         display: inline-block;
@@ -51,13 +91,13 @@
 
         img {
           width: 100%;
-          height: $home-merch-card-thunbnail-height-proportion;
+          height: $home-merch-card-thumbnail-height-proportion;
           object-fit: cover;
         }
 
-        .home-merch-card-details {
+        .home-merch-card-standard-details {
           overflow: hidden;
-          height: calc(100% - #{$home-merch-card-thunbnail-height-proportion});
+          height: calc(100% - #{$home-merch-card-thumbnail-height-proportion});
           padding: 0 10px;
           display: flex;
           flex-direction: column;
@@ -78,7 +118,7 @@
             white-space: normal;
           }
 
-          .home-merch-card-price {
+          .home-merch-card-standard-price {
             margin: 9px auto;
             font-size: 20px;
           }
