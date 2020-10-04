@@ -10,3 +10,8 @@ export interface IGroupedMerchPreview {
   merchs: IMerchPreview[];
   subGroups?: IGroupedMerchPreview[];
 }
+
+export interface ICategory {
+  name: string;
+  img: string;
+}

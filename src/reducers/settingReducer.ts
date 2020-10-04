@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ECurrencies } from "../types/enum";
 import { baseCurrency } from "../types/constants";
 
-interface ICurrencyState {
+export interface ICurrencyState {
   base: ECurrencies;
   conversion: ECurrencies;
   rate: number;

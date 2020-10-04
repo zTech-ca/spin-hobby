@@ -39,13 +39,12 @@ export function ExpandableSearch({
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
     const currentRef = inputRef?.current;
-    if (currentRef && expanded)
-      timer = setTimeout(() => {
-        currentRef.focus();
-      }, transition * 1000);
-    else {
-      const currentRef = inputRef?.current;
-      if (currentRef) currentRef.blur();
+    if (currentRef) {
+      if (expanded) {
+        timer = setTimeout(() => {
+          currentRef.focus();
+        }, transition * 1000);
+      } else currentRef.blur();
     }
     return () => {
       clearTimeout(timer);
