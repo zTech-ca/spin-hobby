@@ -73,7 +73,7 @@ const groupedSample: IGroupedMerchPreview = {
 };
 
 const merchs: IGroupedMerchPreview[] = [
-  groupedSample,
+  { ...groupedSample, subGroups: [groupedSample] },
   groupedSample,
   groupedSample,
 ];
