@@ -1,36 +1,38 @@
 .home-merchs {
   .home-merchs-group {
-    h2 {
-      color: $theme-color-dark-brighter;
-      border-bottom: 5px solid $theme-color-dark-brighter;
+    .home-merch-headline-wrapper {
+      display: flex;
+      align-items: center;
+
+      &.home-merch-headline-group {
+        border-bottom: 5px solid $theme-color-dark-brighter;
+      }
+
+      &.home-merch-headline-subgroup {
+        border-bottom: 2px solid $theme-color-dark-brighter;
+      }
+
+      h2 {
+        color: $theme-color-dark-brighter;
+        margin: 12px 10px 12px 0;
+      }
+
+      .home-merch-group-see-more {
+        color: #007185;
+        cursor: pointer;
+      }
+
+      .home-merch-group-search {
+        margin: 10px;
+      }
     }
 
     .home-merch-cards-container {
+      @extend .scrollbar-themed-rounded;
       $home-merch-card-thunbnail-height-proportion: 52%;
       overflow: auto;
       white-space: nowrap;
-
-      &::-webkit-scrollbar-track {
-        background-color: #f5f5f5;
-        border-radius: 10px;
-      }
-
-      &::-webkit-scrollbar {
-        width: 10px;
-        background-color: #f5f5f5;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        border-radius: 10px;
-        background-image: -webkit-gradient(
-          linear,
-          left bottom,
-          left top,
-          color-stop(0.44, rgb(122, 153, 217)),
-          color-stop(0.72, rgb(73, 125, 189)),
-          color-stop(0.86, rgb(28, 58, 148))
-        );
-      }
+      background-color: white;
 
       .home-merch-card {
         height: 380px;
@@ -60,6 +62,7 @@
           display: flex;
           flex-direction: column;
           justify-content: space-between;
+          background-color: $theme-color-bright;
 
           h4 {
             @include dotted-overflow-text(24px, 1, 1.8);
