@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header, { ISlide } from "./Header";
 import FeaturedMerchandise from "./FeaturedMerchandise";
-import Merchandise, { Categories } from "./Merchandise";
+import { Categories, TabDisplay, GroupDisplay } from "./Merchandise";
 import { getHomeData } from "../../../api";
 import {
   IMerchPreview,
@@ -32,8 +32,9 @@ export default function Home() {
       <div className="home-main">
         <FeaturedMerchandise merchs={homeData.featured} />
         <div className="home-main-padded">
+          <TabDisplay />
           <Categories categories={homeData.categories} />
-          <Merchandise merchs={homeData.merchs} />
+          <GroupDisplay merchs={homeData.merchs} />
         </div>
       </div>
     </>

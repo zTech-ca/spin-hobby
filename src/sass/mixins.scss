@@ -10,3 +10,38 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+@mixin highlight-content-on-hover(
+  $color,
+  $height,
+  $transition,
+  $visible-without-hover: false
+) {
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: $height;
+    bottom: 0;
+    left: 0;
+    background-color: $color;
+
+    transition: all $transition ease-in-out;
+
+    @if $visible-without-hover {
+      visibility: visible;
+    } @else {
+      visibility: hidden;
+      transform: scaleX(0);
+    }
+  }
+
+  @if not $visible-without-hover {
+    &:hover::before {
+      visibility: visible;
+      transform: scaleX(1);
+    }
+  }
+}

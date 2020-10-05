@@ -1,15 +1,10 @@
 import React, { Fragment } from "react";
-import { IGroupedMerchPreview, ICategory } from "../../../../types/interfaces";
+import { IGroupedMerchPreview } from "../../../../types/interfaces";
 import classNames from "classnames";
 import { ExpandableSearch } from "../../../components/Searches";
 import CardStandard from "./CardStandard";
-import CardRounded from "./CardRounded";
 
-export default function Merchandise({
-  merchs,
-}: {
-  merchs: IGroupedMerchPreview[];
-}) {
+export function GroupDisplay({ merchs }: { merchs: IGroupedMerchPreview[] }) {
   function displayGroupedMerchs(
     groups: IGroupedMerchPreview[],
     isSubGroup = false
@@ -55,24 +50,4 @@ export default function Merchandise({
   }
 
   return <div className="home-merchs">{displayGroupedMerchs(merchs)}</div>;
-}
-
-export function Categories({ categories }: { categories: ICategory[] }) {
-  if (!categories.length) return null;
-  return (
-    <div className="home-merchs">
-      <div className="home-merchs-group">
-        <div className="home-merch-headline-wrapper">
-          <span>
-            <h2>Browse by categories for more</h2>
-          </span>
-        </div>
-        <div className="home-merch-cards-container">
-          {categories.map((category, index) => (
-            <CardRounded key={index} img={category.img} label={category.name} />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
 }
