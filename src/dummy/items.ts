@@ -80,8 +80,9 @@ const merchs: IGroupedMerchPreview[] = [
 
 const categories: ICategory[] = [
   {
-    name: "a category 1",
-    img: "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+    name: "a category 1 some long name",
+    img:
+      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
   },
   {
     name: "a category 1",
