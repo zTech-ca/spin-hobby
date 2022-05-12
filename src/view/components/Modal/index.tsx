@@ -7,6 +7,7 @@ import Login from "./Login";
 import SignUp from "./SignUp";
 import ForgotPassword from "./ForgotPassword";
 import Settings from "./Settings";
+import ReactDOM from "react-dom";
 
 export default function Modal() {
   const mode = useModalSelector();
@@ -49,7 +50,7 @@ function TrueModal({ mode }: { mode: EModal }) {
     }
   }
 
-  return (
+  return ReactDOM.createPortal(
     <div className="modal-background fade-in">
       <div className="modal" ref={ref}>
         <button className="modal-close" onClick={exitModal}>
@@ -57,6 +58,7 @@ function TrueModal({ mode }: { mode: EModal }) {
         </button>
         {getModalContent()}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
