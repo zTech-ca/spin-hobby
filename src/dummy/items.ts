@@ -36,36 +36,32 @@ const slides: ISlide[] = [
 const featured: IMerchPreview[] = [
   {
     title: "nontan nontan nontan nontan",
-    img: "https://static.zerochan.net/Toujou.Nozomi.full.2710162.png",
+    img: "assets/tumblr_o7z1hvG2c11vvvxguo1_400.jpg",
     price: 50,
     description: `Love Live![a] School Idol Project is a Japanese multimedia project co-developed by ASCII Media Works' Dengeki G's Magazine, music label Lantis, and animation studio Sunrise. The project revolves around a group of nine schoolgirl friends who become idols in order to save their school from shutting down. It launched in the August 2010 issue of Dengeki G's Magazine, and went on to produce music CDs, anime music videos, two manga adaptations, and video games.
     A 13-episode anime television series produced by Sunrise, directed by Takahiko Kyōgoku, and written by Jukki Hanada aired in Japan between January and March 2013, with a second season airing between April and June 2014. Both anime series and film are licensed in North America, the United Kingdom, Australia and New Zealand by NIS America, MVM Entertainment and Madman Entertainment, respectively. An animated film titled Love Live! The School Idol Movie was distributed by Shochiku and released in June 2015. A follow-up project focusing on a new set of idols, titled Love Live! Sunshine!!, launched in 2015.`,
   },
   {
     title: "eli chi",
-    img:
-      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+    img: "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
     price: 50,
     description: `This is Eli chi`,
   },
   {
     title: "eli chi",
-    img:
-      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+    img: "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
     price: 50,
     description: `This is Eli chi`,
   },
   {
     title: "eli chi",
-    img:
-      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+    img: "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
     price: 50,
     description: `This is Eli chi`,
   },
   {
     title: "eli chi",
-    img:
-      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+    img: "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
     price: 50,
     description: `This is Eli chi`,
   },
@@ -85,38 +81,31 @@ const merchs: IGroupedMerchPreview[] = [
 const categories: ICategory[] = [
   {
     name: "a category 1",
-    img:
-      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+    img: "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
   },
   {
     name: "a category 1",
-    img:
-      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+    img: "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
   },
   {
     name: "a category 1",
-    img:
-      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+    img: "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
   },
   {
     name: "a category 1",
-    img:
-      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+    img: "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
   },
   {
     name: "a category 1",
-    img:
-      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+    img: "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
   },
   {
     name: "a category 1",
-    img:
-      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+    img: "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
   },
   {
     name: "a category 1",
-    img:
-      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+    img: "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
   },
 ];
 

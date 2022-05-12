@@ -51,7 +51,7 @@ export default function ForgotPassword() {
               <PhoneInput
                 placeholder="Enter phone number"
                 value={phone}
-                onChange={(input) => setPhone(input)}
+                onChange={(input) => setPhone(input as string)}
                 defaultCountry="CA"
               />
             </div>
