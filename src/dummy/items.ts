@@ -31,7 +31,7 @@ const slides: ISlide[] = [
 
 const featured: IMerchPreview[] = [
   {
-    title: "nontan nontan nontan nontan",
+    title: process.env.NODE_ENV,
     img: "assets/tumblr_o7z1hvG2c11vvvxguo1_400.jpg",
     price: 50,
     description: `Love Live![a] School Idol Project is a Japanese multimedia project co-developed by ASCII Media Works' Dengeki G's Magazine, music label Lantis, and animation studio Sunrise. The project revolves around a group of nine schoolgirl friends who become idols in order to save their school from shutting down. It launched in the August 2010 issue of Dengeki G's Magazine, and went on to produce music CDs, anime music videos, two manga adaptations, and video games.
