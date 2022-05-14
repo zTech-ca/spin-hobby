@@ -1,7 +1,7 @@
-import { takeLatest } from "redux-saga/effects";
-import { fetchCurrencyConversion } from "./currencySaga";
-import { setConversionCurrency } from "../reducers";
+import { all } from "redux-saga/effects";
+import { currencySaga } from "./currencySaga";
+import { userSaga } from "./userSaga";
 
 export default function* saga() {
-  yield takeLatest(setConversionCurrency, fetchCurrencyConversion);
+  yield all([currencySaga(), userSaga()]);
 }

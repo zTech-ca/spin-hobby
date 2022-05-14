@@ -27,16 +27,9 @@ const settingSlice = createSlice({
     setConversionCurrency: (state, action: PayloadAction<ECurrencies>) => {
       state.currency.conversion = action.payload;
     },
-    setCurrencyRate: (state, action: PayloadAction<number>) => {
-      state.currency.rate = action.payload;
-    },
-    resetCurrency: (state) => {
-      state.currency = initialState.currency;
-    },
   },
 });
 
-export const { setConversionCurrency, setCurrencyRate, resetCurrency } =
-  settingSlice.actions;
+export const { setConversionCurrency } = settingSlice.actions;
 
 export default settingSlice.reducer;

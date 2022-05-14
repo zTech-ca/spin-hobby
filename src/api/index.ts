@@ -1,7 +1,12 @@
 import axios from "axios";
-import { ECurrencies } from "../ts";
+import { ECurrencies, ILogin } from "../ts";
 import { homeData } from "../dummy";
 import { IHomeData } from "../view/pages/Home";
+
+const serverUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://spinhobby.herokuapp.com/"
+    : "http://localhost:8080/";
 
 export function loadInitialData() {}
 
@@ -19,4 +24,8 @@ export function getCurrencyConversion(
 
 export function getHomeData(): Promise<IHomeData> {
   return new Promise((resolve) => resolve(homeData));
+}
+
+export function requestLogin(login: ILogin) {
+  return axios.post(`${serverUrl}login`, login);
 }

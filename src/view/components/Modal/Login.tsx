@@ -2,7 +2,7 @@ import React, { FormEvent, useState, ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
 import { Submit } from "../Buttons";
 import { EModal } from "../../../ts";
-import { openModal } from "../../../reducers";
+import { login, openModal } from "../../../reducers";
 
 const USERNAME = "username";
 const PASSWORD = "password";
@@ -35,6 +35,7 @@ export default function Login() {
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     // Add the submit handlers here
+    dispatch(login(inputs));
   }
 
   function handleSignUp() {
