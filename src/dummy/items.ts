@@ -1,9 +1,5 @@
 import { ISlide } from "../view/pages/Home/Header";
-import {
-  IMerchPreview,
-  IGroupedMerchPreview,
-  ICategory,
-} from "../types/interfaces";
+import { IMerchPreview, IGroupedMerchPreview, ICategory } from "../ts";
 import { IHomeData } from "../view/pages/Home";
 
 const slides: ISlide[] = [
@@ -81,8 +77,7 @@ const merchs: IGroupedMerchPreview[] = [
 const categories: ICategory[] = [
   {
     name: "a category 1 some long name",
-    img:
-      "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
+    img: "https://yt3.ggpht.com/a/AATXAJwDW0jDsGDf5GYQbN2rTe6aEQmcno4MD-Zkrw=s900-c-k-c0xffffffff-no-rj-mo",
   },
   {
     name: "a category 1",

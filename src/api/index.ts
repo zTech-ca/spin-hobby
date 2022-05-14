@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ECurrencies } from "../types/enum";
+import { ECurrencies } from "../ts";
 import { homeData } from "../dummy";
 import { IHomeData } from "../view/pages/Home";
 

@@ -1,6 +1,5 @@
 import React from "react";
-import { IMerchPreview } from "../../../../types/interfaces";
-import { ECurrencySymbols } from "../../../../types/enum";
+import { IMerchPreview, ECurrencySymbols } from "../../../../ts";
 import { useCurrencySelector } from "../../../../selectors";
 import currencyConverter from "../../../../utils/currencyConverter";
 

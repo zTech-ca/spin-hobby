@@ -2,7 +2,7 @@ import React, { FormEvent, useState, ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
 import { Submit } from "../Buttons";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
-import { EModal } from "../../../types/enum";
+import { EModal } from "../../../ts";
 import { openModal } from "../../../reducers";
 
 const USERNAME = "username";

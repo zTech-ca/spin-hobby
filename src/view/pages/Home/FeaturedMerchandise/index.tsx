@@ -1,6 +1,6 @@
 import React from "react";
 import { FeaturedMerch } from "../../../components/Cards";
-import { IMerchPreview } from "../../../../types/interfaces";
+import { IMerchPreview } from "../../../../ts";
 import { Ripple } from "../../../components/Buttons";
 
 interface Props {

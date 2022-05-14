@@ -1,12 +1,12 @@
 import React from "react";
 import Dropdown from "../Dropdown";
-import { availableCurrencyConversions } from "../../../types/constants/currencies";
+import { availableCurrencyConversions } from "../../../ts/constants/currencies";
 import {
   ECurrencies,
   ECurrencySymbols,
   ECurrencyCodes,
   ECurrencyTexts,
-} from "../../../types/enum";
+} from "../../../ts";
 import { useCurrencySelector } from "../../../selectors";
 import { setConversionCurrency } from "../../../reducers";
 import { useDispatch } from "react-redux";

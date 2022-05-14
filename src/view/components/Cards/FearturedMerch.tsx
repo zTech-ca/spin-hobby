@@ -1,7 +1,6 @@
 import React from "react";
-import { ECurrencySymbols, ECurrencyCodes } from "../../../types/enum";
+import { ECurrencySymbols, ECurrencyCodes, IMerchPreview } from "../../../ts";
 import { useCurrencySelector } from "../../../selectors";
-import { IMerchPreview } from "../../../types/interfaces";
 import { roundToDecimal } from "../../../utils/math";
 
 export function FeaturedMerch(props: IMerchPreview) {

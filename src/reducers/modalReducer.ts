@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { EModal } from "../types/enum";
+import { EModal } from "../ts";
 
 export type ModalState = EModal | null;
 

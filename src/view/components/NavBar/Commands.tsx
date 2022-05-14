@@ -5,7 +5,7 @@ import { RiShoppingCart2Line } from "react-icons/ri";
 import { TiChevronRightOutline } from "react-icons/ti";
 import { FiSettings } from "react-icons/fi";
 import { openModal } from "../../../reducers";
-import { EModal } from "../../../types/enum";
+import { EModal } from "../../../ts";
 import { useDispatch } from "react-redux";
 
 interface INavBarCommand {

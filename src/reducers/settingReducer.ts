@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ECurrencies } from "../types/enum";
-import { baseCurrency } from "../types/constants";
+import { ECurrencies } from "../ts";
+import { baseCurrency } from "../ts/constants";
 
 export interface ICurrencyState {
   base: ECurrencies;
@@ -36,10 +36,7 @@ const settingSlice = createSlice({
   },
 });
 
-export const {
-  setConversionCurrency,
-  setCurrencyRate,
-  resetCurrency,
-} = settingSlice.actions;
+export const { setConversionCurrency, setCurrencyRate, resetCurrency } =
+  settingSlice.actions;
 
 export default settingSlice.reducer;

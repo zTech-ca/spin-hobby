@@ -1,4 +1,4 @@
-import { ECurrencies } from "../enum";
+import { ECurrencies } from "../index";
 
 export const baseCurrency = ECurrencies.CAD;
 

@@ -1,6 +1,6 @@
 import React from "react";
 import CardRounded from "./CardRounded";
-import { ICategory } from "../../../../types/interfaces";
+import { ICategory } from "../../../../ts";
 
 export function Categories({ categories }: { categories: ICategory[] }) {
   if (!categories.length) return null;

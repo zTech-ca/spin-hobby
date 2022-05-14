@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { IGroupedMerchPreview } from "../../../../types/interfaces";
+import { IGroupedMerchPreview } from "../../../../ts";
 import classNames from "classnames";
 import { ExpandableSearch } from "../../../components/Searches";
 import CardStandard from "./CardStandard";

@@ -3,11 +3,7 @@ import Header, { ISlide } from "./Header";
 import FeaturedMerchandise from "./FeaturedMerchandise";
 import { Categories, TabDisplay, GroupDisplay } from "./Merchandise";
 import { getHomeData } from "../../../api";
-import {
-  IMerchPreview,
-  IGroupedMerchPreview,
-  ICategory,
-} from "../../../types/interfaces";
+import { IMerchPreview, IGroupedMerchPreview, ICategory } from "../../../ts";
 
 export interface IHomeData {
   header: ISlide[];

@@ -7,7 +7,7 @@ export default function NavBar() {
     <div className="navbar">
       <div className="table-cell-center navbar-title-container">
         <div className="navbar-title">
-          <img src="/assets/tumblr_o7z1hvG2c11vvvxguo1_400.jpg" alt="logo" />
+          <img src="logo/Spin Hobby.png" alt="logo" />
           <h1>SPIN HOBBY</h1>
         </div>
       </div>
