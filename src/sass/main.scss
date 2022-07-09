@@ -10,8 +10,11 @@
 @import "../view/components/Cards/cards.scss";
 @import "../view/components/Dropdown/dropdown.scss";
 @import "../view/components/Searches/searches.scss";
+@import "../view/components/Paypal/paypal.scss";
 
 @import "../view/pages/Home/home.scss";
+@import "../view/pages/Cart/cart.scss";
+@import "../view/pages/CheckOut/checkOut.scss";
 
 .table-cell-center {
   display: table-cell;
