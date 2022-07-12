@@ -380,7 +380,7 @@ export default function CheckOut() {
           </table>
           <br />
           <div className="paypal-buttons-container">
-            <Paypal />
+            <Paypal currency={"CAD"} showSpinner={true} />
           </div>
         </div>
       </div>

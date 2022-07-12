@@ -5,23 +5,25 @@ import {
   usePayPalScriptReducer,
 } from "@paypal/react-paypal-js";
 
-const initialOptions = {
-  "client-id": "test",
-  currency: "CAD",
-  // intent: "capture",
-  // "data-client-token": "abc123xyz==",
-};
+// const initialOptions = {
+//   "client-id":
+//     "ASauZ1kVM0kTP8lL9O0rnSOtm5reVWEI3rLAik4LM0bWOCkTPd_gXZpEzInq5-he6TKmfFotn9JDgGgr",
+//   currency: "CAD",
+//   // intent: "capture",
+//   // "data-client-token": "abc123xyz==",
+// };
 
-const amount = "100";
+const amount = "2";
 const currency = "CAD";
+const style = { layout: "vertical" as "vertical" | "horizontal" | undefined };
 
-const ButtonWrapper = ({
+export default function Paypal({
   currency,
   showSpinner,
 }: {
   currency: string;
   showSpinner: boolean;
-}) => {
+}) {
   // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
   // This is the main reason to wrap the PayPalButtons in a new component
   const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
@@ -38,9 +40,12 @@ const ButtonWrapper = ({
 
   return (
     <>
-      {(showSpinner && isPending) && <p>Pending</p>}
+      {showSpinner && isPending && <p>Pending</p>}
       <PayPalButtons
+        style={style}
+        forceReRender={[amount, currency, style]}
         createOrder={(data, actions) => {
+          console.log(data);
           return actions.order
             .create({
               purchase_units: [
@@ -54,7 +59,7 @@ const ButtonWrapper = ({
             })
             .then((orderId) => {
               // Your code here after create the order
-              console.log(orderId)
+              console.log(orderId);
               return orderId;
             });
         }}
@@ -67,13 +72,11 @@ const ButtonWrapper = ({
       />
     </>
   );
-};
-
-export default function Paypal() {
-  return (
-    <PayPalScriptProvider options={initialOptions}>
-      <PayPalButtons></PayPalButtons>
-      {/* <ButtonWrapper currency={currency} showSpinner={true}/> */}
-    </PayPalScriptProvider>
-  );
 }
+
+// export default function Paypal() {
+//   return <ButtonWrapper currency={currency} showSpinner={true} />;
+// }
+// export default function Paypal() {
+//   return <PayPalButtons />
+// }
