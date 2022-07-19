@@ -28,6 +28,8 @@
       @include dotted-overflow-text(15px, 5, 1.8);
       text-align: center;
       font-style: italic;
+      color: $theme-color-darker;
+      padding: 0 5px 0 5px;
     }
 
     .cards-featured-merch-price {

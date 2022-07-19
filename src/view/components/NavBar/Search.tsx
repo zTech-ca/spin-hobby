@@ -2,7 +2,11 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import { FcSearch } from "react-icons/fc";
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 
-export default function Search() {
+interface Props {
+  onNav?: boolean;
+}
+
+export default function Search({ onNav = true }: Props) {
   const [search, setSearch] = useState<string>("");
   const [openCategoryList, setOpenCategoryList] = useState<boolean>(false);
 
@@ -20,7 +24,7 @@ export default function Search() {
   }
 
   return (
-    <div className="navbar-search">
+    <div className={`navbar-search${onNav ? "" : " navbar-search-mobile"}`}>
       <div
         className="navbar-search-category-toggler"
         onClick={handleOpenCategoryList}
