@@ -20,6 +20,31 @@ interface Props {
 }
 
 export default function Header({ slides }: Props) {
+  return (
+    <>
+      <HeaderSlider slides={slides} />
+      <HeaderSimple slides={slides} />
+    </>
+  );
+}
+
+function HeaderSimple({ slides }: Props) {
+  return (
+    <div className="home-header-mobile">
+      {slides.map((slide) => (
+        <div className="home-header-mobile-item">
+          <img src={slide.img} alt={slide.img} />
+          <div className="home-header-mobile-item-label">
+            <h4>{slide.headline}</h4>
+            {slide.subheading && <label>{slide.subheading}</label>}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function HeaderSlider({ slides }: Props) {
   const [sliderReady, setSliderReady] = useState<boolean>(false);
   const [slideDisplay, setSlideDisplay] = useState<ISlideDisplay>({
     activeSlide: 0,
