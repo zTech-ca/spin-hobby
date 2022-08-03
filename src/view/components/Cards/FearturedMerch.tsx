@@ -18,7 +18,9 @@ export function FeaturedMerch(props: Props) {
         props.additionalClassNames,
       ])}
     >
-      <img src={props.img} alt={props.img} />
+      <div className="cards-featured-merch-image-container">
+        <img src={props.img} alt={props.img} />
+      </div>
       <div className="cards-featured-merch-details">
         <h2>{props.title}</h2>
         <p className="cards-featured-merch-description">{props.description}</p>

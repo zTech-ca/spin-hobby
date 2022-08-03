@@ -1,0 +1,22 @@
+@import "./WavySlideshow/wavySlideshow.scss";
+@import "./SimpleBlocks/simpleBlocks.scss";
+
+.home-featured-merchs {
+  display: flex;
+  margin-top: -240px;
+  justify-content: space-between;
+
+  .home-ripple-featured-card {
+    z-index: $z-index-second-highest;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
+
+    &:hover {
+      box-shadow: 0px 0px 5px;
+      transform: scale(1.05);
+      transition: 0.3s;
+      z-index: $z-index-highest;
+    }
+  }
+}

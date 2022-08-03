@@ -15,13 +15,22 @@
   }
 
   .navbar-title-container {
-    width: 300px;
     align-items: center;
     display: flex;
     $title-shrink-limit: 1070px;
+    $title-label-limit: 490px;
+
+    @media screen and (min-width: $title-label-limit) {
+      width: 300px;
+    }
 
     @media screen and (max-width: $title-shrink-limit) {
       width: 200px;
+    }
+
+    @media screen and (max-width: $title-label-limit) {
+      width: auto;
+      margin-left: 2vw;
     }
 
     .navbar-title {
@@ -37,6 +46,10 @@
 
         @media screen and (max-width: $title-shrink-limit) {
           font-size: medium;
+        }
+
+        @media screen and (max-width: $title-label-limit) {
+          display: none;
         }
       }
 

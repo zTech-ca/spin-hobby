@@ -67,11 +67,13 @@ $letterStagger: 0.1s;
   overflow: hidden;
   position: relative;
   height: 600px;
+  // height: 300px;
+
   color: #fff;
   background: transparent;
   user-select: none;
 
-  @media screen and (max-width: $tablet-limit) {
+  @media screen and (max-width: $tablet-limit), (min-width: $max-header-width) {
     display: none;
   }
 
@@ -86,6 +88,10 @@ $letterStagger: 0.1s;
       transparent 0%,
       $theme-color-bright 100%
     );
+
+    @media screen and (min-width: $desktop-limit) {
+      background: linear-gradient(to bottom, transparent 0%, #22222a 100%);
+    }
   }
 
   @mixin sliderReady {

@@ -31,8 +31,8 @@ export default function Header({ slides }: Props) {
 function HeaderSimple({ slides }: Props) {
   return (
     <div className="home-header-mobile">
-      {slides.map((slide) => (
-        <div className="home-header-mobile-item">
+      {slides.map((slide, index) => (
+        <div key={index} className="home-header-mobile-item">
           <img src={slide.img} alt={slide.img} />
           <div className="home-header-mobile-item-label">
             <h4>{slide.headline}</h4>

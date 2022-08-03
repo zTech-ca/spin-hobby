@@ -1,26 +1,8 @@
 import React from "react";
-import { FeaturedMerch } from "../../../components/Cards";
-import { IMerchPreview } from "../../../../ts";
-import { Ripple } from "../../../components/Buttons";
-import { WavySlideshow } from "./WavySlideshow";
+import { Props } from "../index";
 import classnames from "classnames";
 
-export interface Props {
-  merchs: IMerchPreview[];
-}
-
-const FEATURED_MERCHANDISE_CLASS = "cards-featured-merch-measure-class";
-
-export default function FeaturedMerchandise({ merchs }: Props) {
-  return (
-    <>
-      <WavySlideshow merchs={merchs} />
-      <FeaturedMerchandiseSimple merchs={merchs} />
-    </>
-  );
-}
-
-export function FeaturedMerchandiseSimple({ merchs }: Props) {
+export function SimpleBlocks({ merchs }: Props) {
   function getMerchCards() {
     if (!merchs.length) return null;
     const rowTypes = {
@@ -42,6 +24,7 @@ export function FeaturedMerchandiseSimple({ merchs }: Props) {
         }
       }
     }
+
     return merchs.map((merch, index) => {
       return (
         <div
@@ -70,21 +53,4 @@ export function FeaturedMerchandiseSimple({ merchs }: Props) {
   }
 
   return <div className="home-featured-merchs-simple">{getMerchCards()}</div>;
-}
-
-export function FeaturedMerchandiseCards({ merchs }: Props) {
-  return (
-    <>
-      <div className="home-featured-merchs">
-        {merchs.map((merch, index) => (
-          <Ripple key={index} classes="home-ripple-featured-card">
-            <FeaturedMerch
-              {...merch}
-              additionalClassNames={FEATURED_MERCHANDISE_CLASS}
-            />
-          </Ripple>
-        ))}
-      </div>
-    </>
-  );
 }
