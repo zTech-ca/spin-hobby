@@ -1,12 +1,12 @@
 import axios from "axios";
-import { ECurrencies, ILogin } from "../ts";
+import { ECurrencies, ILogin, IRegister } from "../ts";
 import { homeData } from "../dummy";
 import { IHomeData } from "../view/pages/Home";
 
 const serverUrl =
   process.env.NODE_ENV === "production"
     ? "https://spinhobby.herokuapp.com/"
-    : "http://localhost:8080/";
+    : "http://localhost:8001/";
 
 export function loadInitialData() {}
 
@@ -27,5 +27,16 @@ export function getHomeData(): Promise<IHomeData> {
 }
 
 export function requestLogin(login: ILogin) {
+  console.log(login);
   return axios.post(`${serverUrl}login`, login);
+}
+
+export function requestRegister(register: IRegister) {
+  return axios.post(`${serverUrl}register`, register);
+}
+
+export function requestSearch(page: number, searchKeyword: string) {
+  return axios.get(
+    `${serverUrl}search/?page=${page}&keywords=${searchKeyword}`
+  );
 }

@@ -8,3 +8,7 @@ export function useModalSelector() {
 export function useCurrencySelector() {
   return useSelector((state: IRootState) => state.setting.currency);
 }
+
+export function useUserSelector() {
+  return useSelector((state: IRootState) => state.user.user);
+}
