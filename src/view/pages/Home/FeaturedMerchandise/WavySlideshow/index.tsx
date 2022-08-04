@@ -55,41 +55,43 @@ export function WavySlideshow({ merchs }: Props) {
 
   if (!merchs.length) return null;
   return (
-    <div className="wavy-slideshow-container">
-      <div className="wavy-slideshow-content-width">
-        <div className="wavy-slideshow-slideshow">
-          <div className="wavy-slideshow-slideshow-items">
-            {merchs.map((merch, index) => (
-              <div
-                key={index}
-                className={`wavy-slideshow-item${
-                  index === page ? " wavy-slideshow-active" : ""
-                }`}
-              >
-                <div className="wavy-slideshow-item-image-container">
-                  <img
-                    className="wavy-slideshow-item-image"
-                    src={merch.img}
-                    alt={merch.img}
-                  />
-                </div>
-                <div className="wavy-slideshow-item-header">
-                  {getTitle(merch.title, page === index)}
-                </div>
-                {getDescription(merch.description, index === page)}
-              </div>
-            ))}
-          </div>
-          <div className="wavy-slideshow-controls">
-            <ul>
-              {merchs.map((_, index) => (
-                <li
+    <div className="wavy-slideshow">
+      <div className="wavy-slideshow-container">
+        <div className="wavy-slideshow-content-width">
+          <div className="wavy-slideshow-slideshow">
+            <div className="wavy-slideshow-slideshow-items">
+              {merchs.map((merch, index) => (
+                <div
                   key={index}
-                  className={index === page ? "wavy-slideshow-active" : ""}
-                  onClick={() => setPage(index)}
-                />
+                  className={`wavy-slideshow-item${
+                    index === page ? " wavy-slideshow-active" : ""
+                  }`}
+                >
+                  <div className="wavy-slideshow-item-image-container">
+                    <img
+                      className="wavy-slideshow-item-image"
+                      src={merch.img}
+                      alt={merch.img}
+                    />
+                  </div>
+                  <div className="wavy-slideshow-item-header">
+                    {getTitle(merch.title, page === index)}
+                  </div>
+                  {getDescription(merch.description, index === page)}
+                </div>
               ))}
-            </ul>
+            </div>
+            <div className="wavy-slideshow-controls">
+              <ul>
+                {merchs.map((_, index) => (
+                  <li
+                    key={index}
+                    className={index === page ? "wavy-slideshow-active" : ""}
+                    onClick={() => setPage(index)}
+                  />
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>

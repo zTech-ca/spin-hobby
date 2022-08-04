@@ -6,14 +6,43 @@ $wavy-slideshow-image-height: 500px;
 $wavy-slideshow-image-width: 500px;
 $wavy-slideshow-image-top: 80px;
 
+$wavy-slideshow-transition-duration: 0.2s;
+
+.wavy-slideshow {
+  margin-bottom: 100px;
+}
+
 .wavy-slideshow-container {
   background-color: $wavy-slideshow-color;
   margin-bottom: $wavy-slidershow-bottom-space;
   user-select: none;
+  // margin-bottom: 20px;
 
   @media screen and (max-width: $max-header-width) {
     display: none;
   }
+
+  // &:hover {
+  //   // border: solid 5px red;
+
+  //   .wavy-slideshow-content-width {
+  //     .wavy-slideshow-slideshow {
+  //       .wavy-slideshow-slideshow-items {
+  //         // border: solid 5px red;
+
+  //         .wavy-slideshow-active {
+  //           .wavy-slideshow-item-image-container {
+  //             .wavy-slideshow-item-image {
+  //               border: solid 5px red;
+
+  //               opacity: 0.9;
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 }
 
 .wavy-slideshow-content-width {
@@ -21,6 +50,7 @@ $wavy-slideshow-image-top: 80px;
   height: calc($wavy-slideshow-height - $wavy-slidershow-bottom-space);
   margin: auto;
   position: relative;
+  // transition: 0.2s;
 
   &::before {
     content: "";
@@ -30,6 +60,7 @@ $wavy-slideshow-image-top: 80px;
     z-index: $z-index-fourth-highest;
     background: $wavy-slideshow-color;
     top: calc($wavy-slideshow-height - $wavy-slideshow-image-height);
+    transition: $wavy-slideshow-transition-duration;
   }
 }
 
@@ -66,6 +97,7 @@ $wavy-slideshow-image-top: 80px;
     width: $wavy-slideshow-image-width;
     height: $wavy-slideshow-image-height;
     object-fit: cover;
+    transition: $wavy-slideshow-transition-duration;
   }
 }
 
@@ -155,4 +187,31 @@ $wavy-slideshow-image-top: 80px;
 
 .wavy-slideshow-controls ul li.wavy-slideshow-active {
   background: #6a6a77;
+}
+
+.wavy-slideshow-container {
+  cursor: pointer;
+
+  &:hover {
+    // .wavy-slideshow-item-image-container {
+    //   transform: scale(1.1);
+    // }
+
+    .wavy-slideshow-content-width {
+      // transform: scale(1.1);
+
+      &::before {
+        transform: scale(1.05);
+      }
+    }
+
+    .wavy-slideshow-item-image {
+      // border: solid 5px red;
+
+      // opacity: 0.9;
+
+      // scale: (1.2);
+      transform: scale(1.05);
+    }
+  }
 }
