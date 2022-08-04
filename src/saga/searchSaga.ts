@@ -4,13 +4,21 @@ import { IMerchPreview } from "../ts";
 import { getSearch, setSearchResult, setSearchError } from "../reducers";
 import { getSearchResult } from "../api";
 
-function* fetchSearchResult({payload}: PayloadAction<{page: number, searchString: string}>) {
+function* fetchSearchResult({
+  payload,
+}: PayloadAction<{ page: number; searchString: string }>) {
   try {
-    const searchResult: IMerchPreview[] = yield call(getSearchResult(payload.page, payload.searchString));
+    payload.searchString = payload.searchString.replaceAll(" ", "%20");
+
+    const searchResult: IMerchPreview[] = yield getSearchResult(
+      payload.page,
+      payload.searchString
+    );
+
     yield put(
       setSearchResult({
         page: payload.page,
-        searchResult: searchResult
+        searchResult: searchResult,
       })
     );
   } catch (err) {

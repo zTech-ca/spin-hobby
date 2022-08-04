@@ -1,10 +1,14 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { FcSearch } from "react-icons/fc";
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
+import { useDispatch } from "react-redux";
+import { getSearch } from "../../../reducers";
 
 export default function Search() {
   const [search, setSearch] = useState<string>("");
   const [openCategoryList, setOpenCategoryList] = useState<boolean>(false);
+
+  const dispatch = useDispatch();
 
   function handleSearchInput(e: ChangeEvent<HTMLInputElement>) {
     setSearch(e.target.value);
@@ -16,7 +20,7 @@ export default function Search() {
 
   function onSubmitHandler(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // Add search handlings here
+    dispatch(getSearch({ page: 1, searchString: search }));
   }
 
   return (
