@@ -8,19 +8,31 @@ import "react-phone-number-input/style.css";
 //import Home from "./view/pages/Home";
 
 function App() {
-  return <div>Spin Hobby is currently undergoing maintenance and inventory change as we are attending Animethon event from Aug 5th-7th, 2022. We're sorry for incovenience. We will be back towards the end of the event</div>
-  
+  return (
+    <>
+      <div>
+        Spin Hobby is currently undergoing maintenance and inventory change sas
+        we are attending Animethon event from Aug 5th-7th, 2022. We're sorry for
+        incovenience.
+      </div>
+      <p>
+        We anticipate to be back online by August 15th, 2022 with complete new
+        design.
+      </p>
+    </>
+  );
+
   //return (
-    //<BrowserRouter>
-     // <div className="app">
-       // <NavBar />
-        //<Modal />
-        //<div className="main">
-         // <Home />
-        //</div>
-        //<Footer />
-      //</div>
-    //</BrowserRouter>
+  //<BrowserRouter>
+  // <div className="app">
+  // <NavBar />
+  //<Modal />
+  //<div className="main">
+  // <Home />
+  //</div>
+  //<Footer />
+  //</div>
+  //</BrowserRouter>
   //);
 }
 
