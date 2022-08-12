@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import { useCartSelector } from "../../../selectors";
-import { getCart, modifyCart } from "../../../reducers";
+import { modifyCart } from "../../../reducers";
 import { Operation } from "../../../reducers/cartReducer";
 import calculateSubTotal from "../../../utils/calculateSubTotal";
 
@@ -33,7 +33,6 @@ export default function Cart() {
   console.log(cart);
 
   function handleClick() {
-
     dispatch(
       modifyCart({
         product_id: 1,
@@ -42,7 +41,6 @@ export default function Cart() {
         operation: Operation.ADD,
       })
     );
-    
   }
 
   return (
@@ -108,7 +106,9 @@ export default function Cart() {
     <div className="wrap">
       <header className="cart-header cf">
         <strong>Cart</strong>
-        <span className="btn" onClick={handleClick} >Checkout</span>
+        <span className="btn" onClick={handleClick}>
+          Checkout
+        </span>
         {/* <Link to="/checkout" className="btn">Checkout</Link> */}
       </header>
       <div className="bonus-products">
@@ -130,9 +130,7 @@ export default function Cart() {
                       alt=""
                     />
                     <div className="ib-info-meta">
-                      <span className="title">
-                        {item.name}
-                      </span>
+                      <span className="title">{item.name}</span>
                       <span className="itemno">#3498765</span>
                       {/* <span className="styles">
                         <span>
@@ -149,13 +147,19 @@ export default function Cart() {
                     </div>
                   </div>
                   <div className="item-block ib-qty">
-                    <input type="text" value={cart.quantity[item.id]} className="qty" />
+                    <input
+                      type="text"
+                      value={cart.quantity[item.id]}
+                      className="qty"
+                    />
                     <span className="price">
                       <span>x</span> ${item.price}
                     </span>
                   </div>
                   <div className="item-block ib-total-price">
-                    <span className="tp-price">${cart.quantity[item.id] * item.price}</span>
+                    <span className="tp-price">
+                      ${cart.quantity[item.id] * item.price}
+                    </span>
                     <span className="tp-remove">
                       <i className="i-cancel-circle"></i>
                     </span>
@@ -214,7 +218,9 @@ export default function Cart() {
       </div>
 
       <div className="cart-footer cf">
-        <Link to="/checkout" className="btn">Checkout</Link>
+        <Link to="/checkout" className="btn">
+          Checkout
+        </Link>
         <span className="cont-shopping">
           <i className="i-angle-left"></i>Continue Shopping
         </span>

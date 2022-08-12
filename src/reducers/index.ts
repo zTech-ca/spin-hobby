@@ -7,14 +7,28 @@ import settingReducer, {
   // resetCurrency,
 } from "./settingReducer";
 import userReducer, { IUserState, login, setUser } from "./userReducer";
-import cartReducer, { ICartState, getCart, modifyCart, addCart, removeCart, clearCart, setCart, setError } from "./cartReducer";
-import searchReducer, { ISearchState, getSearch, setSearchResult, setSearchError } from "./searchReducer";
+import cartReducer, {
+  ICartState,
+  getCart,
+  modifyCart,
+  addCart,
+  removeCart,
+  clearCart,
+  setCart,
+  setError,
+} from "./cartReducer";
+import {
+  ISearchState,
+  getSearch,
+  setSearchResult,
+  setSearchError,
+} from "./searchReducer";
 
 export default combineReducers({
   setting: settingReducer,
   modal: modalReducer,
   user: userReducer,
-  cart: cartReducer
+  cart: cartReducer,
 });
 
 export interface IRootState {
@@ -40,8 +54,8 @@ export {
   setError,
   getSearch,
   setSearchResult,
-  setSearchError
-  
+  setSearchError,
+
   // setCurrencyRate,
   // resetCurrency,
 };

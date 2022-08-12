@@ -4,14 +4,14 @@ import {
   all,
   call,
   put,
-  CallEffect,
+  // CallEffect,
 } from "redux-saga/effects";
 import {
   getCart,
   modifyCart,
-  addCart,
-  removeCart,
-  clearCart,
+  // addCart,
+  // removeCart,
+  // clearCart,
   setCart,
   setError,
 } from "../reducers";
