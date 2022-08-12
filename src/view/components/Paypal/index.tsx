@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  PayPalScriptProvider,
+  // PayPalScriptProvider,
   PayPalButtons,
   usePayPalScriptReducer,
 } from "@paypal/react-paypal-js";
@@ -14,7 +14,7 @@ import {
 // };
 
 const amount = "2";
-const currency = "CAD";
+// const currency = "CAD";
 const style = { layout: "vertical" as "vertical" | "horizontal" | undefined };
 
 export default function Paypal({
@@ -36,7 +36,7 @@ export default function Paypal({
         currency: currency,
       },
     });
-  }, []);
+  }, [currency, dispatch, options]);
 
   return (
     <>

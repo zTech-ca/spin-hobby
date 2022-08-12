@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { IMerchPreview } from "../ts";
 
 export interface ISearchState {
@@ -28,6 +28,7 @@ const searchSlice = createSlice({
   },
 });
 
-export const {getSearch, setSearchResult, setSearchError} = searchSlice.actions;
+export const { getSearch, setSearchResult, setSearchError } =
+  searchSlice.actions;
 
 export default searchSlice.reducer;
