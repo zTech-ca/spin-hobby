@@ -42,3 +42,35 @@ function App() {
 }
 
 export default App;
+
+// interface Student {
+//   id: number;
+//   name: string;
+// }
+
+// // int float double
+
+// function main() {
+//   let a: number | string = 6;
+
+//   a = "a string";
+
+//   const mike: Student = {
+//     id: 23424,
+//     name: "mike",
+//     // nationality: 'Japan'
+//   };
+
+//   const nancy = {
+//     id: 243234,
+//     name: 'mike'
+//   }
+
+//   // nancy.country = 'Japan'
+
+//   Boolean
+//   undefined
+//   null
+//   Number
+//   string
+// }
