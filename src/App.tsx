@@ -11,12 +11,12 @@ function App() {
   return (
     <>
       <div>
-        Spin Hobby is currently undergoing maintenance and inventory change sas
-        we are attending Animethon event from Aug 5th-7th, 2022. We're sorry for
-        incovenience.
+        Spin Hobby is currently undergoing maintenance and inventory change as
+        we are attending special event the weekend of Oct 15-16, 2022. We're
+        sorry for incovenience.
       </div>
       <p>
-        We anticipate to be back online by August 15th, 2022 with complete new
+        We anticipate to be back online by Oct 17th, 2022 with complete new
         design.
       </p>
     </>
