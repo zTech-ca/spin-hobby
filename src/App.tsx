@@ -10,15 +10,33 @@ import "react-phone-number-input/style.css";
 function App() {
   return (
     <>
-      <div>
-        Spin Hobby is currently undergoing maintenance and inventory change as
-        we are attending special event the weekend of Oct 15-16, 2022. We're
-        sorry for incovenience.
+      <p>
+        Spin Hobby is currently undergoing massive maintenance. We expect to be
+        back by the end of January 2023.
+      </p>
+      <p>Follow us on facebook to keep updated!</p>
+
+      <a href="https://www.facebook.com/profile.php?id=100084221636045">
+        <div style={{ width: "200px" }}>
+          <img
+            style={{ height: "auto", maxWidth: "100%" }}
+            src="/logo/external/facebook/FindUs-FB-RGB-1067.png"
+            alt="find us on facebook"
+          />
+        </div>
+      </a>
+      <div style={{ width: "100px" }}>
+        <img
+          style={{ height: "auto", maxWidth: "100%" }}
+          src="/QR/qrcode.svg"
+          alt="find us on facebook"
+        />
       </div>
       <p>
-        We anticipate to be back online by Oct 17th, 2022 with complete new
-        design.
+        For all inquiries, please feel free to message on facebook page or email
+        us at info@ztech.ca
       </p>
+      <p>Happy Holiday!</p>
     </>
   );
 
