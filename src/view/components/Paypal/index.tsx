@@ -44,7 +44,7 @@ export default function Paypal({
       <PayPalButtons
         style={style}
         forceReRender={[amount, currency, style]}
-        createOrder={(data, actions) => {
+        createOrder={(data: any, actions: any) => {
           console.log(data);
           return actions.order
             .create({
@@ -57,13 +57,13 @@ export default function Paypal({
                 },
               ],
             })
-            .then((orderId) => {
+            .then((orderId: any) => {
               // Your code here after create the order
               console.log(orderId);
               return orderId;
             });
         }}
-        onApprove={function (data, actions: any) {
+        onApprove={function (data: any, actions: any) {
           return actions.order.capture().then(function () {
             // Your code here after capture the order
             console.log("approved");
