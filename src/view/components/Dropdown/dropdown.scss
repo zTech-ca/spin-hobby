@@ -38,7 +38,7 @@
   .dropdown-menu {
     @extend .dropdown-bordered;
     position: absolute;
-    background-color: rgb(32, 32, 32);
+    background-color: white;
 
     .dropdown-item {
       @extend .dropdown-common;
