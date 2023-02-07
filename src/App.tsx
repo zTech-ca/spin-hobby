@@ -12,7 +12,7 @@ function App() {
     <>
       <p>
         Spin Hobby is currently undergoing massive maintenance. We expect to be
-        back by the end of January 2023.
+        back by the beginning of March. We apologize for inconvenience.
       </p>
       <p>Follow us on facebook to keep updated!</p>
 
