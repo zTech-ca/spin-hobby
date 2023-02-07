@@ -11,8 +11,9 @@ function App() {
   return (
     <>
       <p>
-        Spin Hobby is currently undergoing massive maintenance. We expect to be
-        back by the beginning of March. We apologize for inconvenience.
+        Spin Hobby's design and dev teams are working to bring new tone to the
+        website. We expect to be back by the beginning of March 2023. We
+        apologize for inconvenience.
       </p>
       <p>Follow us on facebook to keep updated!</p>
 
