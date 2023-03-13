@@ -59,7 +59,7 @@ function App() {
             <li>March 12th, 2023 - Edmonton Collector Con</li>
             <li>April 27th-30th, 2023 - Calgary Expo</li>
             <li>May 6th-7th, 2023 - Fort Fan Fest</li>
-            <li>Animethon 14th-16th, 2023 - Otafest</li>
+            <li>May 14th-16th, 2023 - Otafest</li>
             <li>July 14th-16th, 2023 - Animethon</li>
           </ul>
         </div>
