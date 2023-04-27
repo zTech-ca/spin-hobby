@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./sass/main.scss";
 import "react-phone-number-input/style.css";
 //import { BrowserRouter } from "react-router-dom";
@@ -8,6 +8,58 @@ import "react-phone-number-input/style.css";
 //import Home from "./view/pages/Home";
 
 function App() {
+  const ref = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    const iframe = ref.current;
+    if (!iframe) return;
+
+    const timer = setInterval(() => {
+      // console.log("show", iframe.contentWindow?.location.href);
+
+      document.domain = "localhost:3000";
+
+      console.log("domain name: ", document.domain);
+    }, 2000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, [ref]);
+
+  return (
+    <iframe
+      src="https://spinhobby.square.site/"
+      title="square"
+      ref={ref}
+      style={{
+        width: "100%",
+        height: "100%",
+        border: 0,
+        display: "block",
+        position: "absolute",
+      }}
+      // sandbox="allow-top-navigation allow-scripts allow-forms"
+    />
+  );
+
+  // return (
+  //   <Iframe
+  //     // title="karano"
+  //     url="https://spinhobby.square.site/"
+  //     //       style="position:absolute; top:0px; left:0px;
+  //     // width:100%; height:100%; border: none; overflow: hidden;"
+
+  //     width="100%"
+  //     height="100%"
+  //     id=""
+  //     className=""
+  //     display="block"
+  //     position="absolute"
+  //     frameBorder={0}
+  //   />
+  // );
+
   return (
     <div
       style={{
