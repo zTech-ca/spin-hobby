@@ -34,8 +34,18 @@
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1717px) {
   .tmp-background-img {
     display: none;
+  }
+
+  .tmp-background-img-right {
+    width: 95%;
+  }
+}
+
+@media (min-width: 1717px) {
+  .tmp-background-img-right {
+    width: 48%;
   }
 }

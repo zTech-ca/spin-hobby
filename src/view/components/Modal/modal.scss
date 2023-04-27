@@ -10,13 +10,38 @@
   background-color: rgba(0, 0, 0, 0.6);
   user-select: none;
 
+  @media (max-height: 670px) {
+    .modal {
+      top: 65%;
+    }
+  }
+
+  @media (max-height: 450px) {
+    .modal {
+      top: 75%;
+    }
+  }
+
+  @media (max-height: 400px) {
+    .modal {
+      top: 85%;
+    }
+  }
+
+  @media (min-height: 670px) {
+    .modal {
+      top: 50%;
+    }
+  }
+
   .modal {
     background-color: $theme-color-dark;
     color: $theme-color-bright;
     min-height: 100px;
     min-width: 100px;
     position: absolute;
-    top: 50%;
+
+    // top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
@@ -37,6 +62,11 @@
       &:focus {
         outline: none;
       }
+    }
+
+    .modal-announcement {
+      padding: 30px 30px;
+      min-width: 300px;
     }
 
     .modal-settings {

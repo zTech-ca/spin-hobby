@@ -8,6 +8,7 @@ import SignUp from "./SignUp";
 import ForgotPassword from "./ForgotPassword";
 import Settings from "./Settings";
 import ReactDOM from "react-dom";
+import Announcement from "./Announcement";
 
 export default function Modal() {
   const mode = useModalSelector();
@@ -45,6 +46,9 @@ function TrueModal({ mode }: { mode: EModal }) {
         return <ForgotPassword />;
       case EModal.SETTINGS:
         return <Settings />;
+      case EModal.ANNOUNCEMENT:
+        return <Announcement />;
+
       default:
         return null;
     }

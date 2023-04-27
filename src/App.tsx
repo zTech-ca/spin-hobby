@@ -1,46 +1,45 @@
-import React, { useEffect, useRef } from "react";
+import React, { MouseEventHandler, useEffect, useRef } from "react";
 import "./sass/main.scss";
 import "react-phone-number-input/style.css";
+import Modal from "view/components/Modal";
+import { useDispatch } from "react-redux";
+import { openModal } from "reducers";
+import { EModal } from "ts";
 //import { BrowserRouter } from "react-router-dom";
 //import NavBar from "./view/components/NavBar";
 //import Footer from "./view/components/Footer";
 //import Modal from "./view/components/Modal";
 //import Home from "./view/pages/Home";
 
+let loaded = false;
+
 function App() {
   const ref = useRef<HTMLIFrameElement>(null);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    const iframe = ref.current;
-    if (!iframe) return;
-
-    const timer = setInterval(() => {
-      // console.log("show", iframe.contentWindow?.location.href);
-
-      document.domain = "localhost:3000";
-
-      console.log("domain name: ", document.domain);
-    }, 2000);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, [ref]);
+    if (loaded) return;
+    dispatch(openModal(EModal.ANNOUNCEMENT));
+    loaded = true;
+  }, [dispatch]);
 
   return (
-    <iframe
-      src="https://spinhobby.square.site/"
-      title="square"
-      ref={ref}
-      style={{
-        width: "100%",
-        height: "100%",
-        border: 0,
-        display: "block",
-        position: "absolute",
-      }}
-      // sandbox="allow-top-navigation allow-scripts allow-forms"
-    />
+    <>
+      <Modal />
+      <iframe
+        src="https://spinhobby.square.site/"
+        title="square"
+        ref={ref}
+        style={{
+          width: "100%",
+          height: "100%",
+          border: 0,
+          display: "block",
+          position: "absolute",
+        }}
+      />
+    </>
   );
 
   // return (
