@@ -58,13 +58,13 @@ export default function Announcement() {
         </div>
         <div className="tmp-background-img-right">
           <h3>
-            We are attending large event at Calgary Fan Expo from Apr 27th -
-            30th, 2023!
+            We are at Fort Fan Fest (Fort Saskatchewan, Alberta) this weekened
+            of May 6th & 7th!
           </h3>
           <h4>If you are nearby, we hope to see you there!</h4>
           <p style={{ color: "red" }}>
             We are unable to sell and ship during this time as we are attending
-            the event and going through rigorous inventory change.
+            the events and going through rigorous inventory change.
           </p>
           <p>
             We apologize for inconvenience during this time. You may however
