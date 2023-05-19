@@ -53,15 +53,12 @@ export default function Announcement() {
               width: "100%",
             }}
             alt="mascot"
-            src="assets/fort fan fest-min.png"
+            src="assets/otafest small.png"
           />
         </div>
         <div className="tmp-background-img-right">
-          <h3>
-            We are at Fort Fan Fest (Fort Saskatchewan, Alberta) this weekened
-            of May 6th & 7th!
-          </h3>
-          <h4>If you are nearby, we hope to see you there!</h4>
+          <h3>We are at Otafest in Calgary this weekened of May 19th-21st!</h3>
+          <h4>If you are nearby, be sure to check us out!</h4>
           <p style={{ color: "red" }}>
             We are unable to sell and ship during this time as we are attending
             the events and going through rigorous inventory change.
@@ -72,17 +69,18 @@ export default function Announcement() {
             of stock, you may still request us.
           </p>
           <p>
-            Here are the list of confirmed events this year (Yes, there could be
-            more!).
+            Here are the list of confirmed events this year and next year. More
+            to come!
           </p>
           <ul>
             <li>March 12th, 2023 - Edmonton Collector Con</li>
-            <li>April 27th-30th, 2023 - Calgary Expo</li>
+            <li>April 27th-30th, 2023 - Calgary Fan Expo</li>
             <li>May 6th-7th, 2023 - Fort Fan Fest</li>
             <li>May 14th-16th, 2023 - Otafest</li>
             <li>July 19th-21st, 2023 - Animethon</li>
             <li>August 9th-11th, 2023 - AniRevo</li>
             <li>September 15th-17th, 2023 - Edmonton Fan Expo</li>
+            <li>April 25th-28th, 2024 - Calgary Fan Expo</li>
           </ul>
           <p>
             If you are coming to any of those, please be sure to check us out!
