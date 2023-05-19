@@ -53,7 +53,7 @@ export default function Announcement() {
               width: "100%",
             }}
             alt="mascot"
-            src="assets/calgary expo announcement-min.png"
+            src="assets/fort fan fest-min.png"
           />
         </div>
         <div className="tmp-background-img-right">

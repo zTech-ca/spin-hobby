@@ -39,6 +39,15 @@ function App() {
           position: "absolute",
         }}
       />
+      <div
+        style={{
+          position: "absolute",
+          backgroundColor: "black",
+          height: "166px",
+          width: "100%",
+          bottom: "0",
+        }}
+      />
     </>
   );
 
