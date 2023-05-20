@@ -77,7 +77,7 @@ export default function Announcement() {
             <li>April 27th-30th, 2023 - Calgary Fan Expo</li>
             <li>May 6th-7th, 2023 - Fort Fan Fest</li>
             <li>May 19th-21st, 2023 - Otafest</li>
-            <li>July 19th-21st, 2023 - Animethon</li>
+            <li>July 14th-16th, 2023 - Animethon</li>
             <li>August 9th-11th, 2023 - AniRevo</li>
             <li>September 15th-17th, 2023 - Edmonton Fan Expo</li>
             <li>April 25th-28th, 2024 - Calgary Fan Expo</li>
