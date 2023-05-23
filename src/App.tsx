@@ -39,7 +39,7 @@ function App() {
           position: "absolute",
         }}
       />
-      <div
+      {/* <div
         style={{
           position: "absolute",
           backgroundColor: "black",
@@ -47,7 +47,7 @@ function App() {
           width: "100%",
           bottom: "0",
         }}
-      />
+      /> */}
     </>
   );
 
