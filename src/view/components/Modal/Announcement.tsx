@@ -53,15 +53,20 @@ export default function Announcement() {
               width: "100%",
             }}
             alt="mascot"
-            src="assets/otafest small.png"
+            src="assets/thank you otafest-min.png"
           />
         </div>
         <div className="tmp-background-img-right">
-          <h3>We are at Otafest in Calgary this weekened of May 19th-21st!</h3>
-          <h4>If you are nearby, be sure to check us out!</h4>
+          <h3>
+            Thank you for supporting us at Otafest in the weekened of May
+            19th-21st!
+          </h3>
+          <h4>
+            We have listened and invested in the best inventory the result was
+            highest sales recorded since our establishment!
+          </h4>
           <p style={{ color: "red" }}>
-            We are unable to sell and ship during this time as we are attending
-            the events and going through rigorous inventory change.
+            Our online service will fully resume in June.
           </p>
           <p>
             We apologize for inconvenience during this time. You may however
