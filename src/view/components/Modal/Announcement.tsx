@@ -53,7 +53,7 @@ export default function Announcement() {
               width: "100%",
             }}
             alt="mascot"
-            src="assets/thank you otafest-min.png"
+            src="assets/animethon 2023.jpeg"
           />
         </div>
         <div className="tmp-background-img-right">
