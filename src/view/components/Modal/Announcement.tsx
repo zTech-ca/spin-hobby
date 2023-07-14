@@ -40,7 +40,7 @@ export default function Announcement() {
         <div
           className="tmp-background-img"
           style={{
-            width: "49%",
+            width: "48%",
             paddingRight: "10px",
           }}
         >
@@ -57,16 +57,15 @@ export default function Announcement() {
           />
         </div>
         <div className="tmp-background-img-right">
-          <h3>
-            Thank you for supporting us at Otafest in the weekened of May
-            19th-21st!
-          </h3>
+          <h3>We are at Animethon 2023 this weekend! (Jul 14th - 17th)</h3>
           <h4>
             We have listened and invested in the best inventory the result was
-            highest sales recorded since our establishment!
+            highest sales recorded since our establishment at Otafest back in
+            May! We hope that Animethon will be another success!
           </h4>
           <p style={{ color: "red" }}>
-            Our online service will fully resume in June.
+            We are currently closed for online order this week in order to
+            attend Animethon
           </p>
           <p>
             We apologize for inconvenience during this time. You may however
