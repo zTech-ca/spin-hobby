@@ -40,7 +40,7 @@ export default function Announcement() {
         <div
           className="tmp-background-img"
           style={{
-            width: "48%",
+            width: "49%",
             paddingRight: "10px",
           }}
         >
