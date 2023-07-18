@@ -64,7 +64,7 @@ export default function Announcement() {
             And see you at Anime Revolution in Vancouver! (Aug 18th - 20th)
           </h5>
           <h4>
-            We have again recorded the highest sales since our establishment at
+            We have again recorded highest sales since our establishment at
             Animethon 2023 in Edmonton! We have listened to fans, analyzed data,
             and put a lot of care inventory selection. This wouldn't be possible
             without your continuous supports and feedbacks!
