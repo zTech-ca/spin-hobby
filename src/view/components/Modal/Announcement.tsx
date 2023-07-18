@@ -53,19 +53,25 @@ export default function Announcement() {
               width: "100%",
             }}
             alt="mascot"
-            src="assets/animethon 2023.jpeg"
+            src="assets/Anime Revolution announcement-min.png"
           />
         </div>
         <div className="tmp-background-img-right">
-          <h3>We are at Animethon 2023 this weekend! (Jul 14th - 17th)</h3>
+          <h3>
+            Thank you so much for supporting us at Animethon! (Jul 14th - 16th)
+          </h3>
+          <h5>
+            And see you at Anime Revolution in Vancouver! (Aug 18th - 20th)
+          </h5>
           <h4>
-            We have listened and invested in the best inventory the result was
-            highest sales recorded since our establishment at Otafest back in
-            May! We hope that Animethon will be another success!
+            We have again recorded the highest sales since our establishment at
+            Animethon 2023 in Edmonton! We have listened to fans, analyzed data,
+            and put a lot of care inventory selection. This wouldn't be possible
+            without your continuous supports and feedbacks!
           </h4>
           <p style={{ color: "red" }}>
-            We are currently closed for online order this week in order to
-            attend Animethon
+            We are currently closed for online order this week in order to sort
+            through inventory after Animethon.
           </p>
           <p>
             We apologize for inconvenience during this time. You may however
@@ -87,7 +93,7 @@ export default function Announcement() {
             <li>April 25th-28th, 2024 - Calgary Fan Expo</li>
           </ul>
           <p>
-            If you are coming to any of those, please be sure to check us out!
+            If you are coming to any of those, please be sure to check us ou!
           </p>
           <p>Follow us on facebook to keep updated!</p>
 

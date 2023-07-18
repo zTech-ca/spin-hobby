@@ -56,7 +56,11 @@ function TrueModal({ mode }: { mode: EModal }) {
 
   return ReactDOM.createPortal(
     <div className="modal-background fade-in">
-      <div className="modal" ref={ref} style={{ top: "500px" }}>
+      <div
+        className="modal"
+        ref={ref}
+        style={{ top: "550px", maxWidth: "1000px" }}
+      >
         <button className="modal-close" onClick={exitModal}>
           &times;
         </button>
