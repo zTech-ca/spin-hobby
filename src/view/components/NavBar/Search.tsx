@@ -9,6 +9,7 @@ interface Props {
 export default function Search({ onNav = true }: Props) {
   const [search, setSearch] = useState<string>("");
   const [openCategoryList, setOpenCategoryList] = useState<boolean>(false);
+  const [category, setCategory] = useState<Category>(Category.Volvo);
 
   function handleSearchInput(e: ChangeEvent<HTMLInputElement>) {
     setSearch(e.target.value);
@@ -23,31 +24,19 @@ export default function Search({ onNav = true }: Props) {
     // Add search handlings here
   }
 
-  const [category, setCategory] = useState<Category>(Category.All);
-
-  function onSelect(e: ChangeEvent<HTMLSelectElement>) {
-    console.log("you have selected: ", e.target.value);
-
-    setCategory(e.target.value as Category);
-  }
-
   return (
     <div className={`navbar-search${onNav ? "" : " navbar-search-mobile"}`}>
       <div
         className="navbar-search-category-toggler"
         onClick={handleOpenCategoryList}
       >
-        <div className="dropdown-menu">
-          <div className="navbar-search-selected-category">{category}</div>
-          {openCategoryList ? <TiArrowSortedUp /> : <TiArrowSortedDown />}
-        </div>
-      </div>
-      <div>
-        <Dropdown 
-          category={category} 
-          setCategory={setCategory} 
-          onSelect={onSelect} 
-        />
+        <div className="navbar-search-selected-category">All</div>
+        {openCategoryList ? <TiArrowSortedUp /> : <TiArrowSortedDown />}
+        {openCategoryList && (
+          <div className="dropdown-menu" style={{position: "absolute", zIndex: 100 }}>
+            <Dropdown category={category} setCategory={setCategory} />
+          </div>
+        )}
       </div>
       <form onSubmit={onSubmitHandler}>
         <input
@@ -64,30 +53,37 @@ export default function Search({ onNav = true }: Props) {
   );
 }
 
+
+
 enum Category {
-  All = "all",
-  Category1 = "category1",
-  Category2 = "category2",
-  Category3 = "category3",
-  Category4 = "category4",
+  Volvo = "volvo",
+  Saab = "saab",
+  Mercedes = "mercedes",
+  Audi = "audi",
+  Toyota = "toyota",
 }
 
 function Dropdown({
   category: category,
   setCategory: setCategory,
-  onSelect,
 }: {
   category: Category;
   setCategory: React.Dispatch<React.SetStateAction<Category>>;
-  onSelect: (e: ChangeEvent<HTMLSelectElement>) => void;
 }) {
   return (
-    <select name="cars" id="cars" value={category} onChange={onSelect}>
-      {Object.values(Category).map((category, i) => (
-        <option key={i} value={category}>
-          {category}
-        </option>
-      ))}
-    </select>
+      <div className="dropdown">
+        <ul className="categories" id="categories" >
+          {Object.values(Category).map((category, i) => (
+            <li key={i} value={category}>
+              {category}
+            </li>
+          ))}
+          </ul>      
+      </div>
   );
 }
+const dropdown = document.querySelectorAll('.navbar-search-category-toggler');
+
+dropdown.forEach(dropdown=>{
+  
+})
