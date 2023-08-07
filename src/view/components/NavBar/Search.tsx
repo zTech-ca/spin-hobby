@@ -1,6 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { FcSearch } from "react-icons/fc";
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
+import { forEachChild } from "typescript";
 
 interface Props {
   onNav?: boolean;
@@ -27,6 +28,10 @@ export default function Search({ onNav = true }: Props) {
     setOpenCategoryList(!openCategoryList);
   }
 
+  function handleOnSelectCategory(e){
+    setCategory(e);
+  }
+  
   function onSubmitHandler(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     // Add search handlings here
@@ -41,8 +46,8 @@ export default function Search({ onNav = true }: Props) {
         <div className="navbar-search-selected-category">{category}</div>
         {openCategoryList ? <TiArrowSortedUp /> : <TiArrowSortedDown />}
         {openCategoryList && (
-          <div className="dropdown-menu" style={{position: "absolute", zIndex: 100 }}>
-            <Dropdown category={category} setCategory={setCategory} />
+          <div className="dropdown-menu" style={{position: "absolute", zIndex: 100 }}> 
+            <Dropdown category={category} setCategory={setCategory}  handleOnSelectCategory= {handleOnSelectCategory}/>
           </div>
         )}
       </div>
@@ -64,15 +69,17 @@ export default function Search({ onNav = true }: Props) {
 function Dropdown({
   category: category,
   setCategory: setCategory,
+  handleOnSelectCategory: handleOnSelectCategory,
 }: {
   category: Category;
   setCategory: React.Dispatch<React.SetStateAction<Category>>;
+  handleOnSelectCategory;
 }) {
   return (
       <div className="dropdown">
         <ul className="categories" id="categories" >
           {Object.values(Category).map((category, i) => (
-            <li key={i} value={category} >
+            <li key={i} value={category} onClick={handleOnSelectCategory(category)}>
               {category}
             </li>
           ))}
@@ -80,8 +87,3 @@ function Dropdown({
       </div>
   );
 }
-const dropdown = document.querySelectorAll('.navbar-search-category-toggler');
-
-dropdown.forEach(dropdown=>{
-  
-})
