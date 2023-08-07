@@ -205,9 +205,13 @@
   li{
     background-color: gray;
     color: white;
+    list-style: none;
 
     &:hover{
       background-color: black;
     }
-  } 
+    &:active{
+      background-color: red;
+    }
+  }
 }
