@@ -28,8 +28,8 @@ export default function Search({ onNav = true }: Props) {
     setOpenCategoryList(!openCategoryList);
   }
 
-  function handleOnSelectCategory(e){
-    setCategory(e);
+  function handleOnSelectCategory(category: Category){
+    setCategory(category);
   }
   
   function onSubmitHandler(e: FormEvent<HTMLFormElement>) {
@@ -66,20 +66,22 @@ export default function Search({ onNav = true }: Props) {
   );
 }
 
-function Dropdown({
-  category: category,
-  setCategory: setCategory,
-  handleOnSelectCategory: handleOnSelectCategory,
-}: {
+interface DropdownProps{
   category: Category;
   setCategory: React.Dispatch<React.SetStateAction<Category>>;
-  handleOnSelectCategory;
-}) {
+  handleOnSelectCategory: React.Dispatch<React.SetStateAction<Category>>;
+}
+
+function Dropdown({
+  category,
+  setCategory,
+  handleOnSelectCategory,
+}: DropdownProps) {
   return (
       <div className="dropdown">
         <ul className="categories" id="categories" >
           {Object.values(Category).map((category, i) => (
-            <li key={i} value={category} onClick={handleOnSelectCategory(category)}>
+            <li key={i} value={category} onClick={()=>handleOnSelectCategory(category)}>
               {category}
             </li>
           ))}
