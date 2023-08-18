@@ -133,42 +133,6 @@
       &::after {
         content: " ";
       }
-      .dropdown-menu{
-        min-width: 15em;
-        position: relative;
-        margin: 2em;
-      }
-      .dropdown-menu *{
-        box-sizing: border-box;
-      }
-      .select{
-        background: #2a2f3b;
-        color: #fff;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border: 2px #2a2f3b solid;
-        border-radius: 0.5em;
-        padding: 1em;
-        cursor: pointer;
-        transition: background 0.3s;
-      }
-      .select-clicked{
-        border: 2px #26489a solid;
-        box-shadow: 0 0 0.8em #26489a;
-      }
-      .select:hober{
-        background: #323741;
-      }
-      .dropdown.categories{
-        list-style: none;
-        padding: 0.2em 0.5em;
-        background: #323741;
-        border: 1px #363a43 solid;
-        box-shadow: 0 0.5em 1em rgba(0,0,0,0.2);
-        border-radius: 0.5em;
-        color: #9fa5b5;
-      }
     }
   }
 
@@ -201,21 +165,50 @@
     border-top-right-radius: $navbar-search-border-radius;
     border-bottom-right-radius: $navbar-search-border-radius;
   }
-
-  ul{
-    position: absolute;
-  }
-
-  li{
-    background-color: gray;
-    color: white;
-    list-style: none;
-
-    &:hover{
-      background-color: black;
+  div .dropdown {
+    ul {
+      position: absolute;
+      background: #2a2f3b;
+      color: #fff;
+      justify-content: space-between;
+      align-items: center;
+      border: 2px #2a2f3b solid;
+      border-radius: 0.5em;
+      padding: 0.7em;
+      cursor: pointer;
+      transition: background 0.3s;
+      transform: translateX(-50%);
+      
+      li{
+        list-style: none;
+        padding: 0.2em 0.5em;
+        background: #323741;
+        border: 1px #363a43 solid;
+        box-shadow: 0 0.5em 1em rgba(0,0,0,0.2);
+        border-radius: 0.5em;
+        color: #9fa5b5;
+        top: 3em;
+        left: 50%;
+        width: 100%;
+        transition: 0.2s;
+        z-index: 1;
+    
+        padding: 0.7em 0.5em;
+        margin: 0.3em 0;
+        border-radius: 0.5em;
+  
+    
+        &:hover{
+          background-color: #323241
+        }
+        &:active{
+          border: 2px #5745ae solid;
+          box-shadow: 0 0 0.8em #5745ae;
+        }
+      }
     }
-    &:active{
-      background-color: red;
-    }
   }
+  
+
+  
 }
