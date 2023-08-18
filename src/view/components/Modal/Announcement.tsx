@@ -53,25 +53,20 @@ export default function Announcement() {
               width: "100%",
             }}
             alt="mascot"
-            src="assets/Anime Revolution announcement-min.png"
+            src="assets/anirevo high-min.png"
           />
         </div>
         <div className="tmp-background-img-right">
           <h3>
-            Thank you so much for supporting us at Animethon! (Jul 14th - 16th)
+            We are at Anime Revolution - Vancouver this weekend! (Aug 18th-20th)
           </h3>
-          <h5>
-            And see you at Anime Revolution in Vancouver! (Aug 18th - 20th)
-          </h5>
           <h4>
-            We have again recorded highest sales since our establishment at
-            Animethon 2023 in Edmonton! We have listened to fans, analyzed data,
-            and put a lot of care inventory selection. This wouldn't be possible
-            without your continuous supports and feedbacks!
+            We have had successful events throughout Alberta this year and we
+            thrive to bring our quality service beyond. This will be our first
+            event outside Alberta and we appreciate your continuous support!
           </h4>
           <p style={{ color: "red" }}>
-            We are currently closed for online order this week in order to sort
-            through inventory after Animethon.
+            We are closed to online order this weekend for event in Vancouver.
           </p>
           <p>
             We apologize for inconvenience during this time. You may however
