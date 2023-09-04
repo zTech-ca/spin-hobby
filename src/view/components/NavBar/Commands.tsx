@@ -19,8 +19,6 @@ export default function Commands() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const navigateToCart = () => {
-    console.log('clicked on cart'
-    )
     navigate('/cart');
   }
   const commands: INavBarCommand[] = [
@@ -29,7 +27,7 @@ export default function Commands() {
     { label: "Request", icon: TiChevronRightOutline, onClick: () => {} },
     { label: "Settings", icon: FiSettings, onClick: handleSettingsCommand },
   ];
-  
+
   function handleLoginCommand() {
     dispatch(openModal(EModal.LOGIN));
   }
