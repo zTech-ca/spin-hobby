@@ -7,6 +7,7 @@ import { FiSettings } from "react-icons/fi";
 import { openModal } from "../../../reducers";
 import { EModal } from "../../../ts";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 interface INavBarCommand {
   label: string;
@@ -16,13 +17,19 @@ interface INavBarCommand {
 
 export default function Commands() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const navigateToCart = () => {
+    console.log('clicked on cart'
+    )
+    navigate('/cart');
+  }
   const commands: INavBarCommand[] = [
     { label: "Login", icon: FaUserAlt, onClick: handleLoginCommand },
-    { label: "Cart", icon: RiShoppingCart2Line, onClick: () => {}},
+    { label: "Cart", icon: RiShoppingCart2Line, onClick: navigateToCart},
     { label: "Request", icon: TiChevronRightOutline, onClick: () => {} },
     { label: "Settings", icon: FiSettings, onClick: handleSettingsCommand },
   ];
-
+  
   function handleLoginCommand() {
     dispatch(openModal(EModal.LOGIN));
   }
