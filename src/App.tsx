@@ -20,7 +20,7 @@ function App() {
 
   useEffect(() => {
     if (loaded) return;
-    dispatch(openModal(EModal.ANNOUNCEMENT));
+    // dispatch(openModal(EModal.ANNOUNCEMENT));
     loaded = true;
   }, [dispatch]);
 
