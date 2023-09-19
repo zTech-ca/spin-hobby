@@ -1,36 +1,12 @@
 @import "./Header/header.scss";
 @import "./Merchandise/merchandise.scss";
+@import "./FeaturedMerchandise/featuredMerchandise.scss";
 
 .home-main {
   max-width: $standard-max-width;
   margin: auto;
 
-  .home-featured-merchs {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: -240px;
-    justify-content: space-evenly;
-  }
-
   .home-main-padded {
     margin: 0 20px;
-  }
-}
-
-.home-ripple-featured-card {
-  z-index: $z-index-highest;
-  cursor: pointer;
-  transition: 0.3s;
-  margin: 10px 10px;
-  border-radius: 5px;
-
-  &:hover {
-    box-shadow: 0px 0px 5px;
-    transform: scale(1.05);
-    transition: 0.3s;
-  }
-
-  &:active {
-    transform: scale(1.02);
   }
 }

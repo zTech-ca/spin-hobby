@@ -11,8 +11,10 @@ interface Props {
 export default function CardStandard({ merch, rounding = 2 }: Props) {
   const currency = useCurrencySelector();
   return (
-    <div className="home-merch-card-standard">
-      <img src={merch.img} alt={merch.img} />
+    <>
+      <div className="home-merch-card-standard-image-container">
+        <img src={merch.img} alt={merch.img} />
+      </div>
       <div className="home-merch-card-standard-details">
         <h4>{merch.title}</h4>
         <p>{merch.description}</p>
@@ -21,6 +23,6 @@ export default function CardStandard({ merch, rounding = 2 }: Props) {
           {currencyConverter(merch.price, currency, rounding)}
         </label>
       </div>
-    </div>
+    </>
   );
 }
