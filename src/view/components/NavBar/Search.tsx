@@ -31,6 +31,10 @@ export default function Search({ onNav = true }: Props) {
     setOpenCategoryList(!openCategoryList);
   }
 
+  function handleOnSelectCategory(e) {
+    setCategory(e);
+  }
+
   function onSubmitHandler(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     dispatch(getSearch({ page: 1, searchString: search }));
@@ -45,8 +49,15 @@ export default function Search({ onNav = true }: Props) {
         <div className="navbar-search-selected-category">{category}</div>
         {openCategoryList ? <TiArrowSortedUp /> : <TiArrowSortedDown />}
         {openCategoryList && (
-          <div className="dropdown-menu" style={{position: "absolute", zIndex: 100 }}>
-            <Dropdown category={category} setCategory={setCategory} />
+          <div
+            className="dropdown-menu"
+            style={{ position: "absolute", zIndex: 100 }}
+          >
+            <Dropdown
+              category={category}
+              setCategory={setCategory}
+              handleOnSelectCategory={handleOnSelectCategory}
+            />
           </div>
         )}
       </div>
@@ -58,7 +69,7 @@ export default function Search({ onNav = true }: Props) {
           onChange={handleSearchInput}
         />
       </form>
-      <div className="navbar-search-magnifier" >
+      <div className="navbar-search-magnifier">
         <FcSearch size={"1.5em"} />
       </div>
     </div>
@@ -68,24 +79,25 @@ export default function Search({ onNav = true }: Props) {
 function Dropdown({
   category: category,
   setCategory: setCategory,
+  handleOnSelectCategory: handleOnSelectCategory,
 }: {
   category: Category;
   setCategory: React.Dispatch<React.SetStateAction<Category>>;
+  handleOnSelectCategory;
 }) {
   return (
-      <div className="dropdown">
-        <ul className="categories" id="categories" >
-          {Object.values(Category).map((category, i) => (
-            <li key={i} value={category} >
-              {category}
-            </li>
-          ))}
-          </ul>      
-      </div>
+    <div className="dropdown">
+      <ul className="categories" id="categories">
+        {Object.values(Category).map((category, i) => (
+          <li
+            key={i}
+            value={category}
+            onClick={handleOnSelectCategory(category)}
+          >
+            {category}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
-const dropdown = document.querySelectorAll('.navbar-search-category-toggler');
-
-dropdown.forEach(dropdown=>{
-  
-})
