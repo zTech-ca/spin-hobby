@@ -54,6 +54,14 @@ $letterStagger: 0.1s;
   $home-header-control-top: 30%;
   $home-header-content-height: 70%;
 
+  mask-image: -webkit-linear-gradient(
+    top,
+    #e0e0e0 0%,
+    #e0e0e0 $home-header-gradient-top,
+    rgba(0, 0, 0, 1) $home-header-gradient-top,
+    rgba(0, 0, 0, 0) 100%
+  );
+
   *,
   *:before,
   *:after {
@@ -75,23 +83,6 @@ $letterStagger: 0.1s;
 
   @media screen and (max-width: $tablet-limit), (min-width: $max-header-width) {
     display: none;
-  }
-
-  .home-header-gradient {
-    position: absolute;
-    top: $home-header-gradient-top;
-    height: calc(100% - #{$home-header-gradient-top});
-    width: 100%;
-    z-index: $z-index-second-highest;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      $theme-color-bright 100%
-    );
-
-    @media screen and (min-width: $desktop-limit) {
-      background: linear-gradient(to bottom, transparent 0%, #22222a 100%);
-    }
   }
 
   @mixin sliderReady {
