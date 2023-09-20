@@ -7,7 +7,7 @@ import { IProductData } from "../view/pages/Product";
 const serverUrl =
   process.env.NODE_ENV === "production"
     ? "https://spinhobby.herokuapp.com/"
-    : "http://localhost:8080/";
+    : "http://localhost:8001/";
 
 export function loadInitialData() {}
 
