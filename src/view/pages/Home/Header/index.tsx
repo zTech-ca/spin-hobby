@@ -20,6 +20,31 @@ interface Props {
 }
 
 export default function Header({ slides }: Props) {
+  return (
+    <>
+      <HeaderSlider slides={slides} />
+      <HeaderSimple slides={slides} />
+    </>
+  );
+}
+
+function HeaderSimple({ slides }: Props) {
+  return (
+    <div className="home-header-mobile">
+      {slides.map((slide, index) => (
+        <div key={index} className="home-header-mobile-item">
+          <img src={slide.img} alt={slide.img} />
+          <div className="home-header-mobile-item-label">
+            <h4>{slide.headline}</h4>
+            {slide.subheading && <label>{slide.subheading}</label>}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function HeaderSlider({ slides }: Props) {
   const [sliderReady, setSliderReady] = useState<boolean>(false);
   const [slideDisplay, setSlideDisplay] = useState<ISlideDisplay>({
     activeSlide: 0,
@@ -65,7 +90,6 @@ export default function Header({ slides }: Props) {
 
   return (
     <div className={classNames("slider", { "s--ready": sliderReady })}>
-      <div className="home-header-gradient" />
       <p className="slider__top-heading">Welcome, Spin Hobbyist!!</p>
       <div className="slider__slides">
         {slides.map((slide: ISlide, index: number) => (

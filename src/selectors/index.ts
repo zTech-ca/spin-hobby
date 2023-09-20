@@ -8,3 +8,15 @@ export function useModalSelector() {
 export function useCurrencySelector() {
   return useSelector((state: IRootState) => state.setting.currency);
 }
+
+export function useCartSelector() {
+  return useSelector((state: IRootState) => state.cart);
+}
+
+export function useUserSelector() {
+  return useSelector((state: IRootState) => state.user);
+}
+
+export function useSearchSelector() {
+  return useSelector((state: IRootState) => state.search.searchResult);
+}

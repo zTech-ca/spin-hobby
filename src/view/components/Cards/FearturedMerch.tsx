@@ -2,13 +2,25 @@ import React from "react";
 import { ECurrencySymbols, ECurrencyCodes, IMerchPreview } from "../../../ts";
 import { useCurrencySelector } from "../../../selectors";
 import { roundToDecimal } from "../../../utils/math";
+import classNames from "classnames";
 
-export function FeaturedMerch(props: IMerchPreview) {
+interface Props extends IMerchPreview {
+  additionalClassNames?: string;
+}
+
+export function FeaturedMerch(props: Props) {
   const currency = useCurrencySelector();
 
   return (
-    <div className="cards-featured-merch">
-      <img src={props.img} alt={props.img} />
+    <div
+      className={classNames([
+        "cards-featured-merch",
+        props.additionalClassNames,
+      ])}
+    >
+      <div className="cards-featured-merch-image-container">
+        <img src={props.img} alt={props.img} />
+      </div>
       <div className="cards-featured-merch-details">
         <h2>{props.title}</h2>
         <p className="cards-featured-merch-description">{props.description}</p>

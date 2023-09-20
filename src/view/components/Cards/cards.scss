@@ -4,10 +4,15 @@
   background-color: gray;
   overflow: hidden;
 
-  img {
+  .cards-featured-merch-image-container {
     width: 100%;
     height: 52%;
-    object-fit: cover;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
   .cards-featured-merch-details {
@@ -28,6 +33,8 @@
       @include dotted-overflow-text(15px, 5, 1.8);
       text-align: center;
       font-style: italic;
+      color: $theme-color-darker;
+      padding: 0 5px 0 5px;
     }
 
     .cards-featured-merch-price {

@@ -3,6 +3,7 @@ import { IGroupedMerchPreview } from "../../../../ts";
 import classNames from "classnames";
 import { ExpandableSearch } from "../../../components/Searches";
 import CardStandard from "./CardStandard";
+import { Ripple } from "../../../components/Buttons";
 
 export function GroupDisplay({ merchs }: { merchs: IGroupedMerchPreview[] }) {
   function displayGroupedMerchs(
@@ -35,7 +36,9 @@ export function GroupDisplay({ merchs }: { merchs: IGroupedMerchPreview[] }) {
           {!!group.merchs.length && (
             <div className="home-merch-cards-container">
               {group.merchs.map((merch, index) => (
-                <CardStandard key={index} merch={merch} />
+                <Ripple key={index} classes="home-merch-card-standard">
+                  <CardStandard key={index} merch={merch} />
+                </Ripple>
               ))}
             </div>
           )}
