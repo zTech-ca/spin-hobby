@@ -18,7 +18,7 @@ export default function Commands() {
   const dispatch = useDispatch();
   const commands: INavBarCommand[] = [
     { label: "Login", icon: FaUserAlt, onClick: handleLoginCommand },
-    { label: "Cart", icon: RiShoppingCart2Line, onClick: () => {} },
+    { label: "Cart", icon: RiShoppingCart2Line, onClick: () => {}},
     { label: "Request", icon: TiChevronRightOutline, onClick: () => {} },
     { label: "Settings", icon: FiSettings, onClick: handleSettingsCommand },
   ];

@@ -1,4 +1,5 @@
 export interface IMerchPreview {
+  // page(page: any): () => Promise<IMerchPreview[]>;
   title: string;
   img: string;
   price: number;

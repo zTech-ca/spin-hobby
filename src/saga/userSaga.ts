@@ -1,5 +1,5 @@
 import { takeLatest, all } from "redux-saga/effects";
-import { login } from "../reducers";
+import { login, setUser } from "../reducers";
 import { requestLogin } from "../api";
 
 function* loginSaga() {
@@ -8,6 +8,7 @@ function* loginSaga() {
   yield requestLogin({ username: "anelmes0", password: "spinhobby" }).then(
     (res) => {
       console.log("kooo", res);
+      setUser(res.data);
     }
   );
 }

@@ -11,6 +11,16 @@ import { EModal } from "ts";
 //import Modal from "./view/components/Modal";
 //import Home from "./view/pages/Home";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NavBar from "./view/components/NavBar";
+import Footer from "./view/components/Footer";
+// import Modal from "./view/components/Modal";
+import Home from "./view/pages/Home";
+import Cart from "./view/pages/Cart";
+import CheckOut from "./view/pages/CheckOut";
+import Search from "./view/pages/Search";
+import Product from "view/pages/Product";
+
 let loaded = false;
 
 function App() {
@@ -24,32 +34,32 @@ function App() {
     loaded = true;
   }, [dispatch]);
 
-  return (
-    <>
-      <Modal />
-      <iframe
-        src="https://spinhobby.square.site/"
-        title="square"
-        ref={ref}
-        style={{
-          width: "100%",
-          height: "100%",
-          border: 0,
-          display: "block",
-          position: "absolute",
-        }}
-      />
-      {/* <div
-        style={{
-          position: "absolute",
-          backgroundColor: "black",
-          height: "166px",
-          width: "100%",
-          bottom: "0",
-        }}
-      /> */}
-    </>
-  );
+  // return (
+  //   <>
+  //     <Modal />
+  //     <iframe
+  //       src="https://spinhobby.square.site/"
+  //       title="square"
+  //       ref={ref}
+  //       style={{
+  //         width: "100%",
+  //         height: "100%",
+  //         border: 0,
+  //         display: "block",
+  //         position: "absolute",
+  //       }}
+  //     />
+  //     {/* <div
+  //       style={{
+  //         position: "absolute",
+  //         backgroundColor: "black",
+  //         height: "166px",
+  //         width: "100%",
+  //         bottom: "0",
+  //       }}
+  //     /> */}
+  //   </>
+  // );
 
   // return (
   //   <Iframe
@@ -69,67 +79,23 @@ function App() {
   // );
 
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
-      <img
-        className="tmp-background-img"
-        style={{
-          objectFit: "cover",
-          height: "100%",
-          maxWidth: "50%",
-        }}
-        alt="mascot"
-        src="assets/under development.png"
-      />
-
-      <div>
-        <p>
-          Spin Hobby's design and dev teams are working to bring new tone to the
-          website. We expect to be back in April of 2023. We apologize for
-          inconvenience.
-        </p>
-        <p>Follow us on facebook to keep updated!</p>
-
-        <a href="https://www.facebook.com/profile.php?id=100084221636045">
-          <div style={{ width: "200px" }}>
-            <img
-              style={{ height: "auto", maxWidth: "100%" }}
-              src="/logo/external/facebook/FindUs-FB-RGB-1067.png"
-              alt="find us on facebook"
-            />
-          </div>
-        </a>
-        <div style={{ width: "100px" }}>
-          <img
-            style={{ height: "auto", maxWidth: "100%" }}
-            src="/QR/qrcode.svg"
-            alt="find us on facebook"
-          />
-        </div>
-        <div>
-          Here are the list of confirmed events this year (Yes, there could be
-          more!).
-          <ul>
-            <li>March 12th, 2023 - Edmonton Collector Con</li>
-            <li>April 27th-30th, 2023 - Calgary Expo</li>
-            <li>May 6th-7th, 2023 - Fort Fan Fest</li>
-            <li>May 14th-16th, 2023 - Otafest</li>
-            <li>July 14th-16th, 2023 - Animethon</li>
-          </ul>
-        </div>
-        <p>
-          For all inquiries, please feel free to message on facebook page or
-          email us at info@ztech.ca
-        </p>
-        <p>We are looking forward to big launch this year of 2023!</p>
+    <BrowserRouter>
+      <div className="app">
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<CheckOut />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/product" element={<Product />} />
+        </Routes>
+        <Modal />
+        {/* <div className="main">
+          <Home />
+        </div> */}
+        <Footer />
       </div>
-    </div>
+    </BrowserRouter>
 
     // <div
     //   style={{
