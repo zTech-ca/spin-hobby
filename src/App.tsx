@@ -20,6 +20,7 @@ import Cart from "./view/pages/Cart";
 import CheckOut from "./view/pages/CheckOut";
 import Search from "./view/pages/Search";
 import Product from "view/pages/Product";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 let loaded = false;
 
@@ -79,70 +80,32 @@ function App() {
   // );
 
   return (
-    <BrowserRouter>
-      <div className="app">
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<CheckOut />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/product" element={<Product />} />
-        </Routes>
-        <Modal />
-        {/* <div className="main">
+    <PayPalScriptProvider
+      options={{
+        "client-id":
+          "ASauZ1kVM0kTP8lL9O0rnSOtm5reVWEI3rLAik4LM0bWOCkTPd_gXZpEzInq5-he6TKmfFotn9JDgGgr",
+        components: "buttons",
+        currency: "CAD",
+      }}
+    >
+      <BrowserRouter>
+        <div className="app">
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<CheckOut />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/product" element={<Product />} />
+          </Routes>
+          <Modal />
+          {/* <div className="main">
           <Home />
         </div> */}
-        <Footer />
-      </div>
-    </BrowserRouter>
-
-    // <div
-    //   style={{
-    //     display: "flex",
-    //     width: "100wv",
-    //     // justifyContent: "space-around",
-    //   }}
-    // >
-    //   <div style={{ width: "50%" }}>
-    //     <p>
-    //       Spin Hobby's design and dev teams are working to bring new tone to the
-    //       website. We expect to be back by the beginning of April 2023. We
-    //       apologize for inconvenience.
-    //     </p>
-    //     <p>Follow us on facebook to keep updated!</p>
-
-    //     <a href="https://www.facebook.com/profile.php?id=100084221636045">
-    //       <div style={{ width: "200px" }}>
-    //         <img
-    //           style={{ height: "auto", maxWidth: "100%" }}
-    //           src="/logo/external/facebook/FindUs-FB-RGB-1067.png"
-    //           alt="find us on facebook"
-    //         />
-    //       </div>
-    //     </a>
-    //     <div style={{ width: "100px" }}>
-    //       <img
-    //         style={{ height: "auto", maxWidth: "100%" }}
-    //         src="/QR/qrcode.svg"
-    //         alt="find us on facebook"
-    //       />
-    //     </div>
-    //     <p>
-    //       For all inquiries, please feel free to message on facebook page or
-    //       email us at info@ztech.ca
-    //     </p>
-    //     <p>Happy Holiday!</p>
-    //   </div>
-
-    //   <div style={{ width: "50%" }}>
-    //     <img
-    //       style={{ position: "absolute", height: "100vh" }}
-    //       alt="mascot"
-    //       src="assets/mascot.png"
-    //     />
-    //   </div>
-    // </div>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </PayPalScriptProvider>
   );
 }
 
