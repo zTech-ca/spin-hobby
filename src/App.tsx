@@ -178,19 +178,6 @@ function App() {
     //   </div>
     // </div>
   );
-
-  //return (
-  //<BrowserRouter>
-  // <div className="app">
-  // <NavBar />
-  //<Modal />
-  //<div className="main">
-  // <Home />
-  //</div>
-  //<Footer />
-  //</div>
-  //</BrowserRouter>
-  //);
 }
 
 export default App;

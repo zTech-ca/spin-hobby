@@ -1,6 +1,7 @@
 import { ISlide } from "../view/pages/Home/Header";
 import { IMerchPreview, IGroupedMerchPreview, ICategory } from "../ts";
 import { IHomeData } from "../view/pages/Home";
+import { IProductData } from "../view/pages/Product";
 
 const slides: ISlide[] = [
   {
@@ -110,4 +111,8 @@ export const homeData: IHomeData = {
   featured,
   merchs,
   categories,
+};
+
+export const productData: IProductData = {
+
 };
