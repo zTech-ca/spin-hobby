@@ -16,7 +16,7 @@ export default function CheckOut() {
   // }, []);
 
   return (
-    <div className="container">
+    <div className="checkout-container">
       {/* <div className="title">
         <h2>Product Order Form</h2>
       </div> */}
@@ -380,7 +380,7 @@ export default function CheckOut() {
           </table>
           <br />
           <div className="paypal-buttons-container">
-            <Paypal currency={"CAD"} showSpinner={true} />
+            {/* <Paypal currency={"CAD"} showSpinner={true} /> */}
           </div>
         </div>
       </div>

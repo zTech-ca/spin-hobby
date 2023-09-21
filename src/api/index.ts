@@ -35,9 +35,10 @@ export function getSearchResult(
   searchString: string
 ): () => Promise<IMerchPreview[]> {
   return () => {
-    return axios.get(
-      `http://localhost:8001/search/page=${page}&string=${searchString}`
-    );
+    // return axios.get(
+    //   `http://localhost:8001/search/page=${page}&string=${searchString}`
+    // );
+    return new Promise((resolve) => resolve([]));
   };
 }
 
