@@ -18,7 +18,7 @@ export default function CheckOut() {
   return (
     <div className="checkout-container">
       {/* <div className="title">
-        <h2>Product Order Form</h2>
+        <h2>Product Order Form</h2>a
       </div> */}
       <div className="d-flex">
         <form action="" method="">
