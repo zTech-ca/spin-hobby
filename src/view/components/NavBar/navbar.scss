@@ -201,7 +201,6 @@
     border-top-right-radius: $navbar-search-border-radius;
     border-bottom-right-radius: $navbar-search-border-radius;
   }
-<<<<<<< HEAD
   div .dropdown {
     ul {
       position: absolute;
@@ -248,19 +247,4 @@
   
 
   
-=======
-
-  li{
-    background-color: gray;
-    color: white;
-    list-style: none;
-
-    &:hover{
-      background-color: black;
-    }
-    &:active{
-      background-color: red;
-    }
-  }
->>>>>>> fd9c4696405b7ef262ddfc64f66bf2484e7473ef
 }
