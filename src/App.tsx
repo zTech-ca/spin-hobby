@@ -13,6 +13,7 @@ import { EModal } from "ts";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./view/components/NavBar";
+import NavBarV2 from "./view/components/NavBarV2";
 import Footer from "./view/components/Footer";
 // import Modal from "./view/components/Modal";
 import Home from "./view/pages/Home";
@@ -90,7 +91,7 @@ function App() {
     >
       <BrowserRouter>
         <div className="app">
-          <NavBar />
+          <NavBarV2 />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
