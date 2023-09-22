@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 
-const tabs = ["All items", "Populoar now", "Offered by fans"];
+const tabs = ["All items", "Popular now", "Offered by fans"];
 
 export function TabDisplay() {
   const [activeTab, setActiveTab] = useState<number>(0);
