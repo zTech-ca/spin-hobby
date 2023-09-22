@@ -1,7 +1,8 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { FcSearch } from "react-icons/fc";
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
-import { forEachChild } from "typescript";
+import { useDispatch } from "react-redux";
+import { getSearch } from "../../../reducers";
 
 interface Props {
   onNav?: boolean;
@@ -20,6 +21,8 @@ export default function Search({ onNav = true }: Props) {
   const [openCategoryList, setOpenCategoryList] = useState<boolean>(false);
   const [category, setCategory] = useState<Category>(Category.Volvo);
 
+  const dispatch = useDispatch();
+
   function handleSearchInput(e: ChangeEvent<HTMLInputElement>) {
     setSearch(e.target.value);
   }
@@ -34,7 +37,7 @@ export default function Search({ onNav = true }: Props) {
   
   function onSubmitHandler(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // Add search handlings here
+    dispatch(getSearch({ page: 1, searchString: search }));
   }
 
   return (
@@ -66,26 +69,28 @@ export default function Search({ onNav = true }: Props) {
   );
 }
 
-interface DropdownProps{
+function Dropdown({
+  category: category,
+  setCategory: setCategory,
+  handleOnSelectCategory: handleOnSelectCategory,
+}: {
   category: Category;
   setCategory: React.Dispatch<React.SetStateAction<Category>>;
-  handleOnSelectCategory: React.Dispatch<React.SetStateAction<Category>>;
-}
-
-function Dropdown({
-  category,
-  setCategory,
-  handleOnSelectCategory,
-}: DropdownProps) {
+  handleOnSelectCategory;
+}) {
   return (
-      <div className="dropdown">
-        <ul className="categories" id="categories" >
-          {Object.values(Category).map((category, i) => (
-            <li key={i} value={category} onClick={()=>handleOnSelectCategory(category)}>
-              {category}
-            </li>
-          ))}
-          </ul>      
-      </div>
+    <div className="dropdown">
+      <ul className="categories" id="categories">
+        {Object.values(Category).map((category, i) => (
+          <li
+            key={i}
+            value={category}
+            onClick={handleOnSelectCategory(category)}
+          >
+            {category}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

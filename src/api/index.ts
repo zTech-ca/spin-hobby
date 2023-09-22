@@ -6,7 +6,7 @@ import { IHomeData } from "../view/pages/Home";
 const serverUrl =
   process.env.NODE_ENV === "production"
     ? "https://spinhobby.herokuapp.com/"
-    : "http://localhost:8080/";
+    : "http://localhost:8001/";
 
 export function loadInitialData() {}
 
@@ -25,10 +25,13 @@ export function getHomeData(): Promise<IHomeData> {
   return new Promise((resolve) => resolve(homeData));
 }
 
-export function getSearchResult(page: number, searchString: string): () => Promise<IMerchPreview[]> {
-  return () => {
-    return axios.get(`http://localhost:8001/search/page=${page}&string=${searchString}`);
-  }
+export function getSearchResult(
+  page: number,
+  searchString: string
+): Promise<IMerchPreview[]> {
+  return axios
+    .get(`http://localhost:8001/search?page=${page}&keywords=${searchString}`)
+    .then((res) => res.data as IMerchPreview[]);
 }
 
 export function requestLogin(login: ILogin) {
