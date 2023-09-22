@@ -16,27 +16,27 @@ export default function CheckOut() {
   // }, []);
 
   return (
-    <div className="container">
+    <div className="checkout-container">
       {/* <div className="title">
-        <h2>Product Order Form</h2>
+        <h2>Product Order Forms</h2>
       </div> */}
       <div className="d-flex">
         <form action="" method="">
           <label>
             <span className="fname">
-              First Name <span className="required">*</span>
+              First Name<span className="required">*</span>
             </span>
             <input type="text" name="fname" />
           </label>
           <label>
             <span className="lname">
-              Last Name <span className="required">*</span>
+              Last Name<span className="required">*</span>
             </span>
             <input type="text" name="lname" />
           </label>
           <label>
             <span>
-              Country <span className="required">*</span>
+              Home Country<span className="required">*</span>
             </span>
             <select name="selection">
               <option value="select">Select a country...</option>
@@ -380,7 +380,7 @@ export default function CheckOut() {
           </table>
           <br />
           <div className="paypal-buttons-container">
-            <Paypal currency={"CAD"} showSpinner={true} />
+            {/* <Paypal currency={"CAD"} showSpinner={true} /> */}
           </div>
         </div>
       </div>

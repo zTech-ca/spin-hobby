@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import "./sass/main.scss";
 import "react-phone-number-input/style.css";
 import Modal from "view/components/Modal";
@@ -11,7 +11,7 @@ import { EModal } from "ts";
 //import Modal from "./view/components/Modal";
 //import Home from "./view/pages/Home";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import NavBar from "./view/components/NavBar";
 import NavBarV2 from "./view/components/NavBarV2";
 import Footer from "./view/components/Footer";
@@ -22,11 +22,13 @@ import CheckOut from "./view/pages/CheckOut";
 import Search from "./view/pages/Search";
 import Product from "view/pages/Product";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import Login from "view/pages/Login";
+import { useBetaSelector } from "selectors";
 
 let loaded = false;
 
 function App() {
-  const ref = useRef<HTMLIFrameElement>(null);
+  const beta = useBetaSelector();
 
   const dispatch = useDispatch();
 
@@ -91,22 +93,56 @@ function App() {
     >
       <BrowserRouter>
         <div className="app">
-          <NavBarV2 />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<CheckOut />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/product" element={<Product />} />
-          </Routes>
+          {beta ? (
+            <>
+              <NavBarV2 />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/checkout" element={<CheckOut />} />
+                <Route path="/search" element={<Search />} />
+                <Route path="/product" element={<Product />} />
+              </Routes>
+              <Footer />
+            </>
+          ) : (
+            <Routes>
+              <Route path="/" element={<SquareWeb />} />
+              {["login", "cart", "checkout", "search", "product"].map(
+                (path, i) => (
+                  <Route key={i} path={path} element={<Login />} />
+                )
+              )}
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          )}
           <Modal />
           {/* <div className="main">
           <Home />
         </div> */}
-          <Footer />
         </div>
       </BrowserRouter>
     </PayPalScriptProvider>
+  );
+}
+
+function SquareWeb() {
+  return (
+    <>
+      <Modal />
+      <iframe
+        src="https://spinhobby.square.site/"
+        title="square"
+        style={{
+          width: "100%",
+          height: "100%",
+          border: 0,
+          display: "block",
+          position: "absolute",
+        }}
+      />
+    </>
   );
 }
 

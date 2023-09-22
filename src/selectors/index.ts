@@ -20,3 +20,7 @@ export function useUserSelector() {
 export function useSearchSelector() {
   return useSelector((state: IRootState) => state.search.searchResult);
 }
+
+export function useBetaSelector() {
+  return useSelector((state: IRootState) => state.user.beta);
+}
