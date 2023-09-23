@@ -13,6 +13,7 @@ import { EModal } from "ts";
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import NavBar from "./view/components/NavBar";
+import NavBarV2 from "./view/components/NavBarV2";
 import Footer from "./view/components/Footer";
 // import Modal from "./view/components/Modal";
 import Home from "./view/pages/Home";
@@ -94,7 +95,7 @@ function App() {
         <div className="app">
           {beta ? (
             <>
-              <NavBar />
+              <NavBarV2 />
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
@@ -116,7 +117,6 @@ function App() {
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           )}
-
           <Modal />
           {/* <div className="main">
           <Home />
