@@ -5,7 +5,6 @@
   "dependencies": {
     "@paypal/react-paypal-js": "^7.8.2",
     "@reduxjs/toolkit": "^1.4.0",
-    "@types/bcryptjs": "^2.4.4",
     "@types/classnames": "^2.3.1",
     "@types/js-cookie": "^3.0.4",
     "@types/node": "^17.0.33",
@@ -14,7 +13,6 @@
     "@types/react-redux": "^7.1.9",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^0.27.2",
-    "bcryptjs": "^2.4.3",
     "classnames": "^2.3.1",
     "js-cookie": "^3.0.5",
     "react": "^18.1.0",

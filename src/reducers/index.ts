@@ -10,6 +10,7 @@ import userReducer, {
   IUserState,
   login,
   setUser,
+  requestLoginBeta,
   loginBeta,
   logoutBeta,
 } from "./userReducer";
@@ -53,6 +54,7 @@ export {
   setConversionCurrency,
   login,
   setUser,
+  requestLoginBeta,
   loginBeta,
   logoutBeta,
   getCart,

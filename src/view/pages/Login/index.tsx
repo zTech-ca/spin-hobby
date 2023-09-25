@@ -1,7 +1,7 @@
 import React, { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { loginBeta, logoutBeta } from "reducers";
+import { logoutBeta, requestLoginBeta } from "reducers";
 import { useBetaSelector } from "selectors";
 import { ILogin } from "ts";
 
@@ -39,7 +39,7 @@ export default function Login() {
         <form
           onSubmit={(e: FormEvent<HTMLFormElement>) => {
             e.preventDefault();
-            dispatch(loginBeta(inputs));
+            dispatch(requestLoginBeta(inputs));
           }}
           style={{ display: "flex", flexDirection: "column", maxWidth: 500 }}
         >

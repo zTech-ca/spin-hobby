@@ -66,6 +66,15 @@ export function updateCart(payload: {
   };
 }
 
+export async function authenticateBetaUser({ username, password }: ILogin) {
+  return axios
+    .post("https://us-central1-spin-hobby.cloudfunctions.net/api/loginBeta", {
+      username,
+      password,
+    })
+    .then(({ data }) => data);
+}
+
 // export function addToCart(product_id: number) {
 //   return axios.post(`http://localhost:8001/cart/add/${product_id}`);
 // }
