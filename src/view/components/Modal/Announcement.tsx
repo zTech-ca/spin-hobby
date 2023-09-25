@@ -1,30 +1,30 @@
 import React from "react";
-import Dropdown from "../Dropdown";
-import { availableCurrencyConversions } from "../../../ts/constants/currencies";
-import {
-  ECurrencies,
-  ECurrencySymbols,
-  ECurrencyCodes,
-  ECurrencyTexts,
-} from "../../../ts";
-import { useCurrencySelector } from "../../../selectors";
-import { setConversionCurrency } from "../../../reducers";
-import { useDispatch } from "react-redux";
+// import Dropdown from "../Dropdown";
+// import { availableCurrencyConversions } from "../../../ts/constants/currencies";
+// import {
+//   ECurrencies,
+//   ECurrencySymbols,
+//   ECurrencyCodes,
+//   ECurrencyTexts,
+// } from "../../../ts";
+// import { useCurrencySelector } from "../../../selectors";
+// import { setConversionCurrency } from "../../../reducers";
+// import { useDispatch } from "react-redux";
 
-const currencySelections = availableCurrencyConversions.map((currency) => {
-  return {
-    key: currency,
-    text: `${ECurrencyCodes[currency]}${ECurrencySymbols[currency]} ${ECurrencyTexts[currency]}`,
-  };
-});
+// const currencySelections = availableCurrencyConversions.map((currency) => {
+//   return {
+//     key: currency,
+//     text: `${ECurrencyCodes[currency]}${ECurrencySymbols[currency]} ${ECurrencyTexts[currency]}`,
+//   };
+// });
 
 export default function Announcement() {
-  const dispatch = useDispatch();
-  const currency = useCurrencySelector();
+  // const dispatch = useDispatch();
+  // const currency = useCurrencySelector();
 
-  function onSelectCurrency(key: ECurrencies) {
-    dispatch(setConversionCurrency(key));
-  }
+  // function onSelectCurrency(key: ECurrencies) {
+  //   dispatch(setConversionCurrency(key));
+  // }
 
   return (
     <div className="modal-announcement">

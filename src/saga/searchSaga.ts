@@ -1,5 +1,5 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { takeLatest, all, call, put } from "redux-saga/effects";
+import { takeLatest, all, put } from "redux-saga/effects";
 import { IMerchPreview } from "../ts";
 import { getSearch, setSearchResult, setSearchError } from "../reducers";
 import { getSearchResult } from "../api";

@@ -77,9 +77,9 @@ export default function Search({ onNav = true }: Props) {
 }
 
 function Dropdown({
-  category: category,
-  setCategory: setCategory,
-  handleOnSelectCategory: handleOnSelectCategory,
+  category,
+  setCategory,
+  handleOnSelectCategory,
 }: {
   category: Category;
   setCategory: React.Dispatch<React.SetStateAction<Category>>;

@@ -4,7 +4,7 @@ import { useCartSelector } from "../../../selectors";
 // import { getCart, modifyCart } from "../../../reducers";
 // import { Operation } from "../../../reducers/cartReducer";
 import calculateSubTotal from "utils/calculateSubTotal";
-import Paypal from "../../components/Paypal";
+// import Paypal from "../../components/Paypal";
 
 export default function CheckOut() {
   // const dispatch = useDispatch();
