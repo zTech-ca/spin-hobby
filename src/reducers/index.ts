@@ -13,6 +13,8 @@ import userReducer, {
   requestLoginBeta,
   loginBeta,
   logoutBeta,
+  queueLogin,
+  clearQueueLogin,
 } from "./userReducer";
 import cartReducer, {
   ICartState,
@@ -55,6 +57,8 @@ export {
   login,
   setUser,
   requestLoginBeta,
+  queueLogin,
+  clearQueueLogin,
   loginBeta,
   logoutBeta,
   getCart,

@@ -2,7 +2,7 @@ import React, { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { logoutBeta, requestLoginBeta } from "reducers";
-import { useBetaSelector } from "selectors";
+import { useAwaitLoginSelector, useBetaSelector } from "selectors";
 import { ILogin } from "ts";
 
 const USERNAME = "username";
@@ -11,11 +11,13 @@ const PASSWORD = "password";
 export default function Login() {
   const dispatch = useDispatch();
   const beta = useBetaSelector();
+  const loggingIn = useAwaitLoginSelector();
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [inputs, setInputs] = useState<ILogin>({
     username: "",
     password: "",
   });
+  const [hasAttempted, setHasAttempted] = useState<boolean>(false);
   if (beta)
     return (
       <>
@@ -36,10 +38,18 @@ export default function Login() {
     return (
       <>
         <h4>Login as beta user</h4>
+        {loggingIn ? (
+          <p style={{ color: "red" }}>Logging in...</p>
+        ) : (
+          hasAttempted && (
+            <p style={{ color: "red" }}>Incorrect username and/or password</p>
+          )
+        )}
         <form
           onSubmit={(e: FormEvent<HTMLFormElement>) => {
             e.preventDefault();
             dispatch(requestLoginBeta(inputs));
+            setHasAttempted(true);
           }}
           style={{ display: "flex", flexDirection: "column", maxWidth: 500 }}
         >

@@ -4,10 +4,12 @@ import Cookies from "js-cookie";
 
 export interface IUserState {
   beta: boolean;
+  awaitingLoginRes: boolean;
 }
 
 const initialState: IUserState = {
   beta: process.env.NODE_ENV !== "production" || !!Cookies.get("beta"),
+  awaitingLoginRes: false,
 };
 
 const userSlice = createSlice({
@@ -20,17 +22,28 @@ const userSlice = createSlice({
     },
     loginBeta: (state) => {
       state.beta = true;
-      Cookies.set("beta", "authenticated", { expires: 0.5 });
     },
     logoutBeta: (state) => {
       state.beta = false;
-      if (Cookies.get("beta")) Cookies.remove("beta");
+    },
+    queueLogin: (state) => {
+      state.awaitingLoginRes = true;
+    },
+    clearQueueLogin: (state) => {
+      state.awaitingLoginRes = false;
     },
   },
 });
 
 export const requestLoginBeta = createAction<ILogin>("user/requestLoginBeta");
 
-export const { login, setUser, loginBeta, logoutBeta } = userSlice.actions;
+export const {
+  login,
+  setUser,
+  loginBeta,
+  logoutBeta,
+  queueLogin,
+  clearQueueLogin,
+} = userSlice.actions;
 
 export default userSlice.reducer;

@@ -24,3 +24,7 @@ export function useSearchSelector() {
 export function useBetaSelector() {
   return useSelector((state: IRootState) => state.user.beta);
 }
+
+export function useAwaitLoginSelector() {
+  return useSelector((state: IRootState) => state.user.awaitingLoginRes);
+}
