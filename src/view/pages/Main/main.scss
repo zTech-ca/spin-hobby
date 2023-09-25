@@ -1,0 +1,27 @@
+#main-page {
+  border: 5px red solid;
+
+  #home-page-header {
+    #home-page-header-title {
+      border: 5px purple solid;
+      height: 52px;
+    }
+
+    #home-page-header-image {
+      border: 5px black solid;
+      height: 348px;
+      overflow: hidden;
+
+      img {
+        // object-fit: contain;
+      }
+    }
+  }
+
+  .main-page-segment {
+    .main-page-card-container {
+      border: 5px blue solid;
+      height: 602px;
+    }
+  }
+}
