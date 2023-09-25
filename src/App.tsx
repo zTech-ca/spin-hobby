@@ -24,6 +24,7 @@ import Product from "view/pages/Product";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import Login from "view/pages/Login";
 import { useBetaSelector } from "selectors";
+import { Main } from "view/pages/Main";
 
 let loaded = false;
 
@@ -97,7 +98,7 @@ function App() {
             <>
               <NavBarV2 />
               <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Main />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/checkout" element={<CheckOut />} />
