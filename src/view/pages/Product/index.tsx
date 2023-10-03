@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { getProductData } from "../../../api";
-import ImageSlider from "./ImageSlider/ImageSlider";
 import ProductCard from "./ProductCard/ProductCard";
 
 export interface IProductData {}
