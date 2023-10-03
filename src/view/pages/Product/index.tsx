@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getProductData } from "../../../api";
 import ImageSlider from "./ImageSlider/ImageSlider";
+import ProductCard from "./ProductCard/ProductCard";
 
 export interface IProductData {}
 
@@ -71,10 +72,17 @@ export default function Product() {
   return (
     <>
       <main className="product-page">
-        <div className="hold">
+        <div className="product-cards">
+          <li className="product-cards-list">
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+          </li>
+        </div>
+        {/* <div className="hold">
           <ImageSlider />
           <MainRight />
-        </div>
+        </div> */}
       </main>
     </>
   );
