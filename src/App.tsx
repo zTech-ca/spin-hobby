@@ -17,7 +17,7 @@ import NavBarV2 from "./view/components/NavBarV2";
 import Footer from "./view/components/Footer";
 // import Modal from "./view/components/Modal";
 import Home from "./view/pages/Home";
-import Cart from "./view/pages/Cart";
+import CartV2 from "./view/pages/CartV2";
 import CheckOut from "./view/pages/CheckOut";
 import Search from "./view/pages/Search";
 import Product from "view/pages/Product";
@@ -99,7 +99,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/cart" element={<Cart />} />
+                <Route path="/cart" element={<CartV2 />} />
                 <Route path="/checkout" element={<CheckOut />} />
                 <Route path="/search" element={<Search />} />
                 <Route path="/product" element={<Product />} />
