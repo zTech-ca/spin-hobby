@@ -16,7 +16,7 @@
   .d-flex {
     display: flex;
     flex-direction: row;
-    background: #f6f6f6;
+    //background: #f6f6f6;
     border-radius: 0 0 5px 5px;
     padding: 25px;
   }
@@ -25,6 +25,7 @@
   }
   .Yorder {
     flex: 2;
+	display: none;
   }
   .title {
     background: -webkit-gradient(
@@ -55,27 +56,50 @@
     margin: 15px;
   }
   label > span {
-    float: left;
+    /*float: left;
     width: 25%;
     margin-top: 12px;
-    padding-right: 10px;
+    padding-right: 10px;*/
+	
+	margin-bottom: -30px;
+    z-index: 1;
+    position: relative;
+    padding: 0px 10px 0 20px;
+    pointer-events: none;
+    font-size: 80%;
+    font-weight: 400;
+	display: block;
   }
   input[type="text"],
   input[type="tel"],
   input[type="email"],
   select {
-    width: 70%;
+    /*width: 70%;
     height: 30px;
     padding: 5px 10px;
     margin-bottom: 10px;
     border: 1px solid #dadada;
-    color: #888;
+    color: #888;*/
+	
+	border: 0;
+    border-radius: 6px;
+    padding: 35px 20px 15px;
+    margin: 0 0 20px;
+    width: 100%;
+    box-shadow: inset 0 0 0 1px #ccc;
   }
   select {
-    width: 72%;
+    /*width: 72%;
     height: 45px;
     padding: 5px 10px;
-    margin-bottom: 10px;
+    margin-bottom: 10px;*/
+	
+	border: 0;
+    border-radius: 6px;
+    padding: 35px 20px 15px;
+    margin: 0 0 20px;
+    width: 100%;
+    box-shadow: inset 0 0 0 1px #ccc;
   }
   .Yorder {
     margin-top: 15px;
@@ -133,9 +157,76 @@
   .paypal-buttons-container {
     z-index: 1000;
   }
+  
+  .mark-address {
+	display: inline-block;
+    padding: 0;
+  }
+  
+  .checkout-header:before, checkout-header:after {
+	content: "";
+	display: table;
+  }
+	
+  .checkout-header {
+		border-bottom: 1px solid;
+		margin-bottom: 30px;
+		
+		h2 {
+		}
+		
+		label {
+			margin: 0;
+			padding-left: 15px;
+		}
+		
+		span {
+		}
+		
+		.required-notice {
+			padding-left: 15px;
+		}
+  }
 }
 @media (min-width: 1200px) {
   .checkout-container {
     max-width: 1140px;
   }
+	
+  
+  .checkout-header {
+		position: relative;
+		padding-bottom: 10px;
+		margin-bottom: 45px;
+		
+		h2 {
+			display: inline-block;
+		}
+		
+		label {
+			display: inline-block;
+			margin: 0;
+			margin-left: 50px;
+		}
+		
+		span {
+		}
+		
+		.required-notice {
+			position: absolute;
+			right: 0;
+			bottom: 10px;
+		}
+  }
+	
+	
+	.form-group {
+		display: flex;
+    justify-content: space-between;
+		
+		label {
+			width: 48%;
+			margin-bottom: 0px;
+		}
+	}
 }
