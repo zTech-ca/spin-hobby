@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-// import { useDispatch } from "react-redux";
 import { useCartSelector } from "../../../selectors";
-// import { getCart, modifyCart } from "../../../reducers";
-// import { Operation } from "../../../reducers/cartReducer";
 import calculateSubTotal from "utils/calculateSubTotal";
-// import Paypal from "../../components/Paypal";
 
 interface CountryCode {
   code: string;
@@ -347,6 +343,12 @@ export default function CheckOut() {
         return { ...old, city: value };
       case "state":
         return { ...old, province: value };
+      case "country":
+        return { ...old, country: value };
+      case "postal":
+        return { ...old, postalCode: value };
+      case "phone":
+        return { ...old, phone: value };
       default:
         return old;
     }
@@ -378,7 +380,15 @@ export default function CheckOut() {
               <span>
                 Email Address <span className="required">*</span>
               </span>
-              <input className="billing-email" type="email" name="email" />
+              <input
+                className="billing-email"
+                value={billingInputs.email}
+                onChange={(e) =>
+                  setBillingInputs((old) => ({ ...old, email: e.target.value }))
+                }
+                type="email"
+                name="email"
+              />
             </label>
           </div>
 
@@ -416,9 +426,9 @@ export default function CheckOut() {
                 <th colSpan={2}>Your order</th>
               </tr>
 
-              {cart.cartItems.map((cartItem) => {
+              {cart.cartItems.map((cartItem, i) => {
                 return (
-                  <tr>
+                  <tr key={i}>
                     <td>
                       {" "}
                       {cartItem.name} x {cart.quantity[cartItem.id]}(Qty)
@@ -451,8 +461,11 @@ export default function CheckOut() {
 function Form({ type, data, onChange }: FormProps) {
   const cssStr = type === FormType.Shipping ? "shipping" : "billing";
 
-  const onInput = (e: React.ChangeEvent<HTMLInputElement>) =>
-    onChange(e.target.name, e.target.value);
+  const onInput = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+  ) => onChange(e.target.name, e.target.value);
 
   return (
     <>
@@ -537,16 +550,29 @@ function Form({ type, data, onChange }: FormProps) {
           <span>
             Postal Code / ZIP <span className="required">*</span>
           </span>
-          <input className={`${cssStr}-postal`} type="text" name="postal" />
+          <input
+            className={`${cssStr}-postal`}
+            value={data.postalCode}
+            onChange={onInput}
+            type="text"
+            name="postal"
+          />
         </label>
         <label>
           <span>
             Country<span className="required">*</span>
           </span>
-          <select className={`${cssStr}-country`} name="selection">
-            <option value="select">Select a country...</option>
-            {countryCodes.map((data) => (
-              <option value={data.code}>{data.country}</option>
+          <select
+            value={data.country}
+            className={`${cssStr}-country`}
+            onChange={onInput}
+            name="country"
+          >
+            <option value="">Select a country...</option>
+            {countryCodes.map((data, i) => (
+              <option key={i} value={data.country}>
+                {data.country}
+              </option>
             ))}
           </select>
         </label>
@@ -555,7 +581,13 @@ function Form({ type, data, onChange }: FormProps) {
         <span>
           Phone Number<span className="required">*</span>
         </span>
-        <input className={`${cssStr}-phone`} type="tel" name="phone" />
+        <input
+          className={`${cssStr}-phone`}
+          value={data.phone}
+          onChange={onInput}
+          type="tel"
+          name="phone"
+        />
       </label>
     </>
   );
