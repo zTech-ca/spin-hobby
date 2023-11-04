@@ -24,6 +24,7 @@ import Product from "view/pages/Product";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import Login from "view/pages/Login";
 import { useBetaSelector } from "selectors";
+import { Account } from "view/pages/Account";
 
 let loaded = false;
 
@@ -103,6 +104,7 @@ function App() {
                 <Route path="/checkout" element={<CheckOut />} />
                 <Route path="/search" element={<Search />} />
                 <Route path="/product" element={<Product />} />
+                <Route path="/account" element={<Account />} />
               </Routes>
               <Footer />
             </>
