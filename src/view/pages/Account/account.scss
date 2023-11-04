@@ -39,6 +39,8 @@
 
       #account-menu {
         width: 31%;
+        -webkit-user-select: none;
+        user-select: none;
 
         #account-menu-index {
           width: 371px;
