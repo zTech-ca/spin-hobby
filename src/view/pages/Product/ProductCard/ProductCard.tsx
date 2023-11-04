@@ -64,7 +64,7 @@ export function Previewer({ imageSource }: { imageSource: string[] }) {
                     <p>Description</p>
                 </div>
             </div>
-            <div className="quick-view-text" onMouseEnter={openQuickView}>Quick View</div>
+            <button className="quick-view-text" onClick={openQuickView}>Quick View</button>
             {isQuickViewVisible && <QuickView onClose={closeQuickView}/>}
         </div>
     );
