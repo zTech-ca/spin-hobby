@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./sass/main.scss";
 import "react-phone-number-input/style.css";
-import Modal from "view/components/Modal";
+import Modal from "view/modal";
 import { useDispatch } from "react-redux";
 // import { openModal } from "reducers";
 // import { EModal } from "ts";

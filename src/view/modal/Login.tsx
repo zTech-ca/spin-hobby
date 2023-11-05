@@ -1,8 +1,8 @@
 import React, { FormEvent, useState, ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
-import { Submit } from "../Buttons";
-import { EModal } from "../../../ts";
-import { login, openModal } from "../../../reducers";
+import { Submit } from "../components/Buttons";
+import { EModal } from "../../ts";
+import { login, openModal } from "../../reducers";
 
 const USERNAME = "username";
 const PASSWORD = "password";

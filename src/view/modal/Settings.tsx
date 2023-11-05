@@ -1,14 +1,14 @@
 import React from "react";
-import Dropdown from "../Dropdown";
-import { availableCurrencyConversions } from "../../../ts/constants/currencies";
+import Dropdown from "../components/Dropdown";
+import { availableCurrencyConversions } from "../../ts/constants/currencies";
 import {
   ECurrencies,
   ECurrencySymbols,
   ECurrencyCodes,
   ECurrencyTexts,
-} from "../../../ts";
-import { useCurrencySelector } from "../../../selectors";
-import { setConversionCurrency } from "../../../reducers";
+} from "../../ts";
+import { useCurrencySelector } from "../../selectors";
+import { setConversionCurrency } from "../../reducers";
 import { useDispatch } from "react-redux";
 
 const currencySelections = availableCurrencyConversions.map((currency) => {

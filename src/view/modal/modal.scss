@@ -8,6 +8,7 @@
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.6);
+  -webkit-user-select: none;
   user-select: none;
 
   @media (max-height: 670px) {
@@ -102,7 +103,6 @@
             outline-width: 0px;
             box-sizing: border-box;
           }
-
         }
 
         .modal-login-submit {
