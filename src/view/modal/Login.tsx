@@ -1,84 +1,34 @@
-import React, { FormEvent, useState, ChangeEvent } from "react";
-import { useDispatch } from "react-redux";
-import { Submit } from "../components/Buttons";
-import { EModal } from "../../ts";
-import { login, openModal } from "../../reducers";
-
-const USERNAME = "username";
-const PASSWORD = "password";
-
-interface ILoginInputs {
-  username: string;
-  password: string;
-}
+import React from "react";
+import { StandardOptionalIcon } from "../components/Buttons";
+import { BiEnvelope } from "react-icons/bi";
+import { Separator } from "view/components/Separator";
 
 export default function Login() {
-  const dispatch = useDispatch();
-  const [inputs, setInputs] = useState<ILoginInputs>({
-    username: "",
-    password: "",
-  });
-
-  function onInputChange(e: ChangeEvent<HTMLInputElement>) {
-    switch (e.target.name) {
-      case USERNAME:
-        setInputs({ ...inputs, username: e.target.value });
-        return;
-      case PASSWORD:
-        setInputs({ ...inputs, password: e.target.value });
-        return;
-      default:
-        return;
-    }
-  }
-
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    // Add the submit handlers here
-    dispatch(login(inputs));
-  }
-
-  function handleSignUp() {
-    dispatch(openModal(EModal.SIGNUP));
-  }
-
-  function handleForgotPassword() {
-    dispatch(openModal(EModal.FORGOT_PASSWORD));
-  }
-
   return (
     <div className="modal-login">
-      <h2>Login</h2>
-      <form onSubmit={onSubmit}>
-        <div className="modal-login-input-section">
-          <label>Username</label>
-          <input
-            name={USERNAME}
-            type="text"
-            value={inputs.username}
-            onChange={onInputChange}
-          />
+      <div id="modal-login-header">Welcome Back</div>
+      <form id="modal-login-form">
+        <div className="modal-input-field">
+          <label>E-mail address</label>
+          <input title="email" name="email" type="email" />
         </div>
-        <div className="modal-login-input-section">
+        <div className="modal-input-field">
           <label>Password</label>
-          <input
-            name={PASSWORD}
-            type="password"
-            value={inputs.password}
-            onChange={onInputChange}
-          />
+          <input title="password" name="password" type="password" />
         </div>
-        <Submit className="modal-login-submit" text="Login" />
+        <StandardOptionalIcon
+          classNames="modal-login-button-general"
+          icon={BiEnvelope}
+          text="Log in"
+        />
       </form>
-      <button
-        className="modal-login-forgot-your-password"
-        onClick={handleForgotPassword}
-      >
-        Forgot your password?
-      </button>
-      <button className="modal-login-sign-up" onClick={handleSignUp}>
-        Sign Up
-      </button>
+      <div id="modal-login-forget-password">Forget Password?</div>
+      <Separator classNames="modal-login-separator-1" text="OR" />
+      <Separator
+        classNames="modal-login-separator-1"
+        text="Don't have an account ?"
+      />
+      <StandardOptionalIcon text="Register" />
     </div>
   );
 }
