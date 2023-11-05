@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useModalSelector } from "../../../selectors";
-import { EModal } from "../../../ts";
-import { hideModal } from "../../../reducers";
+import { useModalSelector } from "../../selectors";
+import { EModal } from "../../ts";
+import { hideModal } from "../../reducers";
 import Login from "./Login";
 import SignUp from "./SignUp";
 import ForgotPassword from "./ForgotPassword";
