@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu } from "./menu";
+import { Menu } from "./Menu";
 import { Summary } from "./Summary";
 import { History } from "./History";
 import { Address } from "./Address";
