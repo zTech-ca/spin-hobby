@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React, { useEffect, useRef, useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
@@ -7,6 +8,7 @@ interface Props {
   classNames?: string;
   onChange: (newVal: string) => void;
   type?: string;
+  error?: boolean;
 }
 
 interface PasswordEyeProps {
@@ -15,9 +17,14 @@ interface PasswordEyeProps {
 
 export function InnerLabelInput(props: Props) {
   const ref = useRef<HTMLInputElement>(null);
-
   return (
-    <div className={`input-inner-label ${props.classNames || ""}`}>
+    <div
+      className={classNames([
+        "input-inner-label",
+        props.classNames,
+        { "input-inner-label-error": props.error },
+      ])}
+    >
       <label>{props.label}</label>
       <div className="input-inner-label-input-container">
         <input
