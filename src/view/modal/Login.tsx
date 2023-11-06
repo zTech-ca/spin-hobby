@@ -10,13 +10,16 @@ interface LoginInputs {
 }
 
 export default function Login() {
+  const [error, setError] = useState<boolean>(false);
+
   const [inputs, setInputs] = useState<LoginInputs>({
     email: "",
     password: "",
   });
 
   function onSubmit() {
-    console.log("submitted!");
+    console.log("handle submit here");
+    setError(true);
   }
 
   return (
@@ -36,6 +39,7 @@ export default function Login() {
           onChange={(newVal) =>
             setInputs((oldInputs) => ({ ...oldInputs, email: newVal }))
           }
+          error={error}
         />
         <InnerLabelInput
           classNames="modal-input-field"
@@ -45,7 +49,13 @@ export default function Login() {
             setInputs((oldInputs) => ({ ...oldInputs, password: newVal }))
           }
           type="password"
+          error={error}
         />
+        {error && (
+          <div className="modal-login-incorrect-msg">
+            <span>Incorrect email or password</span>
+          </div>
+        )}
         <StandardOptionalIcon
           classNames="modal-login-button-general"
           icon={BiEnvelope}

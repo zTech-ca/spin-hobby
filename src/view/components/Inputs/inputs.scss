@@ -7,6 +7,10 @@
   padding: 7px 12px;
   height: 64px;
 
+  &.input-inner-label-error {
+    border: solid 2px red;
+  }
+
   label {
     height: 18.86px;
     color: #000;

@@ -86,6 +86,19 @@
           margin: 2.6px 0px;
         }
 
+        .modal-login-incorrect-msg {
+          margin-top: 3px;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+
+          span {
+            background-color: #ffb2b2;
+            border: solid 1px #f00;
+            padding: 0 5px 0 5px;
+          }
+        }
+
         .modal-login-button-general {
           margin-top: 2.6px;
         }
