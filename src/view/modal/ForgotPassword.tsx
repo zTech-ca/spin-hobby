@@ -1,5 +1,5 @@
 import React, { FormEvent, useState } from "react";
-import { Submit } from "../Buttons";
+import { Submit } from "../components/Buttons";
 import classNames from "classnames";
 import PhoneInput from "react-phone-number-input";
 

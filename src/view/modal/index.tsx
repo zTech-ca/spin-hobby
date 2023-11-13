@@ -1,14 +1,15 @@
 import React, { useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useModalSelector } from "../../../selectors";
-import { EModal } from "../../../ts";
-import { hideModal } from "../../../reducers";
+import { useModalSelector } from "../../selectors";
+import { EModal } from "../../ts";
+import { hideModal } from "../../reducers";
 import Login from "./Login";
 import SignUp from "./SignUp";
 import ForgotPassword from "./ForgotPassword";
 import Settings from "./Settings";
 import ReactDOM from "react-dom";
 import Announcement from "./Announcement";
+import { GrClose } from "react-icons/gr";
 
 export default function Modal() {
   const mode = useModalSelector();
@@ -22,19 +23,13 @@ function TrueModal({ mode }: { mode: EModal }) {
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClick);
+    function handleClick(e: MouseEvent) {
+      if (!ref.current?.contains(e.target as Node)) dispatch(hideModal());
+    }
     return () => {
       document.removeEventListener("mousedown", handleClick);
     };
-  });
-
-  function handleClick(e: MouseEvent) {
-    if (!ref?.current || ref.current.contains(e.target as Node)) return;
-    exitModal();
-  }
-
-  function exitModal() {
-    dispatch(hideModal());
-  }
+  }, [ref, dispatch]);
 
   function getModalContent() {
     switch (mode) {
@@ -56,14 +51,13 @@ function TrueModal({ mode }: { mode: EModal }) {
 
   return ReactDOM.createPortal(
     <div className="modal-background fade-in">
-      <div
-        className="modal"
-        ref={ref}
-        style={{ top: "550px", maxWidth: "1000px" }}
-      >
-        <button className="modal-close" onClick={exitModal}>
-          &times;
-        </button>
+      <div className="modal" ref={ref}>
+        <div className="modal-close" onClick={() => dispatch(hideModal())}>
+          <span>Close</span>
+          <div className="modal-close-icon">
+            <GrClose size={18} />
+          </div>
+        </div>
         {getModalContent()}
       </div>
     </div>,
