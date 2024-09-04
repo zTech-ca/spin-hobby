@@ -11,58 +11,38 @@
   -webkit-user-select: none;
   user-select: none;
 
-  @media (max-height: 670px) {
-    .modal {
-      top: 65%;
-    }
-  }
-
-  @media (max-height: 450px) {
-    .modal {
-      top: 75%;
-    }
-  }
-
-  @media (max-height: 400px) {
-    .modal {
-      top: 85%;
-    }
-  }
-
-  @media (min-height: 670px) {
-    .modal {
-      top: 50%;
-    }
-  }
-
   .modal {
-    background-color: $theme-color-dark;
-    color: $theme-color-bright;
-    min-height: 100px;
-    min-width: 100px;
+    background-color: white;
+    color: black;
+    min-height: 200px;
+    min-width: 200px;
     position: absolute;
-
-    // top: 50%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
     .modal-close {
       position: absolute;
-      top: 0;
-      width: auto;
-      right: 0;
-      margin: 10px 10px;
-      text-decoration: none;
-      background-color: transparent;
+      top: 43px;
+      right: 20px;
       cursor: pointer;
-      color: inherit;
+      display: flex;
+      flex-direction: row;
+      color: #0f1111;
+      font-family: Arial;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px;
 
-      &:active {
-        outline: none;
+      span {
+        margin-right: 5px;
       }
 
-      &:focus {
-        outline: none;
+      .modal-close-icon {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
     }
 
@@ -81,93 +61,90 @@
     }
 
     .modal-login {
-      width: 300px;
-      padding: 30px 30px;
+      margin: 109px 106px 92px 106px;
+      width: 413px;
+      display: flex;
+      flex-direction: column;
 
-      h2 {
-        margin: 0 -15px;
+      #modal-login-header {
+        color: #000;
+        text-align: center;
+        font-family: Open Sans;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
       }
 
-      form {
-        .modal-login-input-section {
+      #modal-login-form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 40px;
+
+        .modal-input-field {
+          border: solid 1px black;
+          border-radius: 10px;
           display: flex;
           flex-direction: column;
 
+          justify-content: space-between;
+
+          padding: 7px 12px;
+
+          height: 64px;
+
+          margin: 2.6px 0px;
+
           label {
-            margin: 10px 0;
+            height: 18.86px;
+            color: #000;
+            font-family: Inter;
+            font-size: 16.031px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
           }
 
           input {
-            width: 100%;
-            background-color: 100%;
-            outline-width: 0px;
-            box-sizing: border-box;
+            height: 40px;
+            border: hidden;
+            outline: none;
+            font-size: 25px;
           }
         }
 
-        .modal-login-submit {
-          margin-top: 25px;
-          margin-bottom: 15px;
-          width: 100%;
+        .modal-login-button-general {
+          margin-top: 2.6px;
         }
       }
 
-      .modal-login-forgot-your-password {
-        background-color: transparent;
-        color: inherit;
-        outline-width: 0;
-        border: none;
-
-        &:hover {
-          cursor: pointer;
-          text-decoration: underline;
-          color: #cee6fd;
-        }
+      #modal-login-forget-password {
+        // border: solid 5px black;
+        margin-top: 5px;
+        color: #000;
+        text-align: center;
+        font-family: Inter;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        text-decoration-line: underline;
+        cursor: pointer;
       }
+    }
 
-      .modal-login-sign-up {
-        width: 100%;
-        background-color: transparent;
-        color: $theme-color-bright;
-        outline-width: 0;
-        border: $theme-color-bright solid 1px;
-        border-radius: 5px;
-        padding: 5px 0;
-        margin-top: 15px;
-        transition: 0.2s;
+    .modal-login-separator-1 {
+      color: #000;
+      text-align: center;
+      font-family: Inter;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
 
-        &:hover {
-          cursor: pointer;
-          box-shadow: 0 0 5px;
-          transition: 0.2s;
-        }
-      }
-
-      .modal-login-email-phone-option-tab {
-        overflow: hidden;
-        margin: 10px auto;
-        border-radius: 5px;
-        background-color: transparent;
-        border: solid 1px $theme-color-bright;
-        box-shadow: 0 0 10px black;
-
-        button {
-          background-color: transparent;
-          color: $theme-color-bright;
-          border: none;
-          outline: none;
-          cursor: pointer;
-          padding: 8px 10px;
-          font-size: 17px;
-          width: 50%;
-          transition: 0.2s;
-        }
-
-        .modal-login-email-phone-option-active {
-          background-color: $theme-color-dark-brighter;
-          transition: 0.2s;
-        }
-      }
+      margin-top: 30px;
+      margin-bottom: 26px;
     }
   }
 }

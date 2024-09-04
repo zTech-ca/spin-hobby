@@ -23,6 +23,34 @@
   }
 }
 
+.button-standard-optional-icon {
+  position: relative;
+  height: 43px;
+  color: #1e1e1e;
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 40px;
+  border: solid 0.5px black;
+  border-radius: 10px;
+  vertical-align: middle;
+  // margin-top: 2.6px;
+  background-color: #51f5ff;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #44d3db;
+  }
+
+  .button-standard-optional-icon-icon {
+    position: absolute;
+    top: 2px;
+    left: 5px;
+  }
+}
+
 .ripple {
   position: relative;
   overflow: hidden;
