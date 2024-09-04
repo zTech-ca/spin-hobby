@@ -8,6 +8,7 @@ import { getSearch } from "../../../reducers";
 import { FeaturedMerch } from "../../components/Cards";
 // import { IMerchPreview } from "../../../ts";
 import { Ripple } from "../../components/Buttons";
+import { SearchFilter } from "view/components/SearchFilter";
 
 export default function Search() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export default function Search() {
 
   return (
     <>
+      <SearchFilter />
       <div className="search-merchs">
         {searchResult &&
           searchResult.map((result, index) => (
