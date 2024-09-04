@@ -3,8 +3,9 @@
 
 @import "../app.scss";
 
+@import "../view/modal/modal.scss";
+
 @import "../view/components/Buttons/buttons.scss";
-@import "../view/components//Modal/modal.scss";
 // @import "../view/components/NavBar/navbar.scss";
 @import "../view/components/NavBarV2/navbar.scss";
 @import "../view/components/Footer/footer.scss";
@@ -14,6 +15,8 @@
 @import "../view/components/Paypal/paypal.scss";
 @import "../view/components/Slideshows/slideshows.scss";
 @import "../view/components/SearchFilter/searchfilter.scss";
+@import "../view/components/Separator/separator.scss";
+@import "../view/components/Inputs/inputs.scss";
 
 @import "../view/pages/Home/home.scss";
 @import "../view/pages/Product/product.scss";

@@ -1,9 +1,9 @@
 import React, { FormEvent, useState, ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
-import { Submit } from "../Buttons";
+import { Submit } from "../components/Buttons";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
-import { EModal } from "../../../ts";
-import { openModal } from "../../../reducers";
+import { EModal } from "../../ts";
+import { openModal } from "../../reducers";
 
 const USERNAME = "username";
 const EMAIL = "email";
