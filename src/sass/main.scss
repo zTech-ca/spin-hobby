@@ -3,6 +3,8 @@
 
 @import "../app.scss";
 
+@import "../view/layout/layout.scss";
+
 @import "../view/modal/modal.scss";
 
 @import "../view/components/Buttons/buttons.scss";
@@ -23,6 +25,7 @@
 @import "../view/pages/Cart/cart.scss";
 @import "../view/pages/CheckOut/checkOut.scss";
 @import "../view/pages/Account/account.scss";
+@import "../view/pages/Search/search.scss";
 
 .table-cell-center {
   display: table-cell;
