@@ -1,18 +1,28 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 
+enum QuickViewSizes {
+  Standard,
+  Small,
+}
 interface Props {
   series?: string;
   name: string;
   price: number;
   categories: string[];
   images: string[];
+  size?: QuickViewSizes;
 }
 
 export function QuickView(props: Props) {
   const [imageIndex, setImageIndex] = useState<number>(1);
 
+  const cardSize = useMemo(() => {
+    const ratio = props.size === QuickViewSizes.Small ? 0.7 : 1.0;
+    return { width: `${560 * ratio}px`, height: `${737 * ratio}px` };
+  }, [props.size]);
+
   return (
-    <div className="quick-view-card">
+    <div className="quick-view-card" style={cardSize}>
       <div className="quick-view-card-image-container">
         <img src={props.images[imageIndex]} alt={props.images[imageIndex]} />
       </div>
