@@ -47,3 +47,104 @@
     }
   }
 }
+
+.quick-view-card {
+  width: 560px;
+  height: 737px;
+  border: solid 2px black;
+  $image-height: 80%;
+
+  .quick-view-card-image-container {
+    width: 100%;
+    height: $image-height;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 100% 0;
+    }
+  }
+
+  .quick-view-card-info {
+    width: 100%;
+    height: 20%;
+    $quick-view-card-toggle-container-height: 25%;
+
+    .quick-view-card-image-toggle-container {
+      $quick-view-card-image-toggle-button-size: 30px;
+      height: $quick-view-card-toggle-container-height;
+      display: flex;
+      justify-content: center;
+      flex-wrap: nowrap;
+
+      .quick-view-card-image-toggle-button {
+        height: $quick-view-card-image-toggle-button-size;
+        line-height: $quick-view-card-image-toggle-button-size;
+        width: $quick-view-card-image-toggle-button-size;
+        text-align: center;
+        font-size: $quick-view-card-image-toggle-button-size;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .quick-view-card-image-toggle-button-arrow {
+        margin: 0 7px;
+      }
+    }
+
+    .quick-view-card-info-text {
+      height: 100% - $quick-view-card-toggle-container-height;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      $side-text-length: 30%;
+
+      .quick-view-card-info-categories {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding-left: 20px;
+        padding-bottom: 7px;
+        width: $side-text-length;
+
+        p {
+          margin: 0 0;
+        }
+      }
+
+      .quick-view-card-info-main {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        text-align: center;
+      }
+
+      .quick-view-card-info-quick-view {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        position: relative;
+        width: $side-text-length;
+
+        div {
+          position: absolute;
+          width: 0;
+          height: 0;
+          border-left: 150px solid transparent;
+          border-bottom: 80px solid #d9d9d9;
+          right: 0;
+          bottom: 0;
+          z-index: 0;
+        }
+
+        p {
+          z-index: 1;
+          margin-right: 5px;
+          text-align: right;
+          margin-bottom: 7px;
+        }
+      }
+    }
+  }
+}

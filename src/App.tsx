@@ -25,6 +25,7 @@ import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import Login from "view/pages/Login";
 import { useBetaSelector } from "selectors";
 import { Account } from "view/pages/Account";
+import Layout from "view/layout";
 
 let loaded = false;
 
@@ -97,15 +98,17 @@ function App() {
           {beta ? (
             <>
               <NavBarV2 />
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/checkout" element={<CheckOut />} />
-                <Route path="/search" element={<Search />} />
-                <Route path="/product" element={<Product />} />
-                <Route path="/account" element={<Account />} />
-              </Routes>
+              <Layout>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/checkout" element={<CheckOut />} />
+                  <Route path="/search" element={<Search />} />
+                  <Route path="/product" element={<Product />} />
+                  <Route path="/account" element={<Account />} />
+                </Routes>
+              </Layout>
               <Footer />
             </>
           ) : (
