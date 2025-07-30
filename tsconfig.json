@@ -1,26 +1,40 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
     "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": false,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Path mapping */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "view/*": ["./src/view/*"],
+      "ts/*": ["./src/ts/*"],
+      "utils/*": ["./src/utils/*"],
+      "reducers/*": ["./src/reducers/*"],
+      "selectors/*": ["./src/selectors/*"],
+      "saga/*": ["./src/saga/*"],
+      "api/*": ["./src/api/*"],
+      "customHooks/*": ["./src/customHooks/*"],
+      "dummy/*": ["./src/dummy/*"]
+    }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

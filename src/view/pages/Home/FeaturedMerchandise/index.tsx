@@ -1,90 +1,78 @@
 import React from "react";
-import { FeaturedMerch } from "../../../components/Cards";
 import { IMerchPreview } from "../../../../ts";
-import { Ripple } from "../../../components/Buttons";
-import { WavySlideshow } from "./WavySlideshow";
 import classnames from "classnames";
 
 export interface Props {
   merchs: IMerchPreview[];
 }
 
-const FEATURED_MERCHANDISE_CLASS = "cards-featured-merch-measure-class";
-
 export default function FeaturedMerchandise({ merchs }: Props) {
+  if (!merchs || merchs.length === 0) return null;
+
   return (
-    <>
-      <WavySlideshow merchs={merchs} />
-      <FeaturedMerchandiseSimple merchs={merchs} />
-    </>
+    <section className="featured-merchandise">
+      <div className="featured-merchandise-header">
+        <h2>Featured Products</h2>
+        <p>Discover our handpicked selection of popular items</p>
+      </div>
+
+      <FeaturedMerchandiseGrid merchs={merchs} />
+    </section>
   );
 }
 
-export function FeaturedMerchandiseSimple({ merchs }: Props) {
-  function getMerchCards() {
-    if (!merchs.length) return null;
-    const rowTypes = {
-      one: [] as number[],
-      two: [] as number[],
-    };
-    const remainder = merchs.length % 3;
-    const nStandardCards = Math.floor(merchs.length / 3) * 3;
-    if (remainder) {
-      if (!nStandardCards) {
-        if (remainder === 1) rowTypes.one.push(0);
-        else if (remainder === 2)
-          rowTypes.two.push(merchs.length - 2, merchs.length - 1);
-      } else {
-        if (remainder === 2)
-          rowTypes.two.push(merchs.length - 2, merchs.length - 1);
-        else if (remainder === 1) {
-          for (let i = 0; i < 4; rowTypes.two.push(merchs.length - 4 + i++)) {}
-        }
-      }
-    }
-    return merchs.map((merch, index) => {
-      return (
-        <div
-          key={index}
-          className={classnames([
-            "home-featured-merchs-simple-card",
-            {
-              "home-featured-merchs-simple-card-block-2":
-                rowTypes.two.includes(index),
-              "home-featured-merchs-simple-card-block-1":
-                rowTypes.one.includes(index),
-            },
-          ])}
-        >
-          <div className="home-featured-merchs-simple-title">
-            <div className="home-featured-merchs-simple-title-container">
-              <h2>{merch.title} df fdasfads</h2>
-            </div>
-          </div>
-          <div className="home-featured-merchs-simple-card-image-container">
-            <img src={merch.img} alt={merch.img} />
-          </div>
-        </div>
-      );
-    });
-  }
-
-  return <div className="home-featured-merchs-simple">{getMerchCards()}</div>;
+function FeaturedMerchandiseGrid({ merchs }: Props) {
+  return (
+    <div className="featured-merchandise-grid">
+      {merchs.slice(0, 6).map((merch, index) => (
+        <FeaturedMerchCard key={index} merch={merch} index={index} />
+      ))}
+    </div>
+  );
 }
 
-export function FeaturedMerchandiseCards({ merchs }: Props) {
+interface CardProps {
+  merch: IMerchPreview;
+  index: number;
+}
+
+function FeaturedMerchCard({ merch, index }: CardProps) {
+  // Create different card sizes for visual interest
+  const getCardSize = (index: number) => {
+    if (index === 0) return "large";
+    if (index === 1 || index === 2) return "medium";
+    return "small";
+  };
+
+  const cardSize = getCardSize(index);
+
   return (
-    <>
-      <div className="home-featured-merchs">
-        {merchs.map((merch, index) => (
-          <Ripple key={index} classes="home-ripple-featured-card">
-            <FeaturedMerch
-              {...merch}
-              additionalClassNames={FEATURED_MERCHANDISE_CLASS}
-            />
-          </Ripple>
-        ))}
+    <div
+      className={classnames(
+        "featured-merch-card",
+        `featured-merch-card--${cardSize}`
+      )}
+      onClick={() => {
+        // Add navigation to product page
+        console.log("Navigate to product:", merch.title);
+      }}
+    >
+      <div className="featured-merch-card-image">
+        <img src={merch.img} alt={merch.title} />
+        <div className="featured-merch-card-overlay">
+          <button className="featured-merch-card-btn">View Product</button>
+        </div>
       </div>
-    </>
+
+      <div className="featured-merch-card-content">
+        <h3 className="featured-merch-card-title">{merch.title}</h3>
+        {merch.description && (
+          <p className="featured-merch-card-description">{merch.description}</p>
+        )}
+        {merch.price && (
+          <div className="featured-merch-card-price">${merch.price}</div>
+        )}
+      </div>
+    </div>
   );
 }

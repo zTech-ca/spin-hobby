@@ -1,9 +1,9 @@
 import React, { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { logoutBeta, requestLoginBeta } from "reducers";
-import { useAwaitLoginSelector, useBetaSelector } from "selectors";
-import { ILogin } from "ts";
+import { logoutBeta, requestLoginBeta } from "../../../reducers";
+import { useAwaitLoginSelector, useBetaSelector } from "../../../selectors";
+import { ILogin } from "../../../ts";
 
 const USERNAME = "username";
 const PASSWORD = "password";

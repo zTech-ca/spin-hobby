@@ -10,7 +10,7 @@ import {
 } from "../reducers";
 import { authenticateBetaUser, requestLogin } from "../api";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { ILogin } from "ts";
+import { ILogin } from "../ts";
 import Cookies from "js-cookie";
 
 function* loginSaga() {
@@ -26,7 +26,7 @@ function* requestLoginBetaSaga({ payload }: PayloadAction<ILogin>) {
   yield put({ type: queueLogin.type });
   const res: string = yield authenticateBetaUser(payload);
   if (res === "SUCCESS") yield put({ type: loginBeta.type });
-  yield put({ type: clearQueueLogin });
+  yield put({ type: clearQueueLogin.type });
 }
 
 function loginBetaSaga() {

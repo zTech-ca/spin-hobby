@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "./sass/main.scss";
 import "react-phone-number-input/style.css";
 import Modal from "view/modal";
@@ -23,7 +23,7 @@ import Search from "./view/pages/Search";
 import Product from "view/pages/Product";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import Login from "view/pages/Login";
-import { useBetaSelector } from "selectors";
+import { useBetaSelector } from "./selectors";
 import { Account } from "view/pages/Account";
 
 let loaded = false;
@@ -86,7 +86,7 @@ function App() {
   return (
     <PayPalScriptProvider
       options={{
-        "client-id":
+        clientId:
           "ASauZ1kVM0kTP8lL9O0rnSOtm5reVWEI3rLAik4LM0bWOCkTPd_gXZpEzInq5-he6TKmfFotn9JDgGgr",
         components: "buttons",
         currency: "CAD",

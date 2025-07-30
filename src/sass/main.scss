@@ -1,28 +1,28 @@
-@import "./variables.scss";
-@import "./mixins.scss";
+@use "./variables.scss" as *;
+@use "./mixins.scss" as *;
 
-@import "../app.scss";
+@use "../app.scss";
 
-@import "../view/modal/modal.scss";
+@use "../view/modal/modal.scss";
 
-@import "../view/components/Buttons/buttons.scss";
-// @import "../view/components/NavBar/navbar.scss";
-@import "../view/components/NavBarV2/navbar.scss";
-@import "../view/components/Footer/footer.scss";
-@import "../view/components/Cards/cards.scss";
-@import "../view/components/Dropdown/dropdown.scss";
-@import "../view/components/Searches/searches.scss";
-@import "../view/components/Paypal/paypal.scss";
-@import "../view/components/Slideshows/slideshows.scss";
-@import "../view/components/SearchFilter/searchfilter.scss";
-@import "../view/components/Separator/separator.scss";
-@import "../view/components/Inputs/inputs.scss";
+@use "../view/components/Buttons/buttons.scss";
+// @use "../view/components/NavBar/navbar.scss";
+@use "../view/components/NavBarV2/navbar.scss";
+@use "../view/components/Footer/footer.scss";
+@use "../view/components/Cards/cards.scss";
+@use "../view/components/Dropdown/dropdown.scss";
+@use "../view/components/Searches/searches.scss";
+@use "../view/components/Paypal/paypal.scss";
+@use "../view/components/Slideshows/slideshows.scss";
+@use "../view/components/SearchFilter/searchfilter.scss";
+@use "../view/components/Separator/separator.scss";
+@use "../view/components/Inputs/inputs.scss";
 
-@import "../view/pages/Home/home.scss";
-@import "../view/pages/Product/product.scss";
-@import "../view/pages/Cart/cart.scss";
-@import "../view/pages/CheckOut/checkOut.scss";
-@import "../view/pages/Account/account.scss";
+@use "../view/pages/Home/home.scss";
+@use "../view/pages/Product/product.scss";
+@use "../view/pages/Cart/cart.scss";
+@use "../view/pages/CheckOut/checkOut.scss";
+@use "../view/pages/Account/account.scss";
 
 .table-cell-center {
   display: table-cell;

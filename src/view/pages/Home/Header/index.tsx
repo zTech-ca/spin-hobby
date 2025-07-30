@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import classNames from "classnames";
 
-const AUTOCHANGE_TIME = 10000;
-const IMAGE_PARTS = 4;
+const AUTOCHANGE_TIME = 8000;
 
 export interface ISlide {
   headline: string;
@@ -10,125 +9,153 @@ export interface ISlide {
   img: string;
 }
 
-interface ISlideDisplay {
-  activeSlide: number;
-  prevSlide: number;
-}
-
 interface Props {
   slides: ISlide[];
 }
 
 export default function Header({ slides }: Props) {
+  if (!slides || slides.length === 0) return null;
+
   return (
     <>
-      <HeaderSlider slides={slides} />
-      <HeaderSimple slides={slides} />
+      <HeroSection slides={slides} />
+      <MobileHero slides={slides} />
     </>
   );
 }
 
-function HeaderSimple({ slides }: Props) {
+function MobileHero({ slides }: Props) {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    if (slides.length <= 1) return;
+
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, AUTOCHANGE_TIME);
+
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
   return (
-    <div className="home-header-mobile">
+    <div className="hero-mobile">
       {slides.map((slide, index) => (
-        <div key={index} className="home-header-mobile-item">
-          <img src={slide.img} alt={slide.img} />
-          <div className="home-header-mobile-item-label">
-            <h4>{slide.headline}</h4>
-            {slide.subheading && <label>{slide.subheading}</label>}
+        <div
+          key={index}
+          className={classNames("hero-mobile-slide", {
+            active: index === currentSlide,
+          })}
+        >
+          <div className="hero-mobile-image">
+            <img src={slide.img} alt={slide.headline} />
+            <div className="hero-mobile-overlay" />
+          </div>
+          <div className="hero-mobile-content">
+            <h2>{slide.headline}</h2>
+            {slide.subheading && <p>{slide.subheading}</p>}
           </div>
         </div>
       ))}
+
+      {slides.length > 1 && (
+        <div className="hero-mobile-indicators">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              className={classNames("indicator", {
+                active: index === currentSlide,
+              })}
+              onClick={() => setCurrentSlide(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
 
-function HeaderSlider({ slides }: Props) {
-  const [sliderReady, setSliderReady] = useState<boolean>(false);
-  const [slideDisplay, setSlideDisplay] = useState<ISlideDisplay>({
-    activeSlide: 0,
-    prevSlide: -1,
-  });
+function HeroSection({ slides }: Props) {
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
-    setSliderReady(true);
-  }, []);
+    if (slides.length <= 1) return;
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setSlideDisplay(getNextSlideDisplay(1, slideDisplay, slides.length));
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, AUTOCHANGE_TIME);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [slideDisplay, slides]);
 
-  function flipSlide(change: number) {
-    setSlideDisplay(getNextSlideDisplay(change, slideDisplay, slides.length));
-  }
+    return () => clearInterval(timer);
+  }, [slides.length]);
 
-  function getNextSlideDisplay(
-    change: number,
-    slideDisplay: ISlideDisplay,
-    nSlides: number
-  ) {
-    const nextSlide = slideDisplay.activeSlide + change;
-    if (nextSlide >= 0) {
-      return {
-        activeSlide: nextSlide % nSlides,
-        prevSlide: slideDisplay.activeSlide,
-      };
-    } else {
-      const subtraction = Math.abs(nextSlide) % nSlides;
-      return {
-        activeSlide: subtraction ? nSlides - subtraction : 0,
-        prevSlide: slideDisplay.activeSlide,
-      };
-    }
-  }
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
 
   return (
-    <div className={classNames("slider", { "s--ready": sliderReady })}>
-      <p className="slider__top-heading">Welcome, Spin Hobbyist!!</p>
-      <div className="slider__slides">
-        {slides.map((slide: ISlide, index: number) => (
-          <div
-            className={classNames("slider__slide", {
-              "s--active": slideDisplay.activeSlide === index,
-              "s--prev": slideDisplay.prevSlide === index,
-            })}
-            key={slide.headline}
-          >
-            <div className="slider__slide-content">
-              <h3 className="slider__slide-subheading">
-                {slide.subheading || slide.headline}
-              </h3>
-              <h2 className="slider__slide-heading">
-                {slide.headline.split("").map((l: string, i: number) => (
-                  <span key={i}>{l}</span>
-                ))}
-              </h2>
-              <p className="slider__slide-readmore">read more</p>
-            </div>
-            <div className="slider__slide-parts">
-              {[...Array(IMAGE_PARTS).fill(null)].map((x, i) => (
-                <div className="slider__slide-part" key={i}>
-                  <div
-                    className="slider__slide-part-inner"
-                    style={{ backgroundImage: `url(${slide.img})` }}
-                  />
-                </div>
-              ))}
+    <div className="hero-section">
+      <div className="hero-container">
+        <div className="hero-content">
+          <div className="hero-text fade-in">
+            <h1 className="hero-welcome">Welcome to Spin Hobby!</h1>
+            <h2 className="hero-headline">{slides[currentSlide].headline}</h2>
+            {slides[currentSlide].subheading && (
+              <p className="hero-subheading">
+                {slides[currentSlide].subheading}
+              </p>
+            )}
+            <div className="hero-actions">
+              <button className="hero-btn-primary">Shop Now</button>
+              <button className="hero-btn-secondary">Learn More</button>
             </div>
           </div>
-        ))}
+        </div>
+
+        <div className="hero-image">
+          <img
+            src={slides[currentSlide].img}
+            alt={slides[currentSlide].headline}
+            className="fade-in"
+          />
+          <div className="hero-image-overlay" />
+        </div>
+
+        {slides.length > 1 && (
+          <>
+            <button
+              className="hero-nav-btn hero-nav-prev"
+              onClick={prevSlide}
+              aria-label="Previous slide"
+            >
+              ‹
+            </button>
+            <button
+              className="hero-nav-btn hero-nav-next"
+              onClick={nextSlide}
+              aria-label="Next slide"
+            >
+              ›
+            </button>
+
+            <div className="hero-indicators">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  className={classNames("hero-indicator", {
+                    active: index === currentSlide,
+                  })}
+                  onClick={() => setCurrentSlide(index)}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </div>
-      <div className="slider__control" onClick={() => flipSlide(-1)} />
-      <div
-        className="slider__control slider__control--right"
-        onClick={() => flipSlide(1)}
-      />
     </div>
   );
 }

@@ -30,7 +30,7 @@ export default function Paypal({
 
   React.useEffect(() => {
     dispatch({
-      type: "resetOptions",
+      type: "resetOptions" as any,
       value: {
         ...options,
         currency: currency,

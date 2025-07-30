@@ -16,7 +16,7 @@ export default function Search() {
   // const [page, setPage] = useState<number>(0);
 
   useEffect(() => {
-    dispatch(getSearch());
+    dispatch(getSearch({ page: 1, searchString: "" }));
   }, [dispatch]);
 
   return (

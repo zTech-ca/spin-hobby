@@ -8,7 +8,7 @@ function* fetchSearchResult({
   payload,
 }: PayloadAction<{ page: number; searchString: string }>) {
   try {
-    payload.searchString = payload.searchString.replaceAll(" ", "%20");
+    payload.searchString = payload.searchString.replace(/ /g, "%20");
 
     const searchResult: IMerchPreview[] = yield getSearchResult(
       payload.page,

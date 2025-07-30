@@ -1,402 +1,337 @@
-$numOfParts: 4;
-$animTime: 1s;
-$stagger: 0.08s;
-$sliderReadyTrans: all $animTime/2 $animTime;
-$maxLettersStagger: 6;
-$letterStagger: 0.1s;
+@use "../../../../sass/variables.scss" as *;
+@use "../../../../sass/mixins.scss" as *;
 
-.home-header-mobile {
-  @media screen and (min-width: $tablet-limit) {
+// Modern Hero Section Styles
+.hero-section {
+  position: relative;
+  min-height: 600px;
+  background: linear-gradient(135deg, $primary-50 0%, $surface 100%);
+  overflow: hidden;
+
+  @include mobile-only {
     display: none;
   }
 
-  .home-header-mobile-item {
-    margin: 10px;
+  .hero-container {
+    @include container;
     position: relative;
-    background-color: #000;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    gap: $spacing-16;
+
+    @include tablet-only {
+      height: 500px;
+      gap: $spacing-8;
+    }
+  }
+
+  .hero-content {
+    flex: 1;
+    max-width: 600px;
+    z-index: 2;
+
+    .hero-text {
+      .hero-welcome {
+        @include text-display;
+        color: $primary-600;
+        margin-bottom: $spacing-4;
+        font-size: $font-size-lg;
+        font-weight: $font-weight-medium;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+
+        @include tablet-only {
+          font-size: $font-size-base;
+        }
+      }
+
+      .hero-headline {
+        @include text-h1;
+        margin-bottom: $spacing-6;
+        font-size: $font-size-5xl;
+        line-height: 1.1;
+
+        @include tablet-only {
+          font-size: $font-size-4xl;
+        }
+      }
+
+      .hero-subheading {
+        @include text-body;
+        font-size: $font-size-xl;
+        color: $text-secondary;
+        margin-bottom: $spacing-8;
+        line-height: $line-height-relaxed;
+
+        @include tablet-only {
+          font-size: $font-size-lg;
+        }
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: $spacing-4;
+        align-items: center;
+
+        @include tablet-only {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: $spacing-3;
+        }
+
+        .hero-btn-primary {
+          @include button-primary;
+          padding: $spacing-4 $spacing-8;
+          font-size: $font-size-lg;
+          font-weight: $font-weight-semibold;
+
+          @include tablet-only {
+            padding: $spacing-3 $spacing-6;
+            font-size: $font-size-base;
+          }
+        }
+
+        .hero-btn-secondary {
+          @include button-secondary;
+          padding: $spacing-4 $spacing-8;
+          font-size: $font-size-lg;
+          font-weight: $font-weight-semibold;
+
+          @include tablet-only {
+            padding: $spacing-3 $spacing-6;
+            font-size: $font-size-base;
+          }
+        }
+      }
+    }
+  }
+
+  .hero-image {
+    flex: 1;
+    position: relative;
+    height: 500px;
+    border-radius: $border-radius-2xl;
+    overflow: hidden;
+    box-shadow: $shadow-xl;
+
+    @include tablet-only {
+      height: 400px;
+    }
 
     img {
-      display: block;
-      margin: auto;
       width: 100%;
-      height: 80px;
+      height: 100%;
       object-fit: cover;
-      opacity: 0.7;
+      transition: transform $transition-slow ease-in-out;
     }
 
-    .home-header-mobile-item-label {
+    .hero-image-overlay {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        45deg,
+        rgba(14, 165, 233, 0.1) 0%,
+        rgba(0, 0, 0, 0.1) 100%
+      );
+    }
+  }
 
-      h4 {
-        color: white;
-        text-shadow: 0px 0px 2px #000;
-        margin: 0 auto;
+  .hero-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid $border;
+    border-radius: $border-radius-full;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: $text-primary;
+    cursor: pointer;
+    transition: all $transition-fast ease-in-out;
+    z-index: 3;
 
-        text-align: center;
+    &:hover {
+      background: white;
+      border-color: $primary-300;
+      color: $primary-600;
+      box-shadow: $shadow-md;
+    }
+
+    &.hero-nav-prev {
+      left: $spacing-6;
+    }
+
+    &.hero-nav-next {
+      right: $spacing-6;
+    }
+  }
+
+  .hero-indicators {
+    position: absolute;
+    bottom: $spacing-8;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: $spacing-2;
+    z-index: 3;
+
+    .hero-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: $border-radius-full;
+      border: none;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all $transition-fast ease-in-out;
+
+      &.active {
+        background: white;
+        box-shadow: 0 0 0 2px $primary-500;
       }
 
-      label {
-        color: white;
-        text-align: center;
-        margin: 0 auto;
+      &:hover {
+        background: rgba(255, 255, 255, 0.8);
       }
     }
   }
 }
 
-.slider {
-  // Variables for easy customization
-  $home-header-top-heading: 60px;
-  $home-header-gradient-top: 50%;
-  $home-header-control-top: 30%;
-  $home-header-content-height: 70%;
-
-  mask-image: -webkit-linear-gradient(
-    top,
-    #e0e0e0 0%,
-    #e0e0e0 $home-header-gradient-top,
-    rgba(0, 0, 0, 1) $home-header-gradient-top,
-    rgba(0, 0, 0, 0) 100%
-  );
-
-  *,
-  *:before,
-  *:after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
-  background: #000;
-  overflow: hidden;
+// Mobile Hero Styles
+.hero-mobile {
   position: relative;
-  height: 600px;
-  // height: 300px;
+  height: 400px;
+  overflow: hidden;
 
-  color: #fff;
-  background: transparent;
-  user-select: none;
-
-  @media screen and (max-width: $tablet-limit), (min-width: $max-header-width) {
+  @include tablet-up {
     display: none;
   }
 
-  @mixin sliderReady {
-    .slider.s--ready & {
-      @content;
-    }
-  }
-
-  &__top-heading {
-    z-index: $numOfParts * 3;
+  .hero-mobile-slide {
     position: absolute;
-    left: 0;
-    top: $home-header-top-heading;
-    width: 100%;
-    text-align: center;
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    transition: $sliderReadyTrans;
-    transform: translateY(-30px);
-    opacity: 0;
-
-    @include sliderReady {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  &__slides {
-    position: relative;
-    height: 100%;
-  }
-
-  &__slide {
-    position: absolute;
-    left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity $transition-slow ease-in-out;
 
-    &.s--active {
-      pointer-events: auto;
+    &.active {
+      opacity: 1;
     }
 
-    @mixin slidePrev {
-      .slider__slide.s--prev & {
-        @content;
-      }
-    }
-
-    @mixin slideActive {
-      .slider__slide.s--active & {
-        @content;
-      }
-    }
-
-    &-content {
-      z-index: $numOfParts + 2;
+    .hero-mobile-image {
       position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      height: $home-header-content-height;
-      text-transform: uppercase;
-      line-height: 1;
-    }
-
-    @mixin subTextsActiveSlide {
-      opacity: 0;
-      transition: $animTime/2;
-
-      @include slideActive {
-        transition-delay: $animTime * 0.65;
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    &-subheading {
-      margin-bottom: 20px;
-      font-size: 24px;
-      letter-spacing: 2px;
-      transform: translateY(20px);
-
-      @include subTextsActiveSlide;
-    }
-
-    &-heading {
-      $fontSize: 60px;
-
-      display: flex;
-      margin-bottom: 20px;
-      font-size: $fontSize;
-      letter-spacing: 12px;
-
-      span {
-        display: block;
-        opacity: 0;
-        transform: translateY($fontSize * -1);
-        transition: all $animTime/3;
-
-        @include slidePrev {
-          transform: translateY($fontSize);
-        }
-
-        @include slideActive {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        @for $i from 1 through $maxLettersStagger {
-          &:nth-child(#{$i}) {
-            $delay: $letterStagger * ($i - 1);
-
-            transition-delay: $delay;
-
-            @include slideActive {
-              transition-delay: $delay + $animTime/3;
-            }
-          }
-        }
-
-        &:nth-child(n + #{$maxLettersStagger + 1}) {
-          $delay: $letterStagger * $maxLettersStagger;
-
-          transition-delay: $delay;
-
-          @include slideActive {
-            transition-delay: $delay + $animTime/3;
-          }
-        }
-      }
-    }
-
-    &-readmore {
-      position: relative;
-      font-size: 14px;
-      text-transform: lowercase;
-      backface-visibility: hidden;
-      transform: translateY(-20px);
-      cursor: pointer;
-
-      @include subTextsActiveSlide;
-
-      &:before {
-        content: "";
-        position: absolute;
-        left: -2px;
-        top: -3px;
-        width: calc(100% + 4px);
-        height: calc(100% + 6px);
-        background: rgba(255, 255, 255, 0.4);
-        transform: scaleX(0.3);
-        transform-origin: 0 50%;
-        transition: transform 0.3s;
-      }
-
-      &:hover:before {
-        transform: scaleX(1);
-      }
-    }
-
-    &-parts {
-      position: absolute;
-      left: 0;
-      top: 0;
-      display: flex;
       width: 100%;
-      height: 100%;
+      height: 70%;
 
-      &:after {
-        content: "";
-        z-index: $numOfParts + 1;
-        position: absolute;
-        left: 0;
-        top: 0;
+      img {
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.1);
+        object-fit: cover;
+      }
+
+      .hero-mobile-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(0, 0, 0, 0.7) 100%
+        );
       }
     }
 
-    &-part {
-      $partW: (100vw / $numOfParts);
+    .hero-mobile-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: $spacing-6 $spacing-4;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.8) 0%,
+        transparent 100%
+      );
+      color: white;
 
-      position: relative;
-      width: percentage(1 / $numOfParts);
-      height: 100%;
+      h2 {
+        @include text-h2;
+        color: white;
+        margin-bottom: $spacing-2;
+        font-size: $font-size-2xl;
+      }
 
-      $partRef: &;
-      $imageFadeAT: $animTime/4;
-
-      &-inner {
-        overflow: hidden;
-        position: relative;
-        width: 100%;
-        height: 100%;
-        background-size: 0 0;
-        background-repeat: no-repeat;
-        transition: transform $animTime/2 ease-in-out;
-
-        &:before {
-          content: "";
-          position: absolute;
-          width: 100vw;
-          height: 100%;
-          background-image: inherit;
-          background-size: cover;
-          background-position: center center;
-          transition: opacity $imageFadeAT;
-          opacity: 0;
-        }
-
-        @for $i from 1 through $numOfParts {
-          #{$partRef}:nth-child(#{$i}) & {
-            $delayOut: ($numOfParts - $i) * $stagger;
-            $delayIn: $i * $stagger + $animTime/5;
-
-            z-index: $numOfParts - $i;
-            transition-delay: $delayOut;
-            transform: translateX(percentage($i / $numOfParts * -1.3));
-
-            @include slideActive {
-              transition-delay: $delayIn;
-            }
-
-            &:before {
-              left: $partW * ($i - 1) * -1;
-              transition-delay: $delayOut + $imageFadeAT/2;
-
-              @include slideActive {
-                transition-delay: $delayIn;
-              }
-            }
-          }
-        }
-
-        @include slideActive {
-          transform: translateX(0);
-          transition-timing-function: ease;
-
-          &:before {
-            opacity: 1;
-          }
-        }
+      p {
+        @include text-body;
+        color: rgba(255, 255, 255, 0.9);
+        margin: 0;
+        font-size: $font-size-base;
       }
     }
   }
 
-  &__control {
-    $size: 50px;
-
-    z-index: 100;
+  .hero-mobile-indicators {
     position: absolute;
-    left: 50px;
-    top: $home-header-control-top;
-    width: $size;
-    height: $size;
-    margin-top: $size/-2;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
-    transform: translateX($size * -1);
-    opacity: 0;
-    transition: $sliderReadyTrans;
-    cursor: pointer;
+    bottom: $spacing-4;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: $spacing-2;
+    z-index: 2;
 
-    &:before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 20px;
-      height: 20px;
-      margin-left: -10px;
-      margin-top: -10px;
-      border: 2px solid #000;
-      border-bottom: none;
-      border-right: none;
-      transform: translateX(5px) rotate(-45deg);
-    }
+    .indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: $border-radius-full;
+      border: none;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all $transition-fast ease-in-out;
 
-    &--right {
-      left: auto;
-      right: 50px;
-      transform: translateX($size);
-
-      &:before {
-        transform: translateX(-5px) rotate(135deg);
+      &.active {
+        background: white;
+        box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.5);
       }
-    }
-
-    @include sliderReady {
-      transform: translateX(0);
-      opacity: 1;
     }
   }
 }
 
-.icon-link {
-  z-index: 100;
-  position: absolute;
-  left: 5px;
-  bottom: 5px;
-  width: 32px;
+// Remove all old slider styles - they're no longer needed
+.slider,
+.slider__top-heading,
+.slider__slides,
+.slider__slide,
+.slider__slide-content,
+.slider__slide-subheading,
+.slider__slide-heading,
+.slider__slide-readmore,
+.slider__slide-parts,
+.slider__slide-part,
+.slider__slide-part-inner,
+.slider__control {
+  display: none;
+}
 
-  img {
-    width: 100%;
-    vertical-align: top;
-  }
+// Legacy mobile header - keeping for fallback
+.home-header-mobile {
+  display: none;
+}
 
-  &--twitter {
-    left: auto;
-    right: 5px;
-  }
+.home-header-mobile-item {
+  display: none;
+}
+
+.home-header-mobile-item-label {
+  display: none;
 }

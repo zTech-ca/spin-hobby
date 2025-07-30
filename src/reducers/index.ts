@@ -1,4 +1,4 @@
-import { combineReducers } from "redux";
+import { combineReducers } from "@reduxjs/toolkit";
 import modalReducer, { ModalState, hideModal, openModal } from "./modalReducer";
 import settingReducer, {
   ISettingState,

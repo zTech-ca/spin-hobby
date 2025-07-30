@@ -1,3 +1,6 @@
+@use "../../../sass/variables.scss" as *;
+@use "../../../sass/mixins.scss" as *;
+
 .footer {
   background-color: $theme-color-dark;
   color: $theme-color-bright;

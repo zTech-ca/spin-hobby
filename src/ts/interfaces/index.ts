@@ -1,2 +1,2 @@
-export * from "./merchandise.interfaces";
 export * from "./api.interfaces";
+export * from "./merchandise.interfaces";
