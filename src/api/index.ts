@@ -30,7 +30,7 @@ export async function getCurrencyConversion(
 }
 
 export function getHomeData(): Promise<IHomeData> {
-  return new Promise((resolve) => resolve(homeData));
+  return axios.get(`${serverUrl}api/v1/home`).then((response) => response.data);
 }
 
 export function getProductData(): Promise<IProductData> {
