@@ -112,24 +112,29 @@ function App() {
           {beta ? (
             <>
               <NavBarV2 />
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/checkout" element={<CheckOut />} />
-                <Route path="/checkout/success" element={<CheckoutSuccess />} />
-                <Route path="/search" element={<Search />} />
-                <Route path="/product" element={<Product />} />
-                <Route path="/account" element={<Account />} />
-                <Route path="/admin/*" element={<AdminDashboard />} />
-                <Route
-                  path="/auth/square/callback"
-                  element={<SquareCallback />}
-                />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/support" element={<Support />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
+              <main className="main">
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/checkout" element={<CheckOut />} />
+                  <Route
+                    path="/checkout/success"
+                    element={<CheckoutSuccess />}
+                  />
+                  <Route path="/search" element={<Search />} />
+                  <Route path="/product" element={<Product />} />
+                  <Route path="/account" element={<Account />} />
+                  <Route path="/admin/*" element={<AdminDashboard />} />
+                  <Route
+                    path="/auth/square/callback"
+                    element={<SquareCallback />}
+                  />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/support" element={<Support />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </main>
               <Footer />
             </>
           ) : (

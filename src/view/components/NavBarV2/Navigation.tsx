@@ -112,6 +112,19 @@ export default function Navigation() {
         <a href="/support" className="nav-item">
           <button className="nav-link">Support</button>
         </a>
+
+        {/* Instagram Promotion */}
+        <a
+          href="https://www.instagram.com/spinhobby"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-item instagram-promo"
+        >
+          <button className="nav-link instagram-link">
+            <span className="instagram-icon">📷</span>
+            <span className="instagram-text">Follow Us @spinhobby</span>
+          </button>
+        </a>
       </div>
     </div>
   );

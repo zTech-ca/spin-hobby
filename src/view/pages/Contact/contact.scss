@@ -2,7 +2,6 @@
 @use "../../../sass/mixins.scss" as *;
 
 .contact-page {
-  min-height: calc(100vh - 200px);
   background: $surface-secondary;
   padding: $spacing-8 0;
 
@@ -80,6 +79,18 @@
 
       &:last-child {
         margin-bottom: 0;
+      }
+
+      a {
+        color: $primary-600;
+        text-decoration: none;
+        font-weight: $font-weight-semibold;
+        transition: color $transition-fast ease-in-out;
+
+        &:hover {
+          color: #e4405f; // Instagram brand color
+          text-decoration: underline;
+        }
       }
     }
   }

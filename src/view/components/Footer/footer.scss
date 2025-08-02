@@ -2,146 +2,85 @@
 @use "../../../sass/mixins" as *;
 
 .footer {
-  background: $neutral-900;
-  color: $neutral-100;
-  padding: $spacing-8 0 $spacing-4;
-  margin-top: $spacing-8;
+  background-color: $theme-color-dark;
+  color: $theme-color-bright;
+  width: 100%;
+  height: $footer-height;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  flex-shrink: 0;
+  padding: 0 $spacing-4;
+}
 
-  .footer-container {
-    @include container;
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+
+  @include mobile-only {
+    flex-direction: column;
+    gap: $spacing-2;
+    text-align: center;
   }
 
-  .footer-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-    gap: $spacing-6;
-    margin-bottom: $spacing-6;
+  p {
+    margin: 0;
+    @include text-body-sm;
+    color: $theme-color-bright;
+  }
+}
 
-    @include tablet-only {
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: $spacing-4;
-    }
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: $spacing-4;
+
+  @include mobile-only {
+    flex-direction: column;
+    gap: $spacing-2;
+  }
+
+  span {
+    @include text-body-sm;
+    color: $neutral-400;
+  }
+
+  .footer-nav,
+  .footer-social {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
 
     @include mobile-only {
-      grid-template-columns: 1fr;
-      gap: $spacing-4;
-      text-align: center;
-    }
-  }
-
-  .footer-section {
-    .footer-brand {
-      grid-column: span 1;
-    }
-
-    h3 {
-      @include text-h3;
-      color: $neutral-50;
-      margin-bottom: $spacing-3;
-      font-weight: $font-weight-bold;
-    }
-
-    h4 {
-      @include text-h5;
-      color: $neutral-50;
-      margin-bottom: $spacing-3;
-      font-weight: $font-weight-bold;
-    }
-
-    p {
-      @include text-body;
-      color: $neutral-300;
-      line-height: 1.6;
-      margin-bottom: $spacing-3;
-    }
-
-    .social-links {
-      display: flex;
-      gap: $spacing-3;
-
-      @include mobile-only {
-        justify-content: center;
-      }
-
-      a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        background: $neutral-800;
-        border-radius: $border-radius-lg;
-        text-decoration: none;
-        transition: all $transition-base ease;
-        font-size: 1.25rem;
-
-        &:hover {
-          background: $primary-600;
-          transform: translateY(-2px);
-        }
-      }
-    }
-
-    .footer-links {
-      display: flex;
       flex-direction: column;
       gap: $spacing-2;
-
-      a {
-        @include text-body-sm;
-        color: $neutral-300;
-        text-decoration: none;
-        transition: color $transition-base ease;
-        padding: $spacing-1 0;
-
-        &:hover {
-          color: $primary-400;
-        }
-      }
     }
   }
 
-  .footer-bottom {
-    border-top: 1px solid $neutral-800;
-    padding-top: $spacing-4;
+  a {
+    @include text-body-sm;
+    color: $theme-color-bright;
+    text-decoration: none;
+    transition: color $transition-fast ease-in-out;
 
-    .footer-bottom-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: $spacing-3;
+    &:hover {
+      color: $primary-400;
+      text-decoration: underline;
+    }
+  }
 
-      @include mobile-only {
-        flex-direction: column;
-        text-align: center;
-      }
+  .footer-social a {
+    display: flex;
+    align-items: center;
+    gap: $spacing-1;
+    font-weight: $font-weight-medium;
 
-      p {
-        @include text-body-sm;
-        color: $neutral-400;
-        margin: 0;
-      }
-
-      .payment-methods {
-        @include text-body-sm;
-        color: $neutral-400;
-        display: flex;
-        align-items: center;
-        gap: $spacing-2;
-      }
-
-      .powered-by {
-        a {
-          color: $primary-400;
-          text-decoration: none;
-          font-weight: $font-weight-medium;
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-      }
+    &:hover {
+      color: #e4405f; // Instagram brand color
     }
   }
 }

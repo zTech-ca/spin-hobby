@@ -1,6 +1,6 @@
 import React from "react";
 import { IconType } from "react-icons";
-import { FaUserAlt } from "react-icons/fa";
+import { FaUserAlt, FaInstagram } from "react-icons/fa";
 import { RiShoppingCart2Line } from "react-icons/ri";
 import { openModal } from "../../../reducers";
 import { EModal } from "../../../ts";
@@ -19,9 +19,18 @@ export default function Commands() {
   const navigateToCart = () => {
     navigate("/cart");
   };
+  const navigateToInstagram = () => {
+    window.open(
+      "https://www.instagram.com/spinhobby",
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
   const commands: INavBarCommand[] = [
     { label: "Login", icon: FaUserAlt, onClick: handleLoginCommand },
     { label: "Cart", icon: RiShoppingCart2Line, onClick: navigateToCart },
+    { label: "Instagram", icon: FaInstagram, onClick: navigateToInstagram },
   ];
 
   function handleLoginCommand() {

@@ -40,6 +40,20 @@ export default function Contact() {
                 <p>123 Anime Street</p>
                 <p>Tokyo District, CA 90210</p>
               </div>
+
+              <div className="contact-method">
+                <h3>📷 Follow Us</h3>
+                <p>
+                  <a
+                    href="https://www.instagram.com/spinhobby"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    @spinhobby
+                  </a>
+                </p>
+                <p>Stay updated with our latest arrivals</p>
+              </div>
             </div>
           </div>
 

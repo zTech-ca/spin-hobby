@@ -35,6 +35,8 @@
       display: flex;
       align-items: center;
       gap: $spacing-3;
+      cursor: pointer;
+      transition: opacity $transition-fast ease-in-out;
 
       img {
         height: 48px;
@@ -57,6 +59,14 @@
         @include mobile-only {
           display: none;
         }
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      &:active {
+        opacity: 0.6;
       }
     }
   }
@@ -112,6 +122,64 @@
       &:hover {
         background: $surface-secondary;
         color: $text-primary;
+      }
+
+      // Instagram specific styling
+      &:nth-child(3) {
+        // Third command (Instagram)
+        &:hover {
+          .navbar-command-icon {
+            color: #e4405f; // Instagram brand color
+          }
+        }
+      }
+    }
+  }
+}
+
+// Instagram promotion in navigation
+.navigation {
+  .instagram-promo {
+    .instagram-link {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      color: white !important;
+      border-radius: $border-radius-full;
+      padding: $spacing-2 $spacing-4;
+      font-weight: $font-weight-semibold;
+      transition: all $transition-fast ease-in-out;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: $spacing-2;
+
+      @include mobile-only {
+        padding: $spacing-2 $spacing-3;
+        font-size: $font-size-xs;
+        gap: $spacing-1;
+      }
+
+      .instagram-icon {
+        font-size: 16px;
+
+        @include mobile-only {
+          font-size: 14px;
+        }
+      }
+
+      .instagram-text {
+        @include mobile-only {
+          display: none;
+        }
+      }
+
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(131, 58, 180, 0.3);
+        background: linear-gradient(135deg, #9146ff, #ff1d5f, #ffb84d);
+      }
+
+      &:active {
+        transform: translateY(0);
       }
     }
   }
