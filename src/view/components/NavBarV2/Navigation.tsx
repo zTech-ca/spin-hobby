@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { IoChevronDown } from "react-icons/io5";
 
 interface Category {
@@ -13,6 +14,7 @@ interface Category {
 }
 
 export default function Navigation() {
+  const navigate = useNavigate();
   const [categories, setCategories] = useState<Category[]>([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -45,8 +47,10 @@ export default function Navigation() {
   };
 
   const handleCategoryClick = (category: Category) => {
-    // Navigate to category page (implement based on your routing)
-    console.log("Navigate to category:", category.name);
+    const params = new URLSearchParams({
+      category: category.name,
+    });
+    navigate(`/product?${params.toString()}`);
     setIsDropdownOpen(false);
   };
 

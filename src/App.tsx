@@ -32,6 +32,7 @@ import SquareCallback from "view/pages/Auth/SquareCallback";
 import SquareWeb from "view/pages/SquareWeb";
 import Contact from "view/pages/Contact";
 import Support from "view/pages/Support";
+import NotFound from "view/pages/NotFound";
 
 let loaded = false;
 
@@ -127,6 +128,7 @@ function App() {
                 />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/support" element={<Support />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
               <Footer />
             </>

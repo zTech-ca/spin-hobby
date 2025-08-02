@@ -42,6 +42,15 @@ export function getSearchResult(
   searchString: string,
   category?: string
 ): Promise<IMerchPreview[]> {
+  // Check if user wants to use real Square data
+  const dataSource = localStorage.getItem("dataSource");
+  const useSquareData = dataSource === "square";
+
+  // Use different endpoint based on data source preference
+  const baseEndpoint = useSquareData
+    ? `${serverUrl}api/v1/square-catalog/search`
+    : `${serverUrl}api/v1/search`;
+
   const params = new URLSearchParams({
     q: searchString,
     page: page.toString(),
@@ -52,8 +61,13 @@ export function getSearchResult(
     params.append("category", category);
   }
 
+  // Add source parameter for regular search API
+  if (!useSquareData) {
+    params.append("source", "all");
+  }
+
   return axios
-    .get(`${serverUrl}api/v1/search?${params.toString()}`)
+    .get(`${baseEndpoint}?${params.toString()}`)
     .then((response) => {
       if (response.data.success) {
         return response.data.data.map((item: any) => ({
@@ -61,7 +75,7 @@ export function getSearchResult(
           title: item.title || item.name,
           name: item.name,
           description: item.description,
-          img: item.images?.[0] || "",
+          img: item.images?.[0] || item.img || "",
           images: item.images || [],
           price: item.price,
           originalPrice: item.originalPrice,
@@ -71,13 +85,19 @@ export function getSearchResult(
           isFeatured: item.isFeatured || false,
           isNewArrival: item.isNewArrival || false,
           isPreorder: item.isPreorder || false,
-          source: item.source || "database",
+          source:
+            item.source || (useSquareData ? "square-catalog" : "database"),
         }));
       }
       return [];
     })
     .catch((error) => {
       console.error("Search API error:", error);
+      // Fallback to dummy data if Square API fails
+      if (useSquareData) {
+        console.log("Falling back to dummy data due to Square API error");
+        return getSearchResult(page, searchString, category);
+      }
       return [];
     });
 }

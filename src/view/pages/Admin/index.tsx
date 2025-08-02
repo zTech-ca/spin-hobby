@@ -3,6 +3,7 @@ import { Link, Routes, Route, useLocation } from "react-router-dom";
 import axios from "axios";
 import CategoryEdit from "./CategoryEdit";
 import NavigationSettings from "./NavigationSettings";
+import SquareIntegration from "./SquareIntegration";
 import "./admin.scss";
 
 interface AdminCategory {
@@ -161,6 +162,9 @@ function CategoryManagement() {
           </Link>
           <Link to="/admin/categories" className="nav-link active">
             Categories
+          </Link>
+          <Link to="/admin/square" className="nav-link">
+            Square Data
           </Link>
           <Link to="/admin/products" className="nav-link">
             Products
@@ -371,6 +375,7 @@ export default function AdminDashboard() {
       <Route path="/" element={<CategoryManagement />} />
       <Route path="/categories" element={<CategoryManagement />} />
       <Route path="/categories/:categoryId" element={<CategoryEdit />} />
+      <Route path="/square" element={<SquareIntegration />} />
       <Route
         path="/products"
         element={
