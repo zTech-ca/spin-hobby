@@ -78,9 +78,38 @@
     align-items: center;
     gap: $spacing-1;
     font-weight: $font-weight-medium;
+    padding: $spacing-1 $spacing-2;
+    border-radius: $border-radius-base;
+    transition: all $transition-fast ease-in-out;
 
     &:hover {
-      color: #e4405f; // Instagram brand color
+      background: linear-gradient(
+        45deg,
+        #833ab4,
+        #fd1d1d,
+        #fcb045,
+        #833ab4,
+        #fd1d1d,
+        #fcb045
+      );
+      background-size: 400% 400%;
+      animation: instagram-flow-footer 2s ease infinite;
+      color: white !important;
+
+      text-decoration: none !important;
     }
+  }
+}
+
+// Instagram flowing animation for footer
+@keyframes instagram-flow-footer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
