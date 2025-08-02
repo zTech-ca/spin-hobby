@@ -1,7 +1,7 @@
 import React from "react";
 import Search from "./Search";
 import Commands from "./Commands";
-import Tabs from "./Tabs";
+import Navigation from "./Navigation";
 
 export default function NavBar() {
   return (
@@ -24,23 +24,7 @@ export default function NavBar() {
             <Commands />
           </div>
         </div>
-        <div className="pages">
-          <a href="/">
-            <div className="pages-text">Categories</div>
-          </a>
-          <a href="/">
-            <div className="pages-text">Event Info</div>
-          </a>
-          <a href="/">
-            <div className="pages-text">About Us</div>
-          </a>
-          <a href="/">
-            <div className="pages-text">Support</div>
-          </a>
-        </div>
-        <div className="tabs">
-          <Tabs />
-        </div>
+        <Navigation />
       </div>
       <Search onNav={false} />
     </>

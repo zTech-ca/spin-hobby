@@ -3,6 +3,27 @@ export interface ILogin {
   password: string;
 }
 
+export interface ISquareLogin {
+  type: "square";
+  user: {
+    id: string;
+    merchantId: string;
+    businessName: string;
+    status: string;
+  };
+  token: string;
+}
+
+export interface IAuthUser {
+  id?: string;
+  email?: string;
+  username?: string;
+  merchantId?: string;
+  businessName?: string;
+  authType: "standard" | "square" | "google";
+  loginAt: string;
+}
+
 export interface ICartItem {
   id: number;
   name: string;

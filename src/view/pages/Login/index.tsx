@@ -31,6 +31,9 @@ export default function Login() {
           <Link to="/checkout">spinhobby.com/checkout</Link>
           <Link to="/search">spinhobby.com/search</Link>
           <Link to="/product">spinhobby.com/product</Link>
+          <Link to="/admin" style={{ color: "#dc3545", fontWeight: "bold" }}>
+            🎌 Admin Dashboard
+          </Link>
         </div>
       </>
     );

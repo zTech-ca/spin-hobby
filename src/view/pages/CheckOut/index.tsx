@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useCartSelector } from "../../../selectors";
 import calculateSubTotal from "utils/calculateSubTotal";
+import axios from "axios";
 
 interface CountryCode {
   code: string;
@@ -316,6 +317,9 @@ export default function CheckOut() {
 
   const [sameAsBillingAddress, setSameAsBillingAddress] =
     useState<boolean>(false);
+  const [isProcessing, setIsProcessing] = useState<boolean>(false);
+  const [checkoutError, setCheckoutError] = useState<string>("");
+  const [redirectUrl, setRedirectUrl] = useState<string>("");
 
   const [billingInputs, setBillingInputs] = useState<BillingInputs>({
     ...initialCommonInputs,
@@ -351,6 +355,91 @@ export default function CheckOut() {
         return { ...old, phone: value };
       default:
         return old;
+    }
+  };
+
+  const validateCheckoutForm = () => {
+    const errors: string[] = [];
+
+    if (!billingInputs.email) errors.push("Email is required");
+    if (!billingInputs.name.first) errors.push("First name is required");
+    if (!billingInputs.name.last) errors.push("Last name is required");
+    if (!billingInputs.address.primary) errors.push("Address is required");
+    if (!billingInputs.city) errors.push("City is required");
+    if (!billingInputs.province) errors.push("State/Province is required");
+    if (!billingInputs.postalCode) errors.push("Postal code is required");
+    if (!billingInputs.country) errors.push("Country is required");
+
+    if (!sameAsBillingAddress) {
+      if (!shippingInputs.name.first)
+        errors.push("Shipping first name is required");
+      if (!shippingInputs.name.last)
+        errors.push("Shipping last name is required");
+      if (!shippingInputs.address.primary)
+        errors.push("Shipping address is required");
+      if (!shippingInputs.city) errors.push("Shipping city is required");
+      if (!shippingInputs.province)
+        errors.push("Shipping state/province is required");
+      if (!shippingInputs.postalCode)
+        errors.push("Shipping postal code is required");
+      if (!shippingInputs.country) errors.push("Shipping country is required");
+    }
+
+    return errors;
+  };
+
+  const handleSquareCheckout = async () => {
+    const validationErrors = validateCheckoutForm();
+    if (validationErrors.length > 0) {
+      setCheckoutError(validationErrors.join(", "));
+      return;
+    }
+
+    if (cart.cartItems.length === 0) {
+      setCheckoutError("Your cart is empty");
+      return;
+    }
+
+    setIsProcessing(true);
+    setCheckoutError("");
+
+    try {
+      const customerInfo = {
+        email: billingInputs.email,
+        phone: billingInputs.phone,
+        address: {
+          address_line_1: billingInputs.address.primary,
+          address_line_2: billingInputs.address.secondary,
+          locality: billingInputs.city,
+          administrative_district_level_1: billingInputs.province,
+          postal_code: billingInputs.postalCode,
+          country: billingInputs.country,
+        },
+        ask_for_shipping: !sameAsBillingAddress,
+      };
+
+      const response = await axios.post("/cart/checkout", {
+        customer_info: customerInfo,
+        redirect_url: `${window.location.origin}/checkout/success`,
+        cancel_url: `${window.location.origin}/cart`,
+      });
+
+      if (response.data.success) {
+        // Redirect to Square hosted checkout
+        window.location.href = response.data.data.checkout_url;
+      } else {
+        setCheckoutError(
+          response.data.error || "Failed to create checkout session"
+        );
+      }
+    } catch (error: any) {
+      console.error("Checkout error:", error);
+      setCheckoutError(
+        error.response?.data?.error ||
+          "Failed to create checkout session. Please try again."
+      );
+    } finally {
+      setIsProcessing(false);
     }
   };
 
@@ -449,8 +538,83 @@ export default function CheckOut() {
             </tbody>
           </table>
           <br />
-          <div className="paypal-buttons-container">
-            {/* <Paypal currency={"CAD"} showSpinner={true} /> */}
+
+          <div className="checkout-section">
+            <h3>Complete Your Order</h3>
+            <p className="checkout-description">
+              Click below to proceed to Square's secure checkout page where you
+              can complete your payment.
+            </p>
+
+            {checkoutError && (
+              <div className="checkout-error">
+                <p>❌ {checkoutError}</p>
+                <button
+                  onClick={() => setCheckoutError("")}
+                  className="btn-dismiss"
+                >
+                  Dismiss
+                </button>
+              </div>
+            )}
+
+            <div className="order-summary">
+              <h4>Order Summary</h4>
+              <div className="summary-row">
+                <span>Items ({cart.cartItems.length}):</span>
+                <span>${calculateSubTotal(cart).toFixed(2)}</span>
+              </div>
+              <div className="summary-row">
+                <span>Shipping:</span>
+                <span>Free</span>
+              </div>
+              <div className="summary-row total">
+                <span>Total:</span>
+                <span>${calculateSubTotal(cart).toFixed(2)}</span>
+              </div>
+            </div>
+
+            <div className="checkout-actions">
+              <button
+                className="btn-checkout-square"
+                onClick={handleSquareCheckout}
+                disabled={isProcessing || cart.cartItems.length === 0}
+              >
+                {isProcessing ? (
+                  <div className="processing">
+                    <div className="spinner"></div>
+                    Creating checkout session...
+                  </div>
+                ) : (
+                  <div className="checkout-content">
+                    <span className="square-logo">□</span>
+                    Pay with Square
+                    <span className="amount">
+                      ${calculateSubTotal(cart).toFixed(2)}
+                    </span>
+                  </div>
+                )}
+              </button>
+
+              <div className="payment-methods">
+                <p>Accepted payment methods:</p>
+                <div className="payment-icons">
+                  <span className="payment-icon">💳</span>
+                  <span className="payment-icon">📱</span>
+                  <span className="payment-text">
+                    Visa, Mastercard, Apple Pay, Google Pay & more
+                  </span>
+                </div>
+              </div>
+
+              <div className="security-notice">
+                <p>
+                  🔒 Your payment is secured by Square's industry-leading
+                  encryption
+                </p>
+                <p>💯 100% secure checkout with fraud protection</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

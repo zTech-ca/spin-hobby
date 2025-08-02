@@ -122,38 +122,40 @@ function HeroSection({ slides }: Props) {
             className="fade-in"
           />
           <div className="hero-image-overlay" />
+
+          {slides.length > 1 && (
+            <>
+              <button
+                className="hero-nav-btn hero-nav-prev"
+                onClick={prevSlide}
+                aria-label="Previous slide"
+              >
+                ‹
+              </button>
+              <button
+                className="hero-nav-btn hero-nav-next"
+                onClick={nextSlide}
+                aria-label="Next slide"
+              >
+                ›
+              </button>
+            </>
+          )}
         </div>
 
         {slides.length > 1 && (
-          <>
-            <button
-              className="hero-nav-btn hero-nav-prev"
-              onClick={prevSlide}
-              aria-label="Previous slide"
-            >
-              ‹
-            </button>
-            <button
-              className="hero-nav-btn hero-nav-next"
-              onClick={nextSlide}
-              aria-label="Next slide"
-            >
-              ›
-            </button>
-
-            <div className="hero-indicators">
-              {slides.map((_, index) => (
-                <button
-                  key={index}
-                  className={classNames("hero-indicator", {
-                    active: index === currentSlide,
-                  })}
-                  onClick={() => setCurrentSlide(index)}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
-          </>
+          <div className="hero-indicators">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                className={classNames("hero-indicator", {
+                  active: index === currentSlide,
+                })}
+                onClick={() => setCurrentSlide(index)}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         )}
       </div>
     </div>

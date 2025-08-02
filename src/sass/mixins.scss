@@ -110,6 +110,38 @@
   color: $text-primary;
 }
 
+@mixin text-h4 {
+  font-family: $font-family-display;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-normal;
+  color: $text-primary;
+}
+
+@mixin text-h5 {
+  font-family: $font-family-display;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-normal;
+  color: $text-primary;
+}
+
+@mixin text-h6 {
+  font-family: $font-family-display;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-normal;
+  color: $text-primary;
+}
+
+@mixin text-lg {
+  font-family: $font-family-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-relaxed;
+  color: $text-primary;
+}
+
 @mixin text-body {
   font-family: $font-family-primary;
   font-size: $font-size-base;
@@ -212,6 +244,22 @@
   &:hover:not(:disabled) {
     background: $surface-secondary;
     color: $text-primary;
+  }
+}
+
+@mixin button-outline {
+  @include button-base;
+  background: transparent;
+  color: $primary-600;
+  border: 1px solid $primary-300;
+
+  &:hover:not(:disabled) {
+    background: $primary-50;
+    border-color: $primary-400;
+  }
+
+  &:active:not(:disabled) {
+    background: $primary-100;
   }
 }
 

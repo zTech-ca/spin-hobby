@@ -1,7 +1,27 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { BiEnvelope, BiLock, BiUser } from "react-icons/bi";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
+import { hideModal } from "../../reducers/modalReducer";
+import { queueLogin, clearQueueLogin } from "../../reducers/userReducer";
+import SquareAuthService from "../../api/squareAuth";
+import { loginUser } from "../../api";
+
+// Square icon component
+const SquareIcon = () => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect x="2" y="2" width="20" height="20" rx="4" fill="#1E88E5" />
+    <path d="M8 8h8v8H8V8z" fill="white" />
+    <path d="M10 10h4v4h-4v-4z" fill="#1E88E5" />
+  </svg>
+);
 
 interface LoginInputs {
   email: string;
@@ -11,8 +31,10 @@ interface LoginInputs {
 export default function Login() {
   const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isSquareLoading, setIsSquareLoading] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isSignUp, setIsSignUp] = useState<boolean>(false);
+  const dispatch = useDispatch();
 
   const [inputs, setInputs] = useState<LoginInputs>({
     email: "",
@@ -23,26 +45,61 @@ export default function Login() {
     e.preventDefault();
     setError("");
     setIsLoading(true);
+    dispatch(queueLogin());
 
     try {
-      // Add actual authentication logic here
-      console.log("Authentication attempt:", inputs);
+      if (isSignUp) {
+        // Handle signup logic here
+        console.log("Signup attempt:", inputs);
+        setError(
+          "Signup functionality not implemented yet. Please use Square login for now."
+        );
+      } else {
+        // Handle login
+        const result = await loginUser({
+          email: inputs.email,
+          password: inputs.password,
+        });
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      // For demo purposes, show error
-      setError("Invalid email or password. Please try again.");
-    } catch (err) {
-      setError("Something went wrong. Please try again.");
+        if (result.success) {
+          dispatch(hideModal());
+          dispatch(clearQueueLogin());
+        } else {
+          setError(
+            result.message || "Invalid email or password. Please try again."
+          );
+        }
+      }
+    } catch (err: any) {
+      console.error("Authentication error:", err);
+      setError(err.message || "Something went wrong. Please try again.");
     } finally {
       setIsLoading(false);
+      dispatch(clearQueueLogin());
     }
   }
 
   function handleGoogleLogin() {
     console.log("Google login attempted");
-    // Add Google OAuth logic here
+    setError("Google login not implemented yet. Please use Square login.");
+  }
+
+  async function handleSquareLogin() {
+    setIsSquareLoading(true);
+    setError("");
+    dispatch(queueLogin());
+
+    try {
+      await SquareAuthService.initiateSquareLogin();
+      // User will be redirected to Square OAuth, callback will handle the rest
+    } catch (err: any) {
+      console.error("Square login error:", err);
+      setError(
+        err.message || "Failed to initiate Square login. Please try again."
+      );
+      setIsSquareLoading(false);
+      dispatch(clearQueueLogin());
+    }
   }
 
   function toggleMode() {
@@ -147,14 +204,35 @@ export default function Login() {
         <span>or continue with</span>
       </div>
 
-      <button
-        type="button"
-        className="auth-modal-google"
-        onClick={handleGoogleLogin}
-      >
-        <FcGoogle className="auth-modal-google-icon" />
-        Continue with Google
-      </button>
+      <div className="auth-modal-oauth-buttons">
+        <button
+          type="button"
+          className="auth-modal-google"
+          onClick={handleGoogleLogin}
+        >
+          <FcGoogle className="auth-modal-google-icon" />
+          Continue with Google
+        </button>
+
+        <button
+          type="button"
+          className="auth-modal-square"
+          onClick={handleSquareLogin}
+          disabled={isSquareLoading}
+        >
+          {isSquareLoading ? (
+            <div className="auth-modal-loading">
+              <div className="auth-modal-spinner" />
+              Connecting...
+            </div>
+          ) : (
+            <>
+              <SquareIcon />
+              Continue with Square
+            </>
+          )}
+        </button>
+      </div>
 
       <div className="auth-modal-switch">
         <span>

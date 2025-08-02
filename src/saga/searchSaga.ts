@@ -6,13 +6,12 @@ import { getSearchResult } from "../api";
 
 function* fetchSearchResult({
   payload,
-}: PayloadAction<{ page: number; searchString: string }>) {
+}: PayloadAction<{ page: number; searchString: string; category?: string }>) {
   try {
-    payload.searchString = payload.searchString.replace(/ /g, "%20");
-
     const searchResult: IMerchPreview[] = yield getSearchResult(
       payload.page,
-      payload.searchString
+      payload.searchString,
+      payload.category
     );
 
     yield put(

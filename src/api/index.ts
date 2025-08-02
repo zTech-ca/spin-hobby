@@ -39,14 +39,47 @@ export function getProductData(): Promise<IProductData> {
 
 export function getSearchResult(
   page: number,
-  searchString: string
-): () => Promise<IMerchPreview[]> {
-  return () => {
-    // return axios.get(
-    //   `http://localhost:8001/search/page=${page}&string=${searchString}`
-    // );
-    return new Promise((resolve) => resolve([]));
-  };
+  searchString: string,
+  category?: string
+): Promise<IMerchPreview[]> {
+  const params = new URLSearchParams({
+    q: searchString,
+    page: page.toString(),
+    limit: "20",
+  });
+
+  if (category && category !== "All Categories") {
+    params.append("category", category);
+  }
+
+  return axios
+    .get(`${serverUrl}api/v1/search?${params.toString()}`)
+    .then((response) => {
+      if (response.data.success) {
+        return response.data.data.map((item: any) => ({
+          id: item.id,
+          title: item.title || item.name,
+          name: item.name,
+          description: item.description,
+          img: item.images?.[0] || "",
+          images: item.images || [],
+          price: item.price,
+          originalPrice: item.originalPrice,
+          discountPercentage: item.discountPercentage,
+          variations: item.variations || [],
+          categories: item.categories || [],
+          isFeatured: item.isFeatured || false,
+          isNewArrival: item.isNewArrival || false,
+          isPreorder: item.isPreorder || false,
+          source: item.source || "database",
+        }));
+      }
+      return [];
+    })
+    .catch((error) => {
+      console.error("Search API error:", error);
+      return [];
+    });
 }
 
 export function requestLogin(login: ILogin) {

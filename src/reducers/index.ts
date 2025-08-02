@@ -9,12 +9,16 @@ import settingReducer, {
 import userReducer, {
   IUserState,
   login,
+  loginSquare,
+  loginSuccess,
+  logout,
   setUser,
   requestLoginBeta,
   loginBeta,
   logoutBeta,
   queueLogin,
   clearQueueLogin,
+  initializeAuth,
 } from "./userReducer";
 import cartReducer, {
   ICartState,

@@ -32,7 +32,11 @@ const searchSlice = createSlice({
   reducers: {
     getSearch: (
       state,
-      action: PayloadAction<{ page: number; searchString: string }>
+      action: PayloadAction<{
+        page: number;
+        searchString: string;
+        category?: string;
+      }>
     ) => {},
     setSearchResult: (state, action) => {
       state.page = action.payload.page;

@@ -3,6 +3,7 @@ import "./sass/main.scss";
 import "react-phone-number-input/style.css";
 import Modal from "view/modal";
 import { useDispatch } from "react-redux";
+import useAuthInit from "./hooks/useAuthInit";
 // import { openModal } from "reducers";
 // import { EModal } from "ts";
 //import { BrowserRouter } from "react-router-dom";
@@ -25,13 +26,21 @@ import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import Login from "view/pages/Login";
 import { useBetaSelector } from "./selectors";
 import { Account } from "view/pages/Account";
+import AdminDashboard from "view/pages/Admin";
+import CheckoutSuccess from "view/pages/CheckoutSuccess";
+import SquareCallback from "view/pages/Auth/SquareCallback";
+import SquareWeb from "view/pages/SquareWeb";
+import Contact from "view/pages/Contact";
+import Support from "view/pages/Support";
 
 let loaded = false;
 
 function App() {
   const beta = useBetaSelector();
-
   const dispatch = useDispatch();
+
+  // Initialize authentication state
+  useAuthInit();
 
   useEffect(() => {
     if (loaded) return;
@@ -92,7 +101,12 @@ function App() {
         currency: "CAD",
       }}
     >
-      <BrowserRouter>
+      <BrowserRouter
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true,
+        }}
+      >
         <div className="app">
           {beta ? (
             <>
@@ -102,9 +116,17 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/checkout" element={<CheckOut />} />
+                <Route path="/checkout/success" element={<CheckoutSuccess />} />
                 <Route path="/search" element={<Search />} />
                 <Route path="/product" element={<Product />} />
                 <Route path="/account" element={<Account />} />
+                <Route path="/admin/*" element={<AdminDashboard />} />
+                <Route
+                  path="/auth/square/callback"
+                  element={<SquareCallback />}
+                />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/support" element={<Support />} />
               </Routes>
               <Footer />
             </>
@@ -129,23 +151,23 @@ function App() {
   );
 }
 
-function SquareWeb() {
-  return (
-    <>
-      <Modal />
-      <iframe
-        src="https://spinhobby.square.site/"
-        title="square"
-        style={{
-          width: "100%",
-          height: "100%",
-          border: 0,
-          display: "block",
-          position: "absolute",
-        }}
-      />
-    </>
-  );
-}
+// function SquareWeb() {
+//   return (
+//     <>
+//       <Modal />
+//       <iframe
+//         src="https://spinhobby.square.site/"
+//         title="square"
+//         style={{
+//           width: "100%",
+//           height: "100%",
+//           border: 0,
+//           display: "block",
+//           position: "absolute",
+//         }}
+//       />
+//     </>
+//   );
+// }
 
 export default App;

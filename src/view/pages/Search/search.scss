@@ -1,0 +1,137 @@
+@use "../../../sass/variables" as *;
+@use "../../../sass/mixins" as *;
+
+.search-page {
+  min-height: 80vh;
+  padding: $spacing-6 0;
+
+  .search-header {
+    @include container;
+    margin-bottom: $spacing-6;
+    text-align: center;
+
+    h1 {
+      @include text-h2;
+      color: $text-primary;
+      margin-bottom: $spacing-2;
+    }
+
+    .search-info {
+      @include text-body;
+      color: $text-secondary;
+
+      .search-query {
+        font-weight: $font-weight-bold;
+        color: $primary-600;
+      }
+
+      .search-category {
+        margin-left: $spacing-2;
+        color: $text-muted;
+      }
+    }
+  }
+
+  .search-content {
+    @include container;
+
+    .search-results-count {
+      @include text-body-sm;
+      color: $text-secondary;
+      margin-bottom: $spacing-4;
+      padding-bottom: $spacing-2;
+      border-bottom: 1px solid $border;
+    }
+
+    .search-loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 200px;
+
+      .loading-spinner {
+        @include text-lg;
+        color: $text-secondary;
+
+        &::after {
+          content: "";
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          margin-left: $spacing-2;
+          border: 2px solid $border;
+          border-top: 2px solid $primary-600;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+        }
+      }
+    }
+
+    .search-merchs {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: $spacing-4;
+      margin: $spacing-4 0;
+
+      @include tablet-only {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: $spacing-3;
+      }
+
+      @include mobile-only {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: $spacing-2;
+      }
+    }
+
+    .search-empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+      text-align: center;
+      padding: $spacing-8;
+
+      h3 {
+        @include text-h3;
+        color: $text-primary;
+        margin-bottom: $spacing-2;
+      }
+
+      p {
+        @include text-body;
+        color: $text-secondary;
+        margin-bottom: $spacing-4;
+        max-width: 400px;
+      }
+
+      .btn-primary {
+        @include button-primary;
+        padding: $spacing-3 $spacing-6;
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// Search ripple card styles
+.search-ripple-featured-card {
+  width: 100%;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  transition: transform $transition-base ease, box-shadow $transition-base ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+}
